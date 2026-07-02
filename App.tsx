@@ -136,6 +136,9 @@ const SpeakButton = ({
       e.stopPropagation();
       speakJapanese(text);
     }}
+    onTouchStart={(e) => e.stopPropagation()}
+    onTouchMove={(e) => e.stopPropagation()}
+    onTouchEnd={(e) => e.stopPropagation()}
     className={`inline-flex items-center justify-center rounded-full bg-slate-800 text-white hover:bg-slate-700 active:scale-95 transition-all shadow-sm shrink-0 ${className}`}
     style={{
       width: `${diameter}px`,
@@ -1953,6 +1956,7 @@ export default function App() {
 
       const handleTouchStart = (e) => {
         touchStartX.current = e.changedTouches[0].screenX;
+        touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchMove = (e) => {
         touchEndX.current = e.changedTouches[0].screenX;
@@ -2380,6 +2384,7 @@ export default function App() {
 
       const handleTouchStart = (e) => {
         touchStartX.current = e.changedTouches[0].screenX;
+        touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchMove = (e) => {
         touchEndX.current = e.changedTouches[0].screenX;
