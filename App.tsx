@@ -2565,6 +2565,8 @@ export default function App() {
       );
     } else if (testType === "kanji") {
       KANJI_DATA["N5"].forEach((item) => pool.push(item.kanji));
+    } else if (testType === "vocab") {
+      VOCAB_DATA["N5"].forEach((item) => pool.push(item.word));
     }
     return pool;
   };
@@ -2631,6 +2633,25 @@ export default function App() {
             type: "kanji",
           });
       });
+    } else if (testType === "vocab") {
+      VOCAB_DATA["N5"].forEach((item) => {
+        if (selectedTestItems.includes(item.word)) {
+          pool.push({
+            char: item.word,
+            reading: item.reading,
+            answer: item.meaning,
+            displaySegments: item.furigana,
+            type: "vocabMeaning",
+          });
+          pool.push({
+            char: item.word,
+            reading: item.reading,
+            answer: item.reading,
+            displaySegments: [{ t: item.word }],
+            type: "vocabReading",
+          });
+        }
+      });
     }
     return pool;
   };
@@ -2650,7 +2671,7 @@ export default function App() {
   const loadTestQuestion = (queue, index, fullPool) => {
     const correct = queue[index];
     const poolWithoutCorrect = fullPool.filter(
-      (item) => item.answer !== correct.answer
+      (item) => item.answer !== correct.answer && item.type === correct.type
     );
     const shuffledOthers = shuffleArray(poolWithoutCorrect).slice(0, 3);
     const finalOptions = shuffleArray([correct, ...shuffledOthers]);
@@ -2757,6 +2778,28 @@ export default function App() {
             </div>
             <ChevronLeft className="rotate-180 text-slate-300 group-hover:text-amber-500 transition-colors" />
           </button>
+
+          <button
+            onClick={() => {
+              setTestType("vocab");
+              setSelectedTestItems([]);
+              setTestScreen("select");
+            }}
+            className="w-full bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex items-center justify-between hover:shadow-md hover:border-emerald-400 transition-all group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-2xl flex justify-center items-center">
+                <BookOpen size={28} strokeWidth={2.5} />
+              </div>
+              <div className="text-left">
+                <div className="text-xl font-bold text-slate-800">
+                  단어 &amp; 문법 테스트
+                </div>
+                <div className="text-sm text-slate-400">뜻과 발음 맞추기</div>
+              </div>
+            </div>
+            <ChevronLeft className="rotate-180 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+          </button>
         </div>
       );
     }
@@ -2764,11 +2807,34 @@ export default function App() {
     if (testScreen === "select") {
       const isHiragana = testType === "hiragana";
       const isKanji = testType === "kanji";
-      const titleName = isHiragana ? "히라가나" : isKanji ? "한자" : "가타카나";
-      const themeColor = isKanji ? "text-amber-500" : "text-green-500";
-      const themeBg = isKanji ? "bg-amber-50" : "bg-green-50";
-      const themeBorder = isKanji ? "border-amber-500" : "border-green-500";
-      const titleBarColor = isKanji ? "bg-amber-500" : "bg-green-500";
+      const isVocab = testType === "vocab";
+      const titleName = isHiragana
+        ? "히라가나"
+        : isKanji
+        ? "한자"
+        : isVocab
+        ? "단어 & 문법"
+        : "가타카나";
+      const themeColor = isKanji
+        ? "text-amber-500"
+        : isVocab
+        ? "text-emerald-500"
+        : "text-green-500";
+      const themeBg = isKanji
+        ? "bg-amber-50"
+        : isVocab
+        ? "bg-emerald-50"
+        : "bg-green-50";
+      const themeBorder = isKanji
+        ? "border-amber-500"
+        : isVocab
+        ? "border-emerald-500"
+        : "border-green-500";
+      const titleBarColor = isKanji
+        ? "bg-amber-500"
+        : isVocab
+        ? "bg-emerald-500"
+        : "bg-green-500";
 
       const availableChars = getAvailableTestChars();
       const isAllSelected =
@@ -2803,7 +2869,7 @@ export default function App() {
           </div>
 
           <div className="space-y-6">
-            {!isKanji ? (
+            {!isKanji && !isVocab ? (
               Object.entries(groupedKana).map(([type, rows], groupIdx) => (
                 <div key={groupIdx} className="space-y-3">
                   <div className="flex items-center gap-2 px-2">
@@ -2894,7 +2960,7 @@ export default function App() {
                   </div>
                 </div>
               ))
-            ) : (
+            ) : isKanji ? (
               <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
                 <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
                   {KANJI_DATA["N5"].map((item, idx) => {
@@ -2923,6 +2989,46 @@ export default function App() {
                         >
                           <span>{item.meaning}</span>
                           <span>{item.sound}</span>
+                        </div>
+                        {isSelected && (
+                          <CheckCircle
+                            size={14}
+                            className="absolute top-1 right-1"
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {VOCAB_DATA["N5"].map((item, idx) => {
+                    const isSelected = selectedTestItems.includes(item.word);
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => toggleSingleChar(item.word)}
+                        className={`relative rounded-2xl flex flex-col justify-center items-center gap-1 border-2 py-4 px-2 transition-all duration-200 ${
+                          isSelected
+                            ? `${themeBg} ${themeBorder} ${themeColor}`
+                            : "bg-white border-slate-200 hover:border-slate-300"
+                        }`}
+                      >
+                        <div
+                          className={`text-lg font-black font-kanji text-center ${
+                            isSelected ? themeColor : "text-slate-800"
+                          }`}
+                        >
+                          {item.word}
+                        </div>
+                        <div
+                          className={`text-xs font-bold text-center ${
+                            isSelected ? themeColor : "text-slate-500"
+                          }`}
+                        >
+                          {item.meaning}
                         </div>
                         {isSelected && (
                           <CheckCircle
@@ -2973,9 +3079,16 @@ export default function App() {
       const instructionText =
         currentQuestion?.type === "kanji"
           ? "한자의 뜻과 음을 고르세요!"
+          : currentQuestion?.type === "vocabMeaning"
+          ? "단어의 뜻을 고르세요!"
+          : currentQuestion?.type === "vocabReading"
+          ? "단어의 발음을 고르세요!"
           : testType === "hiragana"
           ? "히라가나의 발음을 고르세요!"
           : "가타카나의 발음을 고르세요!";
+      const isVocabQuestion =
+        currentQuestion?.type === "vocabMeaning" ||
+        currentQuestion?.type === "vocabReading";
 
       return (
         <div className="w-full max-w-md mx-auto pb-40 relative">
@@ -3025,16 +3138,27 @@ export default function App() {
                 {instructionText}
               </div>
               <div className="flex items-center gap-3">
-                <div
-                  className={`text-slate-800 ${
-                    currentQuestion?.type === "kanji" ? "font-kanji" : ""
-                  }`}
-                  style={{ fontSize: "4.5rem", lineHeight: 1, fontWeight: 900 }}
-                >
-                  {currentQuestion?.char}
-                </div>
+                {isVocabQuestion ? (
+                  <Furigana
+                    segments={currentQuestion?.displaySegments}
+                    fontSize="clamp(2.25rem, 9vw, 3.25rem)"
+                  />
+                ) : (
+                  <div
+                    className={`text-slate-800 ${
+                      currentQuestion?.type === "kanji" ? "font-kanji" : ""
+                    }`}
+                    style={{
+                      fontSize: "4.5rem",
+                      lineHeight: 1,
+                      fontWeight: 900,
+                    }}
+                  >
+                    {currentQuestion?.char}
+                  </div>
+                )}
                 <SpeakButton
-                  text={currentQuestion?.char}
+                  text={currentQuestion?.reading || currentQuestion?.char}
                   iconSize={15}
                   diameter={34}
                   className="self-end mb-2"
