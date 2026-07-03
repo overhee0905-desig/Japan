@@ -162,7 +162,15 @@ const Furigana = ({ segments, fontSize = "1.5rem", className = "" }) => {
       style={{ fontSize, lineHeight: 2.5 }}
     >
       {segments.map((seg, i) =>
-        seg.r ? (
+        seg.blank ? (
+          <span
+            key={i}
+            className="inline-flex items-center justify-center text-blue-500 font-black border-b-4 border-blue-400"
+            style={{ margin: "0 2px", minWidth: "1.6em" }}
+          >
+            {seg.t || "○○○"}
+          </span>
+        ) : seg.r ? (
           <ruby key={i} style={{ margin: "0 1px" }}>
             {seg.t}
             <rt
@@ -2608,6 +2616,43 @@ export default function App() {
     setExpandedRows((prev) => ({ ...prev, [rowName]: !prev[rowName] }));
   };
 
+  // item.furigana(단어의 세그먼트 구성)와 정확히 일치하는 구간을 예문 세그먼트에서 찾습니다.
+  // (활용형 예문은 세그먼트가 달라지므로 매칭되지 않으면 건너뜁니다)
+  const findFuriganaMatch = (segments, furigana) => {
+    if (!segments || !furigana || furigana.length === 0) return -1;
+    for (let i = 0; i <= segments.length - furigana.length; i++) {
+      let match = true;
+      for (let j = 0; j < furigana.length; j++) {
+        const seg = segments[i + j];
+        const fseg = furigana[j];
+        if (!seg || seg.t !== fseg.t || (seg.r || "") !== (fseg.r || "")) {
+          match = false;
+          break;
+        }
+      }
+      if (match) return i;
+    }
+    return -1;
+  };
+
+  // 단어의 예문 중 하나를 골라 해당 단어 부분을 빈칸으로 치환합니다.
+  const buildSentenceBlank = (item) => {
+    if (!item.examples || item.examples.length === 0) return null;
+    for (const ex of shuffleArray(item.examples)) {
+      const idx = findFuriganaMatch(ex.segments, item.furigana);
+      if (idx !== -1) {
+        const before = ex.segments.slice(0, idx);
+        const after = ex.segments.slice(idx + item.furigana.length);
+        return {
+          segments: [...before, { t: "○○○○", blank: true }, ...after],
+          kr: ex.kr,
+          speakText: ex.segments.map((s) => s.t).join(""),
+        };
+      }
+    }
+    return null;
+  };
+
   const buildTestPool = () => {
     let pool = [];
     if (testType === "hiragana") {
@@ -2650,6 +2695,23 @@ export default function App() {
             displaySegments: [{ t: item.word }],
             type: "vocabReading",
           });
+          pool.push({
+            char: item.meaning,
+            answer: item.word,
+            type: "vocabWord",
+          });
+          const blank = buildSentenceBlank(item);
+          if (blank) {
+            pool.push({
+              char: item.word,
+              reading: item.reading,
+              answer: item.word,
+              sentenceSegments: blank.segments,
+              sentenceKr: blank.kr,
+              speakText: blank.speakText,
+              type: "vocabSentence",
+            });
+          }
         }
       });
     }
@@ -3083,12 +3145,90 @@ export default function App() {
           ? "단어의 뜻을 고르세요!"
           : currentQuestion?.type === "vocabReading"
           ? "단어의 발음을 고르세요!"
+          : currentQuestion?.type === "vocabWord"
+          ? "뜻에 알맞은 단어를 고르세요!"
+          : currentQuestion?.type === "vocabSentence"
+          ? "빈칸에 들어갈 알맞은 단어를 고르세요!"
           : testType === "hiragana"
           ? "히라가나의 발음을 고르세요!"
           : "가타카나의 발음을 고르세요!";
       const isVocabQuestion =
         currentQuestion?.type === "vocabMeaning" ||
         currentQuestion?.type === "vocabReading";
+
+      // 문제 카드 상단에 표시할 컨텐츠 (유형별로 레이아웃이 다름)
+      let questionPromptNode;
+      if (currentQuestion?.type === "vocabSentence") {
+        questionPromptNode = (
+          <div className="flex flex-col items-center gap-3 w-full">
+            <div className="flex items-start gap-2 w-full justify-center">
+              <Furigana
+                segments={currentQuestion?.sentenceSegments}
+                fontSize="clamp(1.3rem, 5.5vw, 1.75rem)"
+                className="flex-1 leading-[2.4] justify-center"
+              />
+              <SpeakButton
+                text={currentQuestion?.speakText}
+                iconSize={14}
+                diameter={30}
+                className="shrink-0 mt-1"
+              />
+            </div>
+            {currentQuestion?.sentenceKr && (
+              <div className="text-slate-400 font-medium text-sm">
+                {currentQuestion.sentenceKr}
+              </div>
+            )}
+          </div>
+        );
+      } else if (currentQuestion?.type === "vocabWord") {
+        questionPromptNode = (
+          <div
+            className="text-slate-800"
+            style={{ fontSize: "2.5rem", lineHeight: 1.3, fontWeight: 900 }}
+          >
+            {currentQuestion?.char}
+          </div>
+        );
+      } else if (isVocabQuestion) {
+        questionPromptNode = (
+          <div className="flex items-center gap-3">
+            <Furigana
+              segments={currentQuestion?.displaySegments}
+              fontSize="clamp(2.25rem, 9vw, 3.25rem)"
+            />
+            <SpeakButton
+              text={currentQuestion?.reading || currentQuestion?.char}
+              iconSize={15}
+              diameter={34}
+              className="self-end mb-2"
+            />
+          </div>
+        );
+      } else {
+        questionPromptNode = (
+          <div className="flex items-center gap-3">
+            <div
+              className={`text-slate-800 ${
+                currentQuestion?.type === "kanji" ? "font-kanji" : ""
+              }`}
+              style={{
+                fontSize: "4.5rem",
+                lineHeight: 1,
+                fontWeight: 900,
+              }}
+            >
+              {currentQuestion?.char}
+            </div>
+            <SpeakButton
+              text={currentQuestion?.reading || currentQuestion?.char}
+              iconSize={15}
+              diameter={34}
+              className="self-end mb-2"
+            />
+          </div>
+        );
+      }
 
       return (
         <div className="w-full max-w-md mx-auto pb-40 relative">
@@ -3137,36 +3277,17 @@ export default function App() {
               <div className="text-slate-400 font-bold mb-5 text-sm">
                 {instructionText}
               </div>
-              <div className="flex items-center gap-3">
-                {isVocabQuestion ? (
-                  <Furigana
-                    segments={currentQuestion?.displaySegments}
-                    fontSize="clamp(2.25rem, 9vw, 3.25rem)"
-                  />
-                ) : (
-                  <div
-                    className={`text-slate-800 ${
-                      currentQuestion?.type === "kanji" ? "font-kanji" : ""
-                    }`}
-                    style={{
-                      fontSize: "4.5rem",
-                      lineHeight: 1,
-                      fontWeight: 900,
-                    }}
-                  >
-                    {currentQuestion?.char}
-                  </div>
-                )}
-                <SpeakButton
-                  text={currentQuestion?.reading || currentQuestion?.char}
-                  iconSize={15}
-                  diameter={34}
-                  className="self-end mb-2"
-                />
-              </div>
+              {questionPromptNode}
               {isRevealed && (
                 <div className="w-full mt-6 pt-5 border-t border-dashed border-slate-200 pop-in">
-                  <span className="text-xl font-bold text-slate-500">
+                  <span
+                    className={`text-xl font-bold text-slate-500 ${
+                      currentQuestion?.type === "vocabWord" ||
+                      currentQuestion?.type === "vocabSentence"
+                        ? "font-kanji"
+                        : ""
+                    }`}
+                  >
                     {currentQuestion?.answer}
                   </span>
                 </div>
@@ -3197,7 +3318,12 @@ export default function App() {
                     key={index}
                     disabled={isRevealed}
                     onClick={() => handleTestOptionSelect(option)}
-                    className={`relative py-6 px-3 rounded-2xl border-2 font-bold text-lg sm:text-xl transition-all duration-200 flex justify-center items-center text-center ${btnStyle}`}
+                    className={`relative py-6 px-3 rounded-2xl border-2 font-bold text-lg sm:text-xl transition-all duration-200 flex justify-center items-center text-center ${
+                      currentQuestion?.type === "vocabWord" ||
+                      currentQuestion?.type === "vocabSentence"
+                        ? "font-kanji"
+                        : ""
+                    } ${btnStyle}`}
                   >
                     {option.answer}
                     {isRevealed && isCorrect && (
@@ -3243,11 +3369,31 @@ export default function App() {
                 </div>
                 {!isCorrectAnswer && (
                   <div className="text-red-500 font-medium text-sm mb-4">
-                    {currentQuestion?.char}
-                    {"  "}
-                    (은)는{" "}
-                    <span className="font-bold">{currentQuestion?.answer}</span>{" "}
-                    (이)라고 해요.
+                    {currentQuestion?.type === "vocabSentence" ? (
+                      <>
+                        정답은{" "}
+                        <span className="font-bold font-kanji">
+                          {currentQuestion?.answer}
+                        </span>{" "}
+                        이에요.
+                      </>
+                    ) : (
+                      <>
+                        {currentQuestion?.char}
+                        {"  "}
+                        (은)는{" "}
+                        <span
+                          className={`font-bold ${
+                            currentQuestion?.type === "vocabWord"
+                              ? "font-kanji"
+                              : ""
+                          }`}
+                        >
+                          {currentQuestion?.answer}
+                        </span>{" "}
+                        (이)라고 해요.
+                      </>
+                    )}
                   </div>
                 )}
                 <button
