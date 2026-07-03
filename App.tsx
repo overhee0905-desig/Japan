@@ -165,11 +165,9 @@ const Furigana = ({ segments, fontSize = "1.5rem", className = "" }) => {
         seg.blank ? (
           <span
             key={i}
-            className="inline-flex items-center justify-center text-blue-500 font-black border-b-4 border-blue-400"
-            style={{ margin: "0 2px", minWidth: "1.6em" }}
-          >
-            {seg.t || "○○○"}
-          </span>
+            className="inline-flex items-center justify-center border-b-4 border-blue-400"
+            style={{ margin: "0 2px", minWidth: "2.2em", height: "1em" }}
+          />
         ) : seg.r ? (
           <ruby key={i} style={{ margin: "0 1px" }}>
             {seg.t}
@@ -4523,7 +4521,7 @@ export default function App() {
         const before = ex.segments.slice(0, idx);
         const after = ex.segments.slice(idx + item.furigana.length);
         return {
-          segments: [...before, { t: "○○○○", blank: true }, ...after],
+          segments: [...before, { t: "", blank: true }, ...after],
           kr: ex.kr,
           speakText: ex.segments.map((s) => s.t).join(""),
         };
@@ -5282,24 +5280,33 @@ export default function App() {
         );
       } else if (isVocabQuestion) {
         questionPromptNode = (
-          <div className="flex items-center gap-3">
+          <div
+            className="grid items-center w-full"
+            style={{ gridTemplateColumns: "34px 1fr 34px" }}
+          >
+            <div />
             <Furigana
               segments={currentQuestion?.displaySegments}
               fontSize="clamp(2.25rem, 9vw, 3.25rem)"
+              className="justify-self-center"
             />
             <SpeakButton
               text={currentQuestion?.reading || currentQuestion?.char}
               iconSize={15}
               diameter={34}
-              className="self-end mb-2"
+              className="justify-self-start"
             />
           </div>
         );
       } else {
         questionPromptNode = (
-          <div className="flex items-center gap-3">
+          <div
+            className="grid items-center w-full"
+            style={{ gridTemplateColumns: "34px 1fr 34px" }}
+          >
+            <div />
             <div
-              className={`text-slate-800 ${
+              className={`text-slate-800 justify-self-center ${
                 currentQuestion?.type === "kanji" ? "font-kanji" : ""
               }`}
               style={{
@@ -5314,7 +5321,7 @@ export default function App() {
               text={currentQuestion?.reading || currentQuestion?.char}
               iconSize={15}
               diameter={34}
-              className="self-end mb-2"
+              className="justify-self-start"
             />
           </div>
         );
@@ -5462,7 +5469,7 @@ export default function App() {
                         key={t.id}
                         disabled={matchedIds.includes(t.id) || isRevealed}
                         onClick={() => handleMatchTap("left", t.id)}
-                        className={`py-3 px-2 rounded-xl border-2 font-bold text-base transition-all font-kanji ${style}`}
+                        className={`w-full min-h-[3.5rem] flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all font-kanji ${style}`}
                       >
                         <Furigana segments={t.furigana} fontSize="1.05rem" className="justify-center" />
                       </button>
@@ -5483,7 +5490,7 @@ export default function App() {
                         key={t.id}
                         disabled={matchedIds.includes(t.id) || isRevealed}
                         onClick={() => handleMatchTap("right", t.id)}
-                        className={`py-3 px-2 rounded-xl border-2 font-bold text-base transition-all ${style}`}
+                        className={`w-full min-h-[3.5rem] flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all ${style}`}
                       >
                         {t.text}
                       </button>
