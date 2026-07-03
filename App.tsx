@@ -4610,25 +4610,28 @@ export default function App() {
       }));
   };
 
-  const buildTestPool = () => {
+  // ignoreSelection=true는 사용자가 고른 범위와 상관없이 전체 데이터를 훑어서
+  // 보기(선택지)가 부족할 때 채울 여분의 오답 후보를 만드는 용도로만 씁니다.
+  const buildTestPool = (ignoreSelection = false) => {
+    const isSelected = (val) => ignoreSelection || selectedTestItems.includes(val);
     let pool = [];
     if (testType === "hiragana") {
       KANA_DATA.forEach((row) => {
         row.kana.forEach((char, idx) => {
-          if (char && selectedTestItems.includes(char))
+          if (char && isSelected(char))
             pool.push({ char, answer: row.kr[idx], type: "kana" });
         });
       });
     } else if (testType === "katakana") {
       KANA_DATA.forEach((row) => {
         row.kata.forEach((char, idx) => {
-          if (char && selectedTestItems.includes(char))
+          if (char && isSelected(char))
             pool.push({ char, answer: row.kr[idx], type: "kana" });
         });
       });
     } else if (testType === "kanji") {
       KANJI_DATA["N5"].forEach((item) => {
-        if (selectedTestItems.includes(item.kanji))
+        if (isSelected(item.kanji))
           pool.push({
             char: item.kanji,
             answer: `${item.meaning} ${item.sound}`,
@@ -4637,7 +4640,7 @@ export default function App() {
       });
     } else if (testType === "vocab") {
       const selectedItems = VOCAB_DATA["N5"].filter((item) =>
-        selectedTestItems.includes(item.word)
+        isSelected(item.word)
       );
 
       selectedItems.forEach((item) => {
@@ -4676,8 +4679,10 @@ export default function App() {
         }
       });
 
-      pool.push(...buildTranslatePool(selectedItems));
-      pool.push(...buildMatchPool(selectedItems));
+      if (!ignoreSelection) {
+        pool.push(...buildTranslatePool(selectedItems));
+        pool.push(...buildMatchPool(selectedItems));
+      }
     }
     return pool;
   };
@@ -4714,9 +4719,31 @@ export default function App() {
       return;
     }
 
-    const poolWithoutCorrect = fullPool.filter(
+    let poolWithoutCorrect = fullPool.filter(
       (item) => item.answer !== correct.answer && item.type === correct.type
     );
+
+    // 선택한 범위 안에서 오답 후보가 3개보다 적으면(보기가 4개가 안 되면)
+    // 전체 데이터에서 부족한 만큼 채웁니다.
+    if (poolWithoutCorrect.length < 3) {
+      const seenAnswers = new Set(
+        poolWithoutCorrect.map((item) => item.answer)
+      );
+      seenAnswers.add(correct.answer);
+      const backupPool = buildTestPool(true).filter(
+        (item) => item.type === correct.type && !seenAnswers.has(item.answer)
+      );
+      const needed = 3 - poolWithoutCorrect.length;
+      const extras = [];
+      for (const item of shuffleArray(backupPool)) {
+        if (extras.length >= needed) break;
+        if (seenAnswers.has(item.answer)) continue;
+        seenAnswers.add(item.answer);
+        extras.push(item);
+      }
+      poolWithoutCorrect = [...poolWithoutCorrect, ...extras];
+    }
+
     const shuffledOthers = shuffleArray(poolWithoutCorrect).slice(0, 3);
     const finalOptions = shuffleArray([correct, ...shuffledOthers]);
     setOptions(finalOptions);
@@ -5450,49 +5477,47 @@ export default function App() {
                 )}
               </div>
             ) : currentQuestion?.type === "vocabMatch" ? (
-              <div className="grid grid-cols-2 gap-3 p-5">
-                <div className="flex flex-col gap-2">
-                  {currentQuestion.leftTiles.map((t) => {
-                    let style = "bg-white border-slate-200 text-slate-800";
-                    if (matchedIds.includes(t.id))
-                      style = "bg-green-50 border-green-500 text-green-700 opacity-60";
-                    else if (mismatchPair?.left === t.id)
-                      style = "bg-red-50 border-red-500 text-red-700";
-                    else if (selectedLeftId === t.id)
-                      style = "bg-blue-50 border-blue-500 text-blue-700";
-                    return (
+              <div
+                className="grid gap-2 p-5"
+                style={{ gridTemplateColumns: "1fr 1fr" }}
+              >
+                {currentQuestion.leftTiles.map((t, i) => {
+                  const rt = currentQuestion.rightTiles[i];
+                  let leftStyle = "bg-white border-slate-200 text-slate-800";
+                  if (matchedIds.includes(t.id))
+                    leftStyle = "bg-green-50 border-green-500 text-green-700 opacity-60";
+                  else if (mismatchPair?.left === t.id)
+                    leftStyle = "bg-red-50 border-red-500 text-red-700";
+                  else if (selectedLeftId === t.id)
+                    leftStyle = "bg-blue-50 border-blue-500 text-blue-700";
+
+                  let rightStyle = "bg-white border-slate-200 text-slate-800";
+                  if (matchedIds.includes(rt.id))
+                    rightStyle = "bg-green-50 border-green-500 text-green-700 opacity-60";
+                  else if (mismatchPair?.right === rt.id)
+                    rightStyle = "bg-red-50 border-red-500 text-red-700";
+                  else if (selectedRightId === rt.id)
+                    rightStyle = "bg-blue-50 border-blue-500 text-blue-700";
+
+                  return (
+                    <React.Fragment key={`${t.id}-${rt.id}`}>
                       <button
-                        key={t.id}
                         disabled={matchedIds.includes(t.id) || isRevealed}
                         onClick={() => handleMatchTap("left", t.id)}
-                        className={`w-full min-h-[3.5rem] flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all font-kanji ${style}`}
+                        className={`w-full h-full flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all font-kanji ${leftStyle}`}
                       >
                         <Furigana segments={t.furigana} fontSize="1.05rem" className="justify-center" />
                       </button>
-                    );
-                  })}
-                </div>
-                <div className="flex flex-col gap-2">
-                  {currentQuestion.rightTiles.map((t) => {
-                    let style = "bg-white border-slate-200 text-slate-800";
-                    if (matchedIds.includes(t.id))
-                      style = "bg-green-50 border-green-500 text-green-700 opacity-60";
-                    else if (mismatchPair?.right === t.id)
-                      style = "bg-red-50 border-red-500 text-red-700";
-                    else if (selectedRightId === t.id)
-                      style = "bg-blue-50 border-blue-500 text-blue-700";
-                    return (
                       <button
-                        key={t.id}
-                        disabled={matchedIds.includes(t.id) || isRevealed}
-                        onClick={() => handleMatchTap("right", t.id)}
-                        className={`w-full min-h-[3.5rem] flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all ${style}`}
+                        disabled={matchedIds.includes(rt.id) || isRevealed}
+                        onClick={() => handleMatchTap("right", rt.id)}
+                        className={`w-full h-full flex items-center justify-center py-2 px-2 rounded-xl border-2 font-bold text-base transition-all ${rightStyle}`}
                       >
-                        {t.text}
+                        {rt.text}
                       </button>
-                    );
-                  })}
-                </div>
+                    </React.Fragment>
+                  );
+                })}
               </div>
             ) : (
               <div className="grid grid-cols-2 gap-3 p-5">
