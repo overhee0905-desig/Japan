@@ -5232,36 +5232,32 @@ export default function App() {
         questionPromptNode = null;
       } else if (currentQuestion?.type === "vocabTranslate") {
         questionPromptNode = (
-          <div className="flex items-start gap-2 w-full justify-center">
-            <Furigana
-              segments={currentQuestion?.sentenceSegments}
-              fontSize="clamp(1.3rem, 5.5vw, 1.75rem)"
-              className="flex-1 leading-[2.4] justify-center"
-            />
+          <div className="flex flex-col items-center gap-2 w-full">
             <SpeakButton
               text={currentQuestion?.speakText}
               iconSize={14}
               diameter={30}
-              className="shrink-0 mt-1"
+            />
+            <Furigana
+              segments={currentQuestion?.sentenceSegments}
+              fontSize="clamp(1.3rem, 5.5vw, 1.75rem)"
+              className="leading-[2.4] justify-center text-center w-full"
             />
           </div>
         );
       } else if (currentQuestion?.type === "vocabSentence") {
         questionPromptNode = (
-          <div className="flex flex-col items-center gap-3 w-full">
-            <div className="flex items-start gap-2 w-full justify-center">
-              <Furigana
-                segments={currentQuestion?.sentenceSegments}
-                fontSize="clamp(1.3rem, 5.5vw, 1.75rem)"
-                className="flex-1 leading-[2.4] justify-center"
-              />
-              <SpeakButton
-                text={currentQuestion?.speakText}
-                iconSize={14}
-                diameter={30}
-                className="shrink-0 mt-1"
-              />
-            </div>
+          <div className="flex flex-col items-center gap-2 w-full">
+            <SpeakButton
+              text={currentQuestion?.speakText}
+              iconSize={14}
+              diameter={30}
+            />
+            <Furigana
+              segments={currentQuestion?.sentenceSegments}
+              fontSize="clamp(1.3rem, 5.5vw, 1.75rem)"
+              className="leading-[2.4] justify-center text-center w-full"
+            />
             {currentQuestion?.sentenceKr && (
               <div className="text-slate-400 font-medium text-sm">
                 {currentQuestion.sentenceKr}
