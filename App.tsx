@@ -1655,6 +1655,7 @@ export default function App() {
   const [options, setOptions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [shake, setShake] = useState(false);
@@ -2555,6 +2556,7 @@ export default function App() {
       scrollPosRef.current.testSelectList = 0;
       setTestScreen("menu");
     } else if (testScreen === "result") setTestScreen("menu");
+    else if (testScreen === "review") setTestScreen("result");
   };
 
   const getAvailableTestChars = () => {
@@ -2688,13 +2690,15 @@ export default function App() {
             displaySegments: item.furigana,
             type: "vocabMeaning",
           });
-          pool.push({
-            char: item.word,
-            reading: item.reading,
-            answer: item.reading,
-            displaySegments: [{ t: item.word }],
-            type: "vocabReading",
-          });
+          if (item.reading !== item.word) {
+            pool.push({
+              char: item.word,
+              reading: item.reading,
+              answer: item.reading,
+              displaySegments: [{ t: item.word }],
+              type: "vocabReading",
+            });
+          }
           pool.push({
             char: item.meaning,
             answer: item.word,
@@ -2725,6 +2729,7 @@ export default function App() {
     const queue = shuffleArray([...fullPool]);
     setQuizQueue(queue);
     setScore(0);
+    setWrongAnswers([]);
     setQuestionIndex(0);
     loadTestQuestion(queue, 0, fullPool);
     setTestScreen("playing");
@@ -2757,6 +2762,10 @@ export default function App() {
       playWrongSound();
       setShake(true);
       setTimeout(() => setShake(false), 500);
+      setWrongAnswers((prev) => [
+        ...prev,
+        { question: currentQuestion, selected: option },
+      ]);
     }
   };
 
@@ -3481,12 +3490,95 @@ export default function App() {
             </p>
           </div>
 
+          {wrongAnswers.length > 0 && (
+            <button
+              onClick={() => setTestScreen("review")}
+              className="w-full mb-3 py-4 rounded-xl bg-red-50 text-red-600 font-bold hover:bg-red-100 border border-red-200 transition-colors"
+            >
+              틀린 문제 복습하기 ({wrongAnswers.length})
+            </button>
+          )}
+
           <button
             onClick={() => {
               setTestScreen("menu");
               setSelectedTestItems([]);
             }}
             className="w-full py-4 rounded-xl bg-slate-800 text-white font-bold hover:bg-slate-700 shadow-md transition-colors"
+          >
+            새로운 테스트 시작하기
+          </button>
+        </div>
+      );
+    }
+
+    if (testScreen === "review") {
+      return (
+        <div className="w-full max-w-md mx-auto pb-10 animate-in fade-in">
+          <div className="flex items-center justify-between mb-5 pt-4">
+            <button
+              onClick={goBackTest}
+              className="p-2 text-slate-400 hover:text-slate-800 bg-white rounded-full shadow-sm"
+              aria-label="뒤로 가기"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <h2 className="text-lg font-black text-slate-800">
+              틀린 문제 복습 ({wrongAnswers.length})
+            </h2>
+            <div className="w-[38px]" />
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {wrongAnswers.map((entry, idx) => {
+              const q = entry.question;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    {q.type === "vocabSentence" ? (
+                      <Furigana
+                        segments={q.sentenceSegments}
+                        fontSize="1.3rem"
+                        className="leading-[2]"
+                      />
+                    ) : q.type === "vocabMeaning" || q.type === "vocabReading" ? (
+                      <Furigana segments={q.displaySegments} fontSize="1.8rem" />
+                    ) : (
+                      <div
+                        className={`text-slate-800 font-bold ${
+                          q.type === "kanji" || q.type === "vocabWord"
+                            ? "font-kanji"
+                            : ""
+                        }`}
+                        style={{ fontSize: "2rem" }}
+                      >
+                        {q.char}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1.5 text-sm font-bold border-t border-dashed border-slate-200 pt-3">
+                    <div className="flex items-center gap-1.5 text-red-500">
+                      <XCircle size={16} />내 답: {entry.selected.answer}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-green-600">
+                      <CheckCircle size={16} />
+                      정답: {q.answer}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => {
+              setTestScreen("menu");
+              setSelectedTestItems([]);
+            }}
+            className="w-full mt-6 py-4 rounded-xl bg-slate-800 text-white font-bold hover:bg-slate-700 shadow-md transition-colors"
           >
             새로운 테스트 시작하기
           </button>
