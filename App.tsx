@@ -4711,7 +4711,7 @@ export default function App() {
   const [activeType, setActiveType] = useState(null);
   const [activeKana, setActiveKana] = useState(null);
   const [activeLevel, setActiveLevel] = useState(null);
-  const [activeKanji, setActiveKanji] = useState(null);
+  const [activeKanjiIndex, setActiveKanjiIndex] = useState(0);
   const [activeVocabLevel, setActiveVocabLevel] = useState(null);
   const [activeVocabIndex, setActiveVocabIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
@@ -4838,9 +4838,9 @@ export default function App() {
     setCurrentScreen("kanaDetail");
   };
 
-  const openKanjiDetail = (kanjiObj) => {
+  const openKanjiDetail = (idx) => {
     scrollPosRef.current.kanjiList = window.scrollY;
-    setActiveKanji(kanjiObj);
+    setActiveKanjiIndex(idx);
     setCurrentScreen("kanjiDetail");
   };
 
@@ -5221,7 +5221,7 @@ export default function App() {
               {kanjiList.map((item, idx) => (
                 <button
                   key={idx}
-                  onClick={() => openKanjiDetail(item)}
+                  onClick={() => openKanjiDetail(idx)}
                   className="bg-white rounded-2xl border border-slate-200 flex flex-col items-center justify-center p-3 aspect-square hover:shadow-md hover:border-amber-400 hover:bg-amber-50 transition-all duration-200"
                 >
                   <div className="text-3xl sm:text-4xl font-black text-slate-800 mb-2 font-kanji">
@@ -5240,103 +5240,208 @@ export default function App() {
     }
 
     if (currentScreen === "kanjiDetail") {
+      const kanjiList = KANJI_DATA[activeLevel] || [];
+      const activeKanji = kanjiList[activeKanjiIndex];
+      if (!activeKanji) return null;
+
+      const hasPrev = activeKanjiIndex > 0;
+      const hasNext = activeKanjiIndex < kanjiList.length - 1;
+
+      const handlePrev = () => {
+        if (hasPrev) {
+          setSlideDirection("prev");
+          scrollPosRef.current.kanjiList = window.scrollY;
+          setActiveKanjiIndex((i) => i - 1);
+        }
+      };
+      const handleNext = () => {
+        if (hasNext) {
+          setSlideDirection("next");
+          scrollPosRef.current.kanjiList = window.scrollY;
+          setActiveKanjiIndex((i) => i + 1);
+        }
+      };
+
+      const handleTouchStart = (e) => {
+        touchStartX.current = e.changedTouches[0].screenX;
+        touchEndX.current = e.changedTouches[0].screenX;
+      };
+      const handleTouchMove = (e) => {
+        touchEndX.current = e.changedTouches[0].screenX;
+      };
+      const handleTouchEnd = () => {
+        const distance = touchStartX.current - touchEndX.current;
+        if (distance > 50) handleNext();
+        if (distance < -50) handlePrev();
+        touchStartX.current = 0;
+        touchEndX.current = 0;
+      };
+
       return (
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
-          <div className="w-full flex justify-between items-center mb-4 sticky top-4 z-10">
+        <div className="w-full flex flex-col items-center relative">
+          <div className="w-full max-w-2xl flex justify-between items-center mb-4 px-1">
             <button
               onClick={goBackLearn}
               className="p-3 text-slate-500 hover:text-slate-900 bg-white rounded-full shadow-md"
             >
               <ChevronLeft size={24} />
             </button>
-          </div>
-          <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-6 flex flex-col items-center p-8 animate-in slide-in-from-bottom-4 duration-300">
-            <div className="relative w-48 h-48 border border-slate-200 bg-slate-50 rounded-2xl flex justify-center items-center mb-2">
-              <span
-                className="text-slate-800 font-kanji"
-                style={{ fontSize: "5.5rem", lineHeight: 1 }}
-              >
-                {activeKanji.kanji}
-              </span>
-              <SpeakButton
-                text={activeKanji.examples?.[0]?.reading || activeKanji.kanji}
-                iconSize={14}
-                diameter={30}
-                className="absolute bottom-2 right-2"
-              />
-            </div>
-            <div className="text-center mt-4">
-              <div className="text-slate-400 font-bold mb-1">대표 뜻과 음</div>
-              <div className="flex justify-center items-end gap-2">
-                <span className="text-3xl font-black text-slate-800">
-                  {activeKanji.meaning}
-                </span>
-                <span className="text-3xl font-black text-slate-800">
-                  {activeKanji.sound}
-                </span>
-              </div>
+            <div className="text-slate-400 font-bold text-sm px-4 py-2 bg-white rounded-full shadow-sm">
+              {activeKanjiIndex + 1} / {kanjiList.length}
             </div>
           </div>
-          {activeKanji.altReadings && activeKanji.altReadings.length > 0 && (
-            <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 p-8 mb-6 animate-in slide-in-from-bottom-4 duration-300 delay-75">
-              <div className="text-sm font-bold text-slate-400 mb-4 flex items-center gap-2">
-                <Sparkles size={16} /> 이 한자, 이렇게도 읽고 쓰여요
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {activeKanji.altReadings.map((alt, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-amber-50 border border-amber-100 rounded-2xl px-4 py-2.5 text-sm"
+          <div
+            className="w-full flex items-center justify-between max-w-2xl mx-auto overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <button
+              onClick={handlePrev}
+              className={`hidden sm:flex p-3 mx-1 rounded-full transition-all shrink-0 ${
+                hasPrev
+                  ? "text-slate-400 hover:text-slate-800 hover:bg-white shadow-sm"
+                  : "opacity-0 cursor-default"
+              }`}
+              disabled={!hasPrev}
+            >
+              <ChevronLeft size={32} />
+            </button>
+
+            <div
+              key={activeKanjiIndex}
+              className={`w-full flex flex-col items-center overflow-hidden ${
+                slideDirection === "next" ? "slide-next" : "slide-prev"
+              }`}
+              style={{ borderRadius: "2rem" }}
+            >
+              <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-6 flex flex-col items-center p-8">
+                <div className="relative w-48 h-48 border border-slate-200 bg-slate-50 rounded-2xl flex justify-center items-center mb-2">
+                  <span
+                    className="text-slate-800 font-kanji"
+                    style={{ fontSize: "5.5rem", lineHeight: 1 }}
                   >
-                    <span className="font-black text-amber-700">
-                      {alt.sound}
+                    {activeKanji.kanji}
+                  </span>
+                  <SpeakButton
+                    text={activeKanji.examples?.[0]?.reading || activeKanji.kanji}
+                    iconSize={14}
+                    diameter={30}
+                    className="absolute bottom-2 right-2"
+                  />
+                </div>
+                <div className="text-center mt-4">
+                  <div className="text-slate-400 font-bold mb-1">대표 뜻과 음</div>
+                  <div className="flex justify-center items-end gap-2">
+                    <span className="text-3xl font-black text-slate-800">
+                      {activeKanji.meaning}
                     </span>
-                    <span className="text-amber-500 font-medium">
-                      {" "}
-                      · {alt.meaning}
+                    <span className="text-3xl font-black text-slate-800">
+                      {activeKanji.sound}
                     </span>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          )}
-          <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 p-8 animate-in slide-in-from-bottom-4 duration-300 delay-100">
-            <div className="text-sm font-bold text-slate-400 mb-6 flex items-center gap-2">
-              <PenTool size={16} /> 예시 단어
-            </div>
-            <div className="flex flex-col gap-6">
-              {activeKanji.examples &&
-                activeKanji.examples.map((ex, idx) => (
-                  <div
-                    key={idx}
-                    className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
-                  >
-                    <div>
-                      <div className="mb-2">
-                        <span className="text-2xl font-black text-slate-800 font-kanji">
-                          {ex.word}
-                        </span>
-                        <span className="text-xl font-bold text-amber-600 ml-2">
-                          【{ex.reading}】
-                        </span>
-                      </div>
-                      <div className="text-slate-600 font-medium leading-relaxed">
-                        {ex.meaning}
-                      </div>
-                    </div>
-                    <SpeakButton
-                      text={ex.reading || ex.word}
-                      iconSize={15}
-                      diameter={32}
-                    />
+              {activeKanji.altReadings && activeKanji.altReadings.length > 0 && (
+                <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 p-8 mb-6">
+                  <div className="text-sm font-bold text-slate-400 mb-4 flex items-center gap-2">
+                    <Sparkles size={16} /> 이 한자, 이렇게도 읽고 쓰여요
                   </div>
-                ))}
-              {(!activeKanji.examples || activeKanji.examples.length === 0) && (
-                <div className="text-slate-400 text-center py-4">
-                  등록된 예시 단어가 없습니다.
+                  <div className="flex flex-wrap gap-2">
+                    {activeKanji.altReadings.map((alt, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-amber-50 border border-amber-100 rounded-2xl px-4 py-2.5 text-sm"
+                      >
+                        <span className="font-black text-amber-700">
+                          {alt.sound}
+                        </span>
+                        <span className="text-amber-500 font-medium">
+                          {" "}
+                          · {alt.meaning}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
+              <div className="bg-white w-full rounded-3xl shadow-sm border border-slate-200 p-8">
+                <div className="text-sm font-bold text-slate-400 mb-6 flex items-center gap-2">
+                  <PenTool size={16} /> 예시 단어
+                </div>
+                <div className="flex flex-col gap-6">
+                  {activeKanji.examples &&
+                    activeKanji.examples.map((ex, idx) => (
+                      <div
+                        key={idx}
+                        className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
+                      >
+                        <div>
+                          <div className="mb-2">
+                            <span className="text-2xl font-black text-slate-800 font-kanji">
+                              {ex.word}
+                            </span>
+                            <span className="text-xl font-bold text-amber-600 ml-2">
+                              【{ex.reading}】
+                            </span>
+                          </div>
+                          <div className="text-slate-600 font-medium leading-relaxed">
+                            {ex.meaning}
+                          </div>
+                        </div>
+                        <SpeakButton
+                          text={ex.reading || ex.word}
+                          iconSize={15}
+                          diameter={32}
+                        />
+                      </div>
+                    ))}
+                  {(!activeKanji.examples || activeKanji.examples.length === 0) && (
+                    <div className="text-slate-400 text-center py-4">
+                      등록된 예시 단어가 없습니다.
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
+
+            <button
+              onClick={handleNext}
+              className={`hidden sm:flex p-3 mx-1 rounded-full transition-all shrink-0 ${
+                hasNext
+                  ? "text-slate-400 hover:text-slate-800 hover:bg-white shadow-sm"
+                  : "opacity-0 cursor-default"
+              }`}
+              disabled={!hasNext}
+            >
+              <ChevronRight size={32} />
+            </button>
+          </div>
+
+          {/* 모바일용 좌우 넘기기 버튼 */}
+          <div className="flex sm:hidden items-center justify-center gap-4 mt-6">
+            <button
+              onClick={handlePrev}
+              disabled={!hasPrev}
+              className={`p-3 rounded-full bg-white shadow-sm transition-all ${
+                hasPrev ? "text-slate-600" : "text-slate-200"
+              }`}
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={!hasNext}
+              className={`p-3 rounded-full bg-white shadow-sm transition-all ${
+                hasNext ? "text-slate-600" : "text-slate-200"
+              }`}
+            >
+              <ChevronRight size={22} />
+            </button>
+          </div>
+
+          <div className="mt-4 text-slate-400 font-bold text-xs">
+            좌우로 스와이프하여 한자 넘기기
           </div>
         </div>
       );
