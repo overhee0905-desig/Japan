@@ -369,7 +369,7 @@ const KANJI_DATA = {
       ],
       examples: [
         { word: "一", reading: "いち", meaning: "일, 하나" },
-        { word: "一つ", reading: "ひとつ", meaning: "한 개" },
+        { word: "一番", reading: "いちばん", meaning: "가장, 제일" },
       ],
     },
     {
@@ -600,7 +600,7 @@ const KANJI_DATA = {
       ],
       examples: [
         { word: "上", reading: "うえ", meaning: "위" },
-        { word: "上がる", reading: "あがる", meaning: "오르다" },
+        { word: "上手", reading: "じょうず", meaning: "잘함, 능숙함" },
       ],
     },
     {
@@ -738,7 +738,7 @@ const KANJI_DATA = {
       ],
       examples: [
         { word: "下", reading: "した", meaning: "아래" },
-        { word: "下さい", reading: "ください", meaning: "주세요" },
+        { word: "下手", reading: "へた", meaning: "서투름, 못함" },
       ],
     },
     {
@@ -6414,6 +6414,7 @@ export default function App() {
   // 테스트 모드 상태
   const [testScreen, setTestScreen] = useState("menu");
   const [testType, setTestType] = useState(null);
+  const [testLevel, setTestLevel] = useState("N5");
   const [selectedTestItems, setSelectedTestItems] = useState([]);
   const [expandedRows, setExpandedRows] = useState({});
   const [quizQueue, setQuizQueue] = useState([]);
@@ -6939,6 +6940,30 @@ export default function App() {
       const activeKanji = kanjiList[activeKanjiIndex];
       if (!activeKanji) return null;
 
+      // 음독·훈독 칩에 이미 나오는 단어와 중복되지 않도록,
+      // examples + onyomi + kunyomi를 (단어, 읽기) 기준으로 합쳐서 예시 단어 목록을 만듭니다.
+      const seenVocab = new Set();
+      const vocabWords = [];
+      [
+        ...(activeKanji.examples || []),
+        ...(activeKanji.onyomi || []).map((r) => ({
+          word: r.word,
+          reading: r.wordReading,
+          meaning: r.meaning,
+        })),
+        ...(activeKanji.kunyomi || []).map((r) => ({
+          word: r.word,
+          reading: r.wordReading,
+          meaning: r.meaning,
+        })),
+      ].forEach((w) => {
+        const key = `${w.word}|${w.reading}`;
+        if (!seenVocab.has(key)) {
+          seenVocab.add(key);
+          vocabWords.push(w);
+        }
+      });
+
       const hasPrev = activeKanjiIndex > 0;
       const hasNext = activeKanjiIndex < kanjiList.length - 1;
 
@@ -7062,9 +7087,6 @@ export default function App() {
                                   ({r.kr})
                                 </span>
                               </div>
-                              <div className="text-xs text-amber-600 mt-0.5">
-                                {r.word}({r.wordReading}) · {r.meaning}
-                              </div>
                             </div>
                           ))}
                         </div>
@@ -7088,9 +7110,6 @@ export default function App() {
                                   ({r.kr})
                                 </span>
                               </div>
-                              <div className="text-xs text-teal-600 mt-0.5">
-                                {r.word}({r.wordReading}) · {r.meaning}
-                              </div>
                             </div>
                           ))}
                         </div>
@@ -7104,33 +7123,32 @@ export default function App() {
                   <PenTool size={16} /> 예시 단어
                 </div>
                 <div className="flex flex-col gap-6">
-                  {activeKanji.examples &&
-                    activeKanji.examples.map((ex, idx) => (
-                      <div
-                        key={idx}
-                        className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
-                      >
-                        <div>
-                          <div className="mb-2">
-                            <span className="text-2xl font-black text-slate-800 font-kanji">
-                              {ex.word}
-                            </span>
-                            <span className="text-xl font-bold text-amber-600 ml-2">
-                              【{ex.reading}】
-                            </span>
-                          </div>
-                          <div className="text-slate-600 font-medium leading-relaxed">
-                            {ex.meaning}
-                          </div>
+                  {vocabWords.map((ex, idx) => (
+                    <div
+                      key={idx}
+                      className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
+                    >
+                      <div>
+                        <div className="mb-2">
+                          <span className="text-2xl font-black text-slate-800 font-kanji">
+                            {ex.word}
+                          </span>
+                          <span className="text-xl font-bold text-amber-600 ml-2">
+                            【{ex.reading}】
+                          </span>
                         </div>
-                        <SpeakButton
-                          text={ex.reading || ex.word}
-                          iconSize={15}
-                          diameter={32}
-                        />
+                        <div className="text-slate-600 font-medium leading-relaxed">
+                          {ex.meaning}
+                        </div>
                       </div>
-                    ))}
-                  {(!activeKanji.examples || activeKanji.examples.length === 0) && (
+                      <SpeakButton
+                        text={ex.reading || ex.word}
+                        iconSize={15}
+                        diameter={32}
+                      />
+                    </div>
+                  ))}
+                  {vocabWords.length === 0 && (
                     <div className="text-slate-400 text-center py-4">
                       등록된 예시 단어가 없습니다.
                     </div>
@@ -7495,7 +7513,7 @@ export default function App() {
         })
       );
     } else if (testType === "kanji") {
-      KANJI_DATA["N5"].forEach((item) => pool.push(item.kanji));
+      (KANJI_DATA[testLevel] || []).forEach((item) => pool.push(item.kanji));
     } else if (testType === "vocab") {
       VOCAB_DATA["N5"].forEach((item) => pool.push(item.word));
     }
@@ -7676,7 +7694,7 @@ export default function App() {
         });
       });
     } else if (testType === "kanji") {
-      KANJI_DATA["N5"].forEach((item) => {
+      (KANJI_DATA[testLevel] || []).forEach((item) => {
         if (isSelected(item.kanji))
           pool.push({
             char: item.kanji,
@@ -7962,6 +7980,7 @@ export default function App() {
           <button
             onClick={() => {
               setTestType("kanji");
+              setTestLevel("N5");
               setSelectedTestItems([]);
               setTestScreen("select");
             }}
@@ -8057,6 +8076,27 @@ export default function App() {
             </h2>
             <div className="w-10"></div>
           </div>
+
+          {isKanji && (
+            <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
+              {JLPT_LEVELS.map((level) => (
+                <button
+                  key={level}
+                  onClick={() => {
+                    setTestLevel(level);
+                    setSelectedTestItems([]);
+                  }}
+                  className={`px-4 py-2 rounded-xl font-bold text-sm shrink-0 border-2 transition-all ${
+                    testLevel === level
+                      ? `${themeBg} ${themeBorder} ${themeColor}`
+                      : "bg-white border-slate-200 text-slate-500 hover:border-slate-300"
+                  }`}
+                >
+                  {level}
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="mb-4 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
             <div className="font-bold text-slate-700">전체 선택</div>
@@ -8164,8 +8204,13 @@ export default function App() {
               ))
             ) : isKanji ? (
               <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+                {(KANJI_DATA[testLevel] || []).length === 0 ? (
+                  <div className="text-center text-slate-500 py-16 font-medium">
+                    업데이트 예정입니다.
+                  </div>
+                ) : (
                 <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
-                  {KANJI_DATA["N5"].map((item, idx) => {
+                  {KANJI_DATA[testLevel].map((item, idx) => {
                     const isSelected = selectedTestItems.includes(item.kanji);
                     return (
                       <button
@@ -8202,6 +8247,7 @@ export default function App() {
                     );
                   })}
                 </div>
+                )}
               </div>
             ) : (
               <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">

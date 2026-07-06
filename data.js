@@ -173,7 +173,7 @@ export const KANJI_DATA = {
       ],
       examples: [
         { word: "一", reading: "いち", meaning: "일, 하나" },
-        { word: "一つ", reading: "ひとつ", meaning: "한 개" },
+        { word: "一番", reading: "いちばん", meaning: "가장, 제일" },
       ],
     },
     {
@@ -404,7 +404,7 @@ export const KANJI_DATA = {
       ],
       examples: [
         { word: "上", reading: "うえ", meaning: "위" },
-        { word: "上がる", reading: "あがる", meaning: "오르다" },
+        { word: "上手", reading: "じょうず", meaning: "잘함, 능숙함" },
       ],
     },
     {
@@ -542,7 +542,7 @@ export const KANJI_DATA = {
       ],
       examples: [
         { word: "下", reading: "した", meaning: "아래" },
-        { word: "下さい", reading: "ください", meaning: "주세요" },
+        { word: "下手", reading: "へた", meaning: "서투름, 못함" },
       ],
     },
     {
