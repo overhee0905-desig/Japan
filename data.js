@@ -140,7 +140,7 @@ export const KANJI_DATA = {
         { word: "三人", reading: "さんにん", meaning: "세 사람" },
       ],
       altReadings: [
-        { sound: "닌 / 진", meaning: "사람을 세는 단위 (명) · 음독" },
+        { sound: "닌 / 진", meaning: "사람을 세는 단위 (外国人 등) · 음독" },
       ],
     },
     {
@@ -155,9 +155,9 @@ export const KANJI_DATA = {
       sound: "일",
       examples: [
         { word: "一", reading: "いち", meaning: "일, 하나" },
-        { word: "一つ", reading: "ひとつ", meaning: "한 개" },
+        { word: "一番", reading: "いちばん", meaning: "가장, 제일" },
       ],
-      altReadings: [{ sound: "히토(츠)", meaning: "~개, 하나 · 훈독" }],
+      altReadings: [{ sound: "히토(츠)", meaning: "~개, 하나 (一つ 등) · 훈독" }],
     },
     {
       kanji: "分",
@@ -294,10 +294,10 @@ export const KANJI_DATA = {
       sound: "상",
       examples: [
         { word: "上", reading: "うえ", meaning: "위" },
-        { word: "上がる", reading: "あがる", meaning: "오르다" },
+        { word: "上手", reading: "じょうず", meaning: "잘함, 능숙함" },
       ],
       altReadings: [
-        { sound: "조우(じょう)", meaning: "위, 상 · 음독" },
+        { sound: "조우(じょう)", meaning: "위, 상 (上手 등) · 음독" },
         { sound: "아(がる)", meaning: "오르다 (上がる)" },
       ],
     },
@@ -365,7 +365,7 @@ export const KANJI_DATA = {
       sound: "하",
       examples: [
         { word: "下", reading: "した", meaning: "아래" },
-        { word: "下さい", reading: "ください", meaning: "주세요" },
+        { word: "下手", reading: "へた", meaning: "서투름, 못함" },
       ],
       altReadings: [
         { sound: "카 / 게", meaning: "아래, 하 · 음독" },

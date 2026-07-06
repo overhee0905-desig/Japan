@@ -336,7 +336,7 @@ const KANJI_DATA = {
         { word: "三人", reading: "さんにん", meaning: "세 사람" },
       ],
       altReadings: [
-        { sound: "닌 / 진", meaning: "사람을 세는 단위 (명) · 음독" },
+        { sound: "닌 / 진", meaning: "사람을 세는 단위 (外国人 등) · 음독" },
       ],
     },
     {
@@ -351,9 +351,9 @@ const KANJI_DATA = {
       sound: "일",
       examples: [
         { word: "一", reading: "いち", meaning: "일, 하나" },
-        { word: "一つ", reading: "ひとつ", meaning: "한 개" },
+        { word: "一番", reading: "いちばん", meaning: "가장, 제일" },
       ],
-      altReadings: [{ sound: "히토(츠)", meaning: "~개, 하나 · 훈독" }],
+      altReadings: [{ sound: "히토(츠)", meaning: "~개, 하나 (一つ 등) · 훈독" }],
     },
     {
       kanji: "分",
@@ -490,10 +490,10 @@ const KANJI_DATA = {
       sound: "상",
       examples: [
         { word: "上", reading: "うえ", meaning: "위" },
-        { word: "上がる", reading: "あがる", meaning: "오르다" },
+        { word: "上手", reading: "じょうず", meaning: "잘함, 능숙함" },
       ],
       altReadings: [
-        { sound: "조우(じょう)", meaning: "위, 상 · 음독" },
+        { sound: "조우(じょう)", meaning: "위, 상 (上手 등) · 음독" },
         { sound: "아(がる)", meaning: "오르다 (上がる)" },
       ],
     },
@@ -561,7 +561,7 @@ const KANJI_DATA = {
       sound: "하",
       examples: [
         { word: "下", reading: "した", meaning: "아래" },
-        { word: "下さい", reading: "ください", meaning: "주세요" },
+        { word: "下手", reading: "へた", meaning: "서투름, 못함" },
       ],
       altReadings: [
         { sound: "카 / 게", meaning: "아래, 하 · 음독" },
@@ -4719,6 +4719,7 @@ export default function App() {
   // 테스트 모드 상태
   const [testScreen, setTestScreen] = useState("menu");
   const [testType, setTestType] = useState(null);
+  const [testLevel, setTestLevel] = useState("N5");
   const [selectedTestItems, setSelectedTestItems] = useState([]);
   const [expandedRows, setExpandedRows] = useState({});
   const [quizQueue, setQuizQueue] = useState([]);
@@ -5656,7 +5657,7 @@ export default function App() {
         })
       );
     } else if (testType === "kanji") {
-      KANJI_DATA["N5"].forEach((item) => pool.push(item.kanji));
+      (KANJI_DATA[testLevel] || []).forEach((item) => pool.push(item.kanji));
     } else if (testType === "vocab") {
       VOCAB_DATA["N5"].forEach((item) => pool.push(item.word));
     }
@@ -5837,7 +5838,7 @@ export default function App() {
         });
       });
     } else if (testType === "kanji") {
-      KANJI_DATA["N5"].forEach((item) => {
+      (KANJI_DATA[testLevel] || []).forEach((item) => {
         if (isSelected(item.kanji))
           pool.push({
             char: item.kanji,
@@ -6123,6 +6124,7 @@ export default function App() {
           <button
             onClick={() => {
               setTestType("kanji");
+              setTestLevel("N5");
               setSelectedTestItems([]);
               setTestScreen("select");
             }}
@@ -6218,6 +6220,27 @@ export default function App() {
             </h2>
             <div className="w-10"></div>
           </div>
+
+          {isKanji && (
+            <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
+              {JLPT_LEVELS.map((level) => (
+                <button
+                  key={level}
+                  onClick={() => {
+                    setTestLevel(level);
+                    setSelectedTestItems([]);
+                  }}
+                  className={`px-4 py-2 rounded-xl font-bold text-sm shrink-0 border-2 transition-all ${
+                    testLevel === level
+                      ? `${themeBg} ${themeBorder} ${themeColor}`
+                      : "bg-white border-slate-200 text-slate-500 hover:border-slate-300"
+                  }`}
+                >
+                  {level}
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="mb-4 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
             <div className="font-bold text-slate-700">전체 선택</div>
@@ -6325,8 +6348,13 @@ export default function App() {
               ))
             ) : isKanji ? (
               <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+                {(KANJI_DATA[testLevel] || []).length === 0 ? (
+                  <div className="text-center text-slate-500 py-16 font-medium">
+                    업데이트 예정입니다.
+                  </div>
+                ) : (
                 <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
-                  {KANJI_DATA["N5"].map((item, idx) => {
+                  {KANJI_DATA[testLevel].map((item, idx) => {
                     const isSelected = selectedTestItems.includes(item.kanji);
                     return (
                       <button
@@ -6363,6 +6391,7 @@ export default function App() {
                     );
                   })}
                 </div>
+                )}
               </div>
             ) : (
               <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
