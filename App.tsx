@@ -60,9 +60,10 @@ const CUSTOM_STYLES = `
 
 /* STREAMING_CHUNK:Configuring audio and TTS utilities... */
 // ── 오디오 효과음 설정 ──────────────────────────────────────────────────
-const playTone = (freq, type, duration) => {
+const playTone = (freq: number, type: OscillatorType, duration: number) => {
   try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const AudioContext =
+      window.AudioContext || (window as any).webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
     const osc = ctx.createOscillator();
@@ -90,7 +91,7 @@ const playWrongSound = () => {
 };
 
 // ── 일본어 발음 (Web Speech API) ────────────────────────────────────────
-let cachedJaVoice = null;
+let cachedJaVoice: SpeechSynthesisVoice | null = null;
 const getJapaneseVoice = () => {
   if (cachedJaVoice) return cachedJaVoice;
   const voices = window.speechSynthesis
@@ -109,7 +110,7 @@ if (typeof window !== "undefined" && window.speechSynthesis) {
   };
 }
 
-const speakJapanese = (text) => {
+const speakJapanese = (text: string) => {
   if (!text) return;
   try {
     if (!window.speechSynthesis) return;
@@ -129,6 +130,11 @@ const SpeakButton = ({
   iconSize = 14,
   diameter = 32,
   className = "",
+}: {
+  text: string;
+  iconSize?: number;
+  diameter?: number;
+  className?: string;
 }) => (
   <button
     type="button"
@@ -154,14 +160,22 @@ const SpeakButton = ({
 
 // ── 후리가나(한자 위 발음 표시) 컴포넌트 ─────────────────────────────────
 // segments: [{ t: "표기 텍스트", r?: "읽는 법 (한자일 때만)" }, ...]
-const Furigana = ({ segments, fontSize = "1.5rem", className = "" }) => {
+const Furigana = ({
+  segments,
+  fontSize = "1.5rem",
+  className = "",
+}: {
+  segments: any;
+  fontSize?: string;
+  className?: string;
+}) => {
   if (!segments || segments.length === 0) return null;
   return (
     <span
       className={`font-kanji text-slate-800 inline-flex flex-wrap items-baseline justify-center ${className}`}
       style={{ fontSize, lineHeight: 2.5 }}
     >
-      {segments.map((seg, i) =>
+      {segments.map((seg: any, i: number) =>
         seg.blank ? (
           <span
             key={i}
@@ -325,7 +339,7 @@ const KANA_DATA = [
   },
 ];
 
-const KANJI_DATA = {
+const KANJI_DATA: Record<string, any[]> = {
   N5: [
     {
       kanji: "人",
@@ -901,7 +915,7 @@ const JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"];
 
 /* STREAMING_CHUNK:Defining Vocabulary and Grammar datasets... */
 // ── 단어 & 문법 데이터 (JLPT 급수별 단어, 형용사, 조사 등) ─────────────────────
-const VOCAB_DATA = {
+const VOCAB_DATA: Record<string, any[]> = {
   N5: [
     {
       word: "大きい",
@@ -3469,7 +3483,7 @@ const VOCAB_DATA = {
 const JLPT_VOCAB_LEVELS = ["N5", "N4"];
 
 // 배열 셔플 헬퍼 함수
-const shuffleArray = (array) => {
+const shuffleArray = <T,>(array: T[]) => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -3486,7 +3500,7 @@ const MATCH_MIN_GROUP_SIZE = 3;
 
 /* STREAMING_CHUNK:Grouping Kana data by types... */
 // 가나 데이터를 종류별(청음, 탁음, 반탁음)로 그룹화합니다.
-const groupedKana = KANA_DATA.reduce((acc, item) => {
+const groupedKana = KANA_DATA.reduce((acc: Record<string, any[]>, item: any) => {
   if (!acc[item.type]) {
     acc[item.type] = [];
   }
@@ -3501,39 +3515,39 @@ export default function App() {
 
   // 학습 모드 상태
   const [currentScreen, setCurrentScreen] = useState("menu");
-  const [activeType, setActiveType] = useState(null);
-  const [activeKana, setActiveKana] = useState(null);
-  const [activeLevel, setActiveLevel] = useState(null);
-  const [activeKanji, setActiveKanji] = useState(null);
-  const [activeVocabLevel, setActiveVocabLevel] = useState(null);
+  const [activeType, setActiveType] = useState<any>(null);
+  const [activeKana, setActiveKana] = useState<any>(null);
+  const [activeLevel, setActiveLevel] = useState<any>(null);
+  const [activeKanji, setActiveKanji] = useState<any>(null);
+  const [activeVocabLevel, setActiveVocabLevel] = useState<any>(null);
   const [activeVocabIndex, setActiveVocabIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
 
   // 테스트 모드 상태
   const [testScreen, setTestScreen] = useState("menu");
-  const [testType, setTestType] = useState(null);
-  const [selectedTestItems, setSelectedTestItems] = useState([]);
-  const [expandedRows, setExpandedRows] = useState({});
-  const [quizQueue, setQuizQueue] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [options, setOptions] = useState([]);
+  const [testType, setTestType] = useState<any>(null);
+  const [selectedTestItems, setSelectedTestItems] = useState<any[]>([]);
+  const [expandedRows, setExpandedRows] = useState<Record<string, any>>({});
+  const [quizQueue, setQuizQueue] = useState<any[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState<any>(null);
+  const [options, setOptions] = useState<any[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [wrongAnswers, setWrongAnswers] = useState([]);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [wrongAnswers, setWrongAnswers] = useState<any[]>([]);
+  const [selectedAnswer, setSelectedAnswer] = useState<any>(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [shake, setShake] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
 
   // 문장 번역(단어 조합) 문제 상태
-  const [placedTiles, setPlacedTiles] = useState([]);
+  const [placedTiles, setPlacedTiles] = useState<any[]>([]);
 
   // 단어 매칭 문제 상태
-  const [matchedIds, setMatchedIds] = useState([]);
-  const [selectedLeftId, setSelectedLeftId] = useState(null);
-  const [selectedRightId, setSelectedRightId] = useState(null);
-  const [mismatchPair, setMismatchPair] = useState(null);
+  const [matchedIds, setMatchedIds] = useState<any[]>([]);
+  const [selectedLeftId, setSelectedLeftId] = useState<any>(null);
+  const [selectedRightId, setSelectedRightId] = useState<any>(null);
+  const [mismatchPair, setMismatchPair] = useState<any>(null);
   const [matchHadMistake, setMatchHadMistake] = useState(false);
 
   const scrollPosRef = useRef({ kanaList: 0, kanjiList: 0, vocabList: 0, testSelectList: 0 });
@@ -3625,19 +3639,19 @@ export default function App() {
     else if (currentScreen === "vocabLevels") setCurrentScreen("menu");
   };
 
-  const openKanaDetail = (rowItem, charIdx) => {
+  const openKanaDetail = (rowItem: any, charIdx: number) => {
     scrollPosRef.current.kanaList = window.scrollY;
     setActiveKana({ rowItem, charIdx });
     setCurrentScreen("kanaDetail");
   };
 
-  const openKanjiDetail = (kanjiObj) => {
+  const openKanjiDetail = (kanjiObj: any) => {
     scrollPosRef.current.kanjiList = window.scrollY;
     setActiveKanji(kanjiObj);
     setCurrentScreen("kanjiDetail");
   };
 
-  const openVocabDetail = (idx) => {
+  const openVocabDetail = (idx: number) => {
     scrollPosRef.current.vocabList = window.scrollY;
     setActiveVocabIndex(idx);
     setCurrentScreen("vocabDetail");
@@ -3764,7 +3778,7 @@ export default function App() {
                   <h3 className="text-lg font-black text-slate-800">{type}</h3>
                 </div>
                 <div className="space-y-3">
-                  {rows.map((rowItem, idx) => (
+                  {rows.map((rowItem: any, idx: number) => (
                     <div
                       key={idx}
                       className="bg-white p-4 rounded-3xl shadow-sm border border-slate-200"
@@ -3773,7 +3787,7 @@ export default function App() {
                         {rowItem.row}
                       </h4>
                       <div className="grid grid-cols-5 gap-2">
-                        {rowItem.kana.map((char, charIdx) => {
+                        {rowItem.kana.map((char: string, charIdx: number) => {
                           const displayChar = isHiragana
                             ? char
                             : rowItem.kata[charIdx];
@@ -3838,11 +3852,11 @@ export default function App() {
         }
       };
 
-      const handleTouchStart = (e) => {
+      const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.changedTouches[0].screenX;
         touchEndX.current = e.changedTouches[0].screenX;
       };
-      const handleTouchMove = (e) => {
+      const handleTouchMove = (e: React.TouchEvent) => {
         touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchEnd = () => {
@@ -4011,7 +4025,7 @@ export default function App() {
             </div>
           ) : (
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 sm:gap-4">
-              {kanjiList.map((item, idx) => (
+              {kanjiList.map((item: any, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => openKanjiDetail(item)}
@@ -4076,7 +4090,7 @@ export default function App() {
                 <Sparkles size={16} /> 이 한자, 이렇게도 읽고 쓰여요
               </div>
               <div className="flex flex-wrap gap-2">
-                {activeKanji.altReadings.map((alt, idx) => (
+                {activeKanji.altReadings.map((alt: any, idx: number) => (
                   <div
                     key={idx}
                     className="bg-amber-50 border border-amber-100 rounded-2xl px-4 py-2.5 text-sm"
@@ -4099,7 +4113,7 @@ export default function App() {
             </div>
             <div className="flex flex-col gap-6">
               {activeKanji.examples &&
-                activeKanji.examples.map((ex, idx) => (
+                activeKanji.examples.map((ex: any, idx: number) => (
                   <div
                     key={idx}
                     className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
@@ -4182,7 +4196,7 @@ export default function App() {
 
     if (currentScreen === "vocabList") {
       const vocabList = VOCAB_DATA[activeVocabLevel] || [];
-      const posColors = {
+      const posColors: Record<string, string> = {
         "い형용사": "bg-rose-50 text-rose-500",
         "な형용사": "bg-purple-50 text-purple-500",
         동사: "bg-blue-50 text-blue-500",
@@ -4208,7 +4222,7 @@ export default function App() {
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-              {vocabList.map((item, idx) => (
+              {vocabList.map((item: any, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => openVocabDetail(idx)}
@@ -4266,11 +4280,11 @@ export default function App() {
         }
       };
 
-      const handleTouchStart = (e) => {
+      const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.changedTouches[0].screenX;
         touchEndX.current = e.changedTouches[0].screenX;
       };
-      const handleTouchMove = (e) => {
+      const handleTouchMove = (e: React.TouchEvent) => {
         touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchEnd = () => {
@@ -4363,7 +4377,7 @@ export default function App() {
                       className="flex-1 leading-[2.6]"
                     />
                     <SpeakButton
-                      text={item.examples[0].segments.map((s) => s.t).join("")}
+                      text={item.examples[0].segments.map((s: any) => s.t).join("")}
                       iconSize={14}
                       diameter={30}
                       className="shrink-0 mt-1"
@@ -4435,7 +4449,7 @@ export default function App() {
   };
 
   const getAvailableTestChars = () => {
-    let pool = [];
+    let pool: any[] = [];
     if (testType === "hiragana") {
       KANA_DATA.forEach((row) =>
         row.kana.forEach((char) => {
@@ -4458,7 +4472,7 @@ export default function App() {
 
   const toggleAllTestChars = () => {
     const available = getAvailableTestChars();
-    const isAllSelected = available.every((c) => selectedTestItems.includes(c));
+    const isAllSelected = available.every((c: any) => selectedTestItems.includes(c));
     if (isAllSelected) {
       setSelectedTestItems([]);
     } else {
@@ -4466,21 +4480,21 @@ export default function App() {
     }
   };
 
-  const toggleRowSelect = (chars) => {
+  const toggleRowSelect = (chars: any) => {
     const validChars = chars.filter(Boolean);
-    const isRowSelected = validChars.every((c) =>
+    const isRowSelected = validChars.every((c: any) =>
       selectedTestItems.includes(c)
     );
     if (isRowSelected) {
       setSelectedTestItems((prev) =>
-        prev.filter((c) => !validChars.includes(c))
+        prev.filter((c: any) => !validChars.includes(c))
       );
     } else {
       setSelectedTestItems((prev) => [...new Set([...prev, ...validChars])]);
     }
   };
 
-  const toggleSingleChar = (char) => {
+  const toggleSingleChar = (char: any) => {
     if (!char) return;
     if (selectedTestItems.includes(char)) {
       setSelectedTestItems((prev) => prev.filter((c) => c !== char));
@@ -4489,13 +4503,13 @@ export default function App() {
     }
   };
 
-  const toggleAccordion = (rowName) => {
+  const toggleAccordion = (rowName: string) => {
     setExpandedRows((prev) => ({ ...prev, [rowName]: !prev[rowName] }));
   };
 
   // item.furigana(단어의 세그먼트 구성)와 정확히 일치하는 구간을 예문 세그먼트에서 찾습니다.
   // (활용형 예문은 세그먼트가 달라지므로 매칭되지 않으면 건너뜁니다)
-  const findFuriganaMatch = (segments, furigana) => {
+  const findFuriganaMatch = (segments: any, furigana: any) => {
     if (!segments || !furigana || furigana.length === 0) return -1;
     for (let i = 0; i <= segments.length - furigana.length; i++) {
       let match = true;
@@ -4513,9 +4527,9 @@ export default function App() {
   };
 
   // 단어의 예문 중 하나를 골라 해당 단어 부분을 빈칸으로 치환합니다.
-  const buildSentenceBlank = (item) => {
+  const buildSentenceBlank = (item: any) => {
     if (!item.examples || item.examples.length === 0) return null;
-    for (const ex of shuffleArray(item.examples)) {
+    for (const ex of shuffleArray<any>(item.examples)) {
       const idx = findFuriganaMatch(ex.segments, item.furigana);
       if (idx !== -1) {
         const before = ex.segments.slice(0, idx);
@@ -4523,7 +4537,7 @@ export default function App() {
         return {
           segments: [...before, { t: "", blank: true }, ...after],
           kr: ex.kr,
-          speakText: ex.segments.map((s) => s.t).join(""),
+          speakText: ex.segments.map((s: any) => s.t).join(""),
         };
       }
     }
@@ -4531,11 +4545,11 @@ export default function App() {
   };
 
   // 선택된 단어들의 예문으로 "문장 번역" 문제 풀을 만듭니다.
-  const buildTranslatePool = (selectedItems) => {
+  const buildTranslatePool = (selectedItems: any[]) => {
     const candidates = selectedItems
       .filter((item) => item.examples && item.examples.length > 0)
       .map((item) => {
-        const ex = shuffleArray(item.examples)[0];
+        const ex = shuffleArray<any>(item.examples)[0];
         const tokens = ex.kr.split(/\s+/).filter(Boolean);
         return { item, ex, tokens };
       });
@@ -4547,14 +4561,14 @@ export default function App() {
     // 방해 토큰 후보가 부족하면 전체 N5 단어의 예문에서 보충합니다.
     if (tokenUniverse.length < TRANSLATE_DISTRACTOR_COUNT + 1) {
       const allTokens = VOCAB_DATA["N5"].flatMap((item) =>
-        (item.examples || []).flatMap((ex) =>
+        (item.examples || []).flatMap((ex: any) =>
           ex.kr.split(/\s+/).filter(Boolean)
         )
       );
       tokenUniverse = [...new Set([...tokenUniverse, ...allTokens])];
     }
 
-    return candidates.map(({ item, ex, tokens }) => {
+    return candidates.map(({ item, ex, tokens }: { item: any; ex: any; tokens: any }) => {
       const distractorSource = tokenUniverse.filter(
         (t) => !tokens.includes(t)
       );
@@ -4563,7 +4577,7 @@ export default function App() {
         TRANSLATE_DISTRACTOR_COUNT
       );
       const tiles = shuffleArray([
-        ...tokens.map((t, i) => ({ id: `c${i}`, text: t })),
+        ...tokens.map((t: any, i: number) => ({ id: `c${i}`, text: t })),
         ...distractors.map((t, i) => ({ id: `d${i}`, text: t })),
       ]);
       return {
@@ -4571,7 +4585,7 @@ export default function App() {
         reading: item.reading,
         answer: ex.kr,
         sentenceSegments: ex.segments,
-        speakText: ex.segments.map((s) => s.t).join(""),
+        speakText: ex.segments.map((s: any) => s.t).join(""),
         correctTokens: tokens,
         tiles,
         type: "vocabTranslate",
@@ -4580,9 +4594,9 @@ export default function App() {
   };
 
   // 선택된 단어들을 몇 개씩 묶어 "단어 매칭" 문제 풀을 만듭니다.
-  const buildMatchPool = (selectedItems) => {
+  const buildMatchPool = (selectedItems: any[]) => {
     const shuffled = shuffleArray(selectedItems);
-    const groups = [];
+    const groups: any[] = [];
     for (let i = 0; i < shuffled.length; i += MATCH_GROUP_SIZE) {
       groups.push(shuffled.slice(i, i + MATCH_GROUP_SIZE));
     }
@@ -4595,17 +4609,17 @@ export default function App() {
       .filter((group) => group.length >= MATCH_MIN_GROUP_SIZE)
       .map((group) => ({
         type: "vocabMatch",
-        pairs: group.map((item) => ({
+        pairs: group.map((item: any) => ({
           id: item.word,
           word: item.word,
           furigana: item.furigana,
           meaning: item.meaning,
         })),
         leftTiles: shuffleArray(
-          group.map((item) => ({ id: item.word, furigana: item.furigana }))
+          group.map((item: any) => ({ id: item.word, furigana: item.furigana }))
         ),
         rightTiles: shuffleArray(
-          group.map((item) => ({ id: item.word, text: item.meaning }))
+          group.map((item: any) => ({ id: item.word, text: item.meaning }))
         ),
       }));
   };
@@ -4613,8 +4627,8 @@ export default function App() {
   // ignoreSelection=true는 사용자가 고른 범위와 상관없이 전체 데이터를 훑어서
   // 보기(선택지)가 부족할 때 채울 여분의 오답 후보를 만드는 용도로만 씁니다.
   const buildTestPool = (ignoreSelection = false) => {
-    const isSelected = (val) => ignoreSelection || selectedTestItems.includes(val);
-    let pool = [];
+    const isSelected = (val: any) => ignoreSelection || selectedTestItems.includes(val);
+    let pool: any[] = [];
     if (testType === "hiragana") {
       KANA_DATA.forEach((row) => {
         row.kana.forEach((char, idx) => {
@@ -4700,7 +4714,7 @@ export default function App() {
     setTestScreen("playing");
   };
 
-  const loadTestQuestion = (queue, index, fullPool) => {
+  const loadTestQuestion = (queue: any[], index: number, fullPool: any[]) => {
     const correct = queue[index];
 
     setCurrentQuestion(correct);
@@ -4720,14 +4734,14 @@ export default function App() {
     }
 
     let poolWithoutCorrect = fullPool.filter(
-      (item) => item.answer !== correct.answer && item.type === correct.type
+      (item: any) => item.answer !== correct.answer && item.type === correct.type
     );
 
     // 선택한 범위 안에서 오답 후보가 3개보다 적으면(보기가 4개가 안 되면)
     // 전체 데이터에서 부족한 만큼 채웁니다.
     if (poolWithoutCorrect.length < 3) {
       const seenAnswers = new Set(
-        poolWithoutCorrect.map((item) => item.answer)
+        poolWithoutCorrect.map((item: any) => item.answer)
       );
       seenAnswers.add(correct.answer);
       const backupPool = buildTestPool(true).filter(
@@ -4749,7 +4763,7 @@ export default function App() {
     setOptions(finalOptions);
   };
 
-  const handleTestOptionSelect = (option) => {
+  const handleTestOptionSelect = (option: any) => {
     if (isRevealed) return;
     setSelectedAnswer(option);
     setIsRevealed(true);
@@ -4771,7 +4785,7 @@ export default function App() {
   };
 
   // 문장 번역 문제: 타일을 탭하면 배치하고, 배치된 타일을 다시 탭하면 되돌립니다.
-  const handleTileTap = (tile) => {
+  const handleTileTap = (tile: any) => {
     if (isRevealed) return;
     const placedIdx = placedTiles.findIndex((t) => t.id === tile.id);
     if (placedIdx !== -1) {
@@ -4806,12 +4820,12 @@ export default function App() {
   };
 
   // 단어 매칭 문제: 좌/우에서 하나씩 선택하면 일치 여부를 확인합니다.
-  const handleMatchTap = (side, id) => {
+  const handleMatchTap = (side: "left" | "right", id: any) => {
     if (isRevealed || matchedIds.includes(id)) return;
     if (side === "left") {
-      setSelectedLeftId((prev) => (prev === id ? null : id));
+      setSelectedLeftId((prev: any) => (prev === id ? null : id));
     } else {
-      setSelectedRightId((prev) => (prev === id ? null : id));
+      setSelectedRightId((prev: any) => (prev === id ? null : id));
     }
   };
 
@@ -5037,12 +5051,12 @@ export default function App() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {rows.map((rowItem, idx) => {
+                    {rows.map((rowItem: any, idx: number) => {
                       const rowChars = isHiragana ? rowItem.kana : rowItem.kata;
                       const validChars = rowChars.filter(Boolean);
                       const isRowSelected =
                         validChars.length > 0 &&
-                        validChars.every((c) => selectedTestItems.includes(c));
+                        validChars.every((c: string) => selectedTestItems.includes(c));
                       const isExpanded = expandedRows[rowItem.row];
 
                       return (
@@ -5084,7 +5098,7 @@ export default function App() {
 
                           {isExpanded && (
                             <div className="p-4 pt-0 grid grid-cols-5 gap-2 border-t border-slate-100 bg-slate-50/50 mt-2">
-                              {rowChars.map((char, charIdx) => {
+                              {rowChars.map((char: string, charIdx: number) => {
                                 if (!char) return <div key={charIdx} />;
                                 const isSelected =
                                   selectedTestItems.includes(char);
@@ -5418,7 +5432,7 @@ export default function App() {
             {currentQuestion?.type === "vocabTranslate" ? (
               <div className="flex flex-col gap-4 p-5">
                 <div className="flex flex-wrap gap-2 justify-center min-h-[3rem]">
-                  {currentQuestion.correctTokens.map((correctText, i) => {
+                  {currentQuestion.correctTokens.map((correctText: any, i: number) => {
                     const tile = placedTiles[i];
                     let slotStyle =
                       "border-dashed border-slate-300 text-slate-300";
@@ -5447,9 +5461,9 @@ export default function App() {
                   <div className="flex flex-wrap gap-2 justify-center pt-2 border-t border-dashed border-slate-200">
                     {currentQuestion.tiles
                       .filter(
-                        (t) => !placedTiles.some((p) => p.id === t.id)
+                        (t: any) => !placedTiles.some((p) => p.id === t.id)
                       )
-                      .map((t) => (
+                      .map((t: any) => (
                         <button
                           key={t.id}
                           onClick={() => handleTileTap(t)}
@@ -5481,7 +5495,7 @@ export default function App() {
                 className="grid gap-2 p-5"
                 style={{ gridTemplateColumns: "1fr 1fr" }}
               >
-                {currentQuestion.leftTiles.map((t, i) => {
+                {currentQuestion.leftTiles.map((t: any, i: number) => {
                   const rt = currentQuestion.rightTiles[i];
                   let leftStyle = "bg-white border-slate-200 text-slate-800";
                   if (matchedIds.includes(t.id))
@@ -5763,7 +5777,7 @@ export default function App() {
                       이 판에서 짝을 잘못 맞춘 적이 있어요.
                     </div>
                     <div className="flex flex-col gap-2">
-                      {q.pairs.map((pair) => (
+                      {q.pairs.map((pair: any) => (
                         <div
                           key={pair.id}
                           className="flex items-center justify-between gap-3 bg-slate-50 rounded-xl px-4 py-2"
