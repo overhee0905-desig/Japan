@@ -60,10 +60,9 @@ const CUSTOM_STYLES = `
 
 /* STREAMING_CHUNK:Configuring audio and TTS utilities... */
 // ── 오디오 효과음 설정 ──────────────────────────────────────────────────
-const playTone = (freq: number, type: OscillatorType, duration: number) => {
+const playTone = (freq, type, duration) => {
   try {
-    const AudioContext =
-      window.AudioContext || (window as any).webkitAudioContext;
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
     const osc = ctx.createOscillator();
@@ -91,7 +90,7 @@ const playWrongSound = () => {
 };
 
 // ── 일본어 발음 (Web Speech API) ────────────────────────────────────────
-let cachedJaVoice: SpeechSynthesisVoice | null = null;
+let cachedJaVoice = null;
 const getJapaneseVoice = () => {
   if (cachedJaVoice) return cachedJaVoice;
   const voices = window.speechSynthesis
@@ -110,7 +109,7 @@ if (typeof window !== "undefined" && window.speechSynthesis) {
   };
 }
 
-const speakJapanese = (text: string) => {
+const speakJapanese = (text) => {
   if (!text) return;
   try {
     if (!window.speechSynthesis) return;
@@ -130,11 +129,6 @@ const SpeakButton = ({
   iconSize = 14,
   diameter = 32,
   className = "",
-}: {
-  text: string;
-  iconSize?: number;
-  diameter?: number;
-  className?: string;
 }) => (
   <button
     type="button"
@@ -160,22 +154,14 @@ const SpeakButton = ({
 
 // ── 후리가나(한자 위 발음 표시) 컴포넌트 ─────────────────────────────────
 // segments: [{ t: "표기 텍스트", r?: "읽는 법 (한자일 때만)" }, ...]
-const Furigana = ({
-  segments,
-  fontSize = "1.5rem",
-  className = "",
-}: {
-  segments: any;
-  fontSize?: string;
-  className?: string;
-}) => {
+const Furigana = ({ segments, fontSize = "1.5rem", className = "" }) => {
   if (!segments || segments.length === 0) return null;
   return (
     <span
       className={`font-kanji text-slate-800 inline-flex flex-wrap items-baseline justify-center ${className}`}
       style={{ fontSize, lineHeight: 2.5 }}
     >
-      {segments.map((seg: any, i: number) =>
+      {segments.map((seg, i) =>
         seg.blank ? (
           <span
             key={i}
@@ -339,7 +325,7 @@ const KANA_DATA = [
   },
 ];
 
-const KANJI_DATA: Record<string, any[]> = {
+const KANJI_DATA = {
   N5: [
     {
       kanji: "人",
@@ -905,7 +891,1214 @@ const KANJI_DATA: Record<string, any[]> = {
       examples: [{ word: "九", reading: "きゅう", meaning: "구, 아홉" }],
     },
   ],
-  N4: [],
+  N4: [
+    {
+      kanji: "朝",
+      meaning: "아침",
+      sound: "조",
+      examples: [{ word: "朝", reading: "あさ", meaning: "아침" }],
+    },
+    {
+      kanji: "昼",
+      meaning: "낮",
+      sound: "주",
+      examples: [{ word: "昼", reading: "ひる", meaning: "낮" }],
+    },
+    {
+      kanji: "晩",
+      meaning: "저녁",
+      sound: "만",
+      examples: [{ word: "今晩", reading: "こんばん", meaning: "오늘 밤" }],
+    },
+    {
+      kanji: "夜",
+      meaning: "밤",
+      sound: "야",
+      examples: [{ word: "夜", reading: "よる", meaning: "밤" }],
+    },
+    {
+      kanji: "正",
+      meaning: "바를",
+      sound: "정",
+      examples: [{ word: "正月", reading: "しょうがつ", meaning: "정월, 설" }],
+    },
+    {
+      kanji: "週",
+      meaning: "주(週)",
+      sound: "주",
+      examples: [{ word: "今週", reading: "こんしゅう", meaning: "이번 주" }],
+    },
+    {
+      kanji: "去",
+      meaning: "갈",
+      sound: "거",
+      examples: [{ word: "去年", reading: "きょねん", meaning: "작년" }],
+    },
+    {
+      kanji: "家",
+      meaning: "집",
+      sound: "가",
+      examples: [{ word: "家族", reading: "かぞく", meaning: "가족" }],
+    },
+    {
+      kanji: "族",
+      meaning: "겨레",
+      sound: "족",
+      examples: [{ word: "家族", reading: "かぞく", meaning: "가족" }],
+    },
+    {
+      kanji: "兄",
+      meaning: "형",
+      sound: "형",
+      examples: [{ word: "兄", reading: "あに", meaning: "형, 오빠" }],
+    },
+    {
+      kanji: "弟",
+      meaning: "아우",
+      sound: "제",
+      examples: [{ word: "弟", reading: "おとうと", meaning: "남동생" }],
+    },
+    {
+      kanji: "姉",
+      meaning: "누이",
+      sound: "자",
+      examples: [{ word: "姉", reading: "あね", meaning: "누나, 언니" }],
+    },
+    {
+      kanji: "妹",
+      meaning: "누이",
+      sound: "매",
+      examples: [{ word: "妹", reading: "いもうと", meaning: "여동생" }],
+    },
+    {
+      kanji: "夫",
+      meaning: "남편",
+      sound: "부",
+      examples: [{ word: "夫", reading: "おっと", meaning: "남편" }],
+    },
+    {
+      kanji: "妻",
+      meaning: "아내",
+      sound: "처",
+      examples: [{ word: "妻", reading: "つま", meaning: "아내" }],
+    },
+    {
+      kanji: "主",
+      meaning: "주인",
+      sound: "주",
+      examples: [{ word: "主人", reading: "しゅじん", meaning: "주인, 남편" }],
+    },
+    {
+      kanji: "奥",
+      meaning: "속",
+      sound: "오",
+      examples: [{ word: "奥さん", reading: "おくさん", meaning: "(남의) 부인, 아내" }],
+    },
+    {
+      kanji: "私",
+      meaning: "나",
+      sound: "사",
+      examples: [{ word: "私", reading: "わたし", meaning: "나, 저" }],
+    },
+    {
+      kanji: "王",
+      meaning: "임금",
+      sound: "왕",
+      examples: [{ word: "王様", reading: "おうさま", meaning: "임금님" }],
+    },
+    {
+      kanji: "様",
+      meaning: "모양",
+      sound: "양",
+      examples: [{ word: "〜様", reading: "さま", meaning: "~님 (존칭)" }],
+    },
+    {
+      kanji: "才",
+      meaning: "재주",
+      sound: "재",
+      examples: [{ word: "二十才", reading: "はたち", meaning: "스무 살" }],
+    },
+    {
+      kanji: "赤",
+      meaning: "붉을",
+      sound: "적",
+      examples: [{ word: "赤い", reading: "あかい", meaning: "빨갛다" }],
+    },
+    {
+      kanji: "青",
+      meaning: "푸를",
+      sound: "청",
+      examples: [{ word: "青い", reading: "あおい", meaning: "파랗다" }],
+    },
+    {
+      kanji: "黒",
+      meaning: "검을",
+      sound: "흑",
+      examples: [{ word: "黒い", reading: "くろい", meaning: "검다" }],
+    },
+    {
+      kanji: "色",
+      meaning: "색",
+      sound: "색",
+      examples: [{ word: "色", reading: "いろ", meaning: "색, 색깔" }],
+    },
+    {
+      kanji: "銀",
+      meaning: "은",
+      sound: "은",
+      examples: [{ word: "銀行", reading: "ぎんこう", meaning: "은행" }],
+    },
+    {
+      kanji: "黄",
+      meaning: "누를",
+      sound: "황",
+      examples: [{ word: "黄色", reading: "きいろ", meaning: "노란색" }],
+    },
+    {
+      kanji: "緑",
+      meaning: "푸를",
+      sound: "록",
+      examples: [{ word: "緑", reading: "みどり", meaning: "초록색, 녹색" }],
+    },
+    {
+      kanji: "丸",
+      meaning: "둥글",
+      sound: "환",
+      examples: [{ word: "丸い", reading: "まるい", meaning: "둥글다" }],
+    },
+    {
+      kanji: "玉",
+      meaning: "구슬",
+      sound: "옥",
+      examples: [{ word: "玉", reading: "たま", meaning: "구슬, 공" }],
+    },
+    {
+      kanji: "春",
+      meaning: "봄",
+      sound: "춘",
+      examples: [{ word: "春", reading: "はる", meaning: "봄" }],
+    },
+    {
+      kanji: "夏",
+      meaning: "여름",
+      sound: "하",
+      examples: [{ word: "夏", reading: "なつ", meaning: "여름" }],
+    },
+    {
+      kanji: "秋",
+      meaning: "가을",
+      sound: "추",
+      examples: [{ word: "秋", reading: "あき", meaning: "가을" }],
+    },
+    {
+      kanji: "冬",
+      meaning: "겨울",
+      sound: "동",
+      examples: [{ word: "冬", reading: "ふゆ", meaning: "겨울" }],
+    },
+    {
+      kanji: "空",
+      meaning: "빌",
+      sound: "공",
+      examples: [{ word: "空", reading: "そら", meaning: "하늘" }],
+    },
+    {
+      kanji: "風",
+      meaning: "바람",
+      sound: "풍",
+      examples: [{ word: "風", reading: "かぜ", meaning: "바람" }],
+    },
+    {
+      kanji: "台",
+      meaning: "대",
+      sound: "대",
+      examples: [{ word: "台風", reading: "たいふう", meaning: "태풍" }],
+    },
+    {
+      kanji: "雲",
+      meaning: "구름",
+      sound: "운",
+      examples: [{ word: "雲", reading: "くも", meaning: "구름" }],
+    },
+    {
+      kanji: "雪",
+      meaning: "눈",
+      sound: "설",
+      examples: [{ word: "雪", reading: "ゆき", meaning: "눈(내리는)" }],
+    },
+    {
+      kanji: "晴",
+      meaning: "맑을",
+      sound: "청",
+      examples: [{ word: "晴れ", reading: "はれ", meaning: "맑음, 갬" }],
+    },
+    {
+      kanji: "星",
+      meaning: "별",
+      sound: "성",
+      examples: [{ word: "星", reading: "ほし", meaning: "별" }],
+    },
+    {
+      kanji: "光",
+      meaning: "빛",
+      sound: "광",
+      examples: [{ word: "光", reading: "ひかり", meaning: "빛" }],
+    },
+    {
+      kanji: "地",
+      meaning: "땅",
+      sound: "지",
+      examples: [{ word: "地図", reading: "ちず", meaning: "지도" }],
+    },
+    {
+      kanji: "谷",
+      meaning: "골",
+      sound: "곡",
+      examples: [{ word: "谷", reading: "たに", meaning: "골짜기, 계곡" }],
+    },
+    {
+      kanji: "自",
+      meaning: "스스로",
+      sound: "자",
+      examples: [{ word: "自分", reading: "じぶん", meaning: "자기 자신" }],
+    },
+    {
+      kanji: "然",
+      meaning: "그러할",
+      sound: "연",
+      examples: [{ word: "自然", reading: "しぜん", meaning: "자연" }],
+    },
+    {
+      kanji: "草",
+      meaning: "풀",
+      sound: "초",
+      examples: [{ word: "草", reading: "くさ", meaning: "풀" }],
+    },
+    {
+      kanji: "原",
+      meaning: "근원",
+      sound: "원",
+      examples: [{ word: "野原", reading: "のはら", meaning: "들판" }],
+    },
+    {
+      kanji: "海",
+      meaning: "바다",
+      sound: "해",
+      examples: [{ word: "海", reading: "うみ", meaning: "바다" }],
+    },
+    {
+      kanji: "湖",
+      meaning: "호수",
+      sound: "호",
+      examples: [{ word: "湖", reading: "みずうみ", meaning: "호수" }],
+    },
+    {
+      kanji: "池",
+      meaning: "못",
+      sound: "지",
+      examples: [{ word: "池", reading: "いけ", meaning: "연못" }],
+    },
+    {
+      kanji: "里",
+      meaning: "마을",
+      sound: "리",
+      examples: [{ word: "里", reading: "さと", meaning: "마을, 시골" }],
+    },
+    {
+      kanji: "野",
+      meaning: "들",
+      sound: "야",
+      examples: [{ word: "野菜", reading: "やさい", meaning: "채소, 야채" }],
+    },
+    {
+      kanji: "虫",
+      meaning: "벌레",
+      sound: "충",
+      examples: [{ word: "虫", reading: "むし", meaning: "벌레, 곤충" }],
+    },
+    {
+      kanji: "羽",
+      meaning: "날개",
+      sound: "우",
+      examples: [{ word: "羽", reading: "はね", meaning: "날개" }],
+    },
+    {
+      kanji: "馬",
+      meaning: "말",
+      sound: "마",
+      examples: [{ word: "馬", reading: "うま", meaning: "말(동물)" }],
+    },
+    {
+      kanji: "鳴",
+      meaning: "울",
+      sound: "명",
+      examples: [{ word: "鳴く", reading: "なく", meaning: "(동물이) 울다" }],
+    },
+    {
+      kanji: "毛",
+      meaning: "털",
+      sound: "모",
+      examples: [{ word: "毛", reading: "け", meaning: "털" }],
+    },
+    {
+      kanji: "糸",
+      meaning: "실",
+      sound: "사",
+      examples: [{ word: "糸", reading: "いと", meaning: "실" }],
+    },
+    {
+      kanji: "衣",
+      meaning: "옷",
+      sound: "의",
+      examples: [{ word: "衣服", reading: "いふく", meaning: "의복" }],
+    },
+    {
+      kanji: "服",
+      meaning: "옷",
+      sound: "복",
+      examples: [{ word: "服", reading: "ふく", meaning: "옷" }],
+    },
+    {
+      kanji: "洋",
+      meaning: "큰바다",
+      sound: "양",
+      examples: [{ word: "洋服", reading: "ようふく", meaning: "양복, 서양식 옷" }],
+    },
+    {
+      kanji: "料",
+      meaning: "재료",
+      sound: "료",
+      examples: [{ word: "料理", reading: "りょうり", meaning: "요리" }],
+    },
+    {
+      kanji: "理",
+      meaning: "다스릴",
+      sound: "리",
+      examples: [{ word: "料理", reading: "りょうり", meaning: "요리" }],
+    },
+    {
+      kanji: "飯",
+      meaning: "밥",
+      sound: "반",
+      examples: [{ word: "ご飯", reading: "ごはん", meaning: "밥" }],
+    },
+    {
+      kanji: "麦",
+      meaning: "보리",
+      sound: "맥",
+      examples: [{ word: "麦", reading: "むぎ", meaning: "보리, 밀" }],
+    },
+    {
+      kanji: "油",
+      meaning: "기름",
+      sound: "유",
+      examples: [{ word: "油", reading: "あぶら", meaning: "기름, 식용유" }],
+    },
+    {
+      kanji: "酒",
+      meaning: "술",
+      sound: "주",
+      examples: [{ word: "お酒", reading: "おさけ", meaning: "술" }],
+    },
+    {
+      kanji: "味",
+      meaning: "맛",
+      sound: "미",
+      examples: [{ word: "味", reading: "あじ", meaning: "맛" }],
+    },
+    {
+      kanji: "住",
+      meaning: "살",
+      sound: "주",
+      examples: [{ word: "住む", reading: "すむ", meaning: "살다, 거주하다" }],
+    },
+    {
+      kanji: "所",
+      meaning: "곳",
+      sound: "소",
+      examples: [{ word: "住所", reading: "じゅうしょ", meaning: "주소" }],
+    },
+    {
+      kanji: "都",
+      meaning: "도읍",
+      sound: "도",
+      examples: [{ word: "都会", reading: "とかい", meaning: "도시" }],
+    },
+    {
+      kanji: "道",
+      meaning: "길",
+      sound: "도",
+      examples: [{ word: "道", reading: "みち", meaning: "길" }],
+    },
+    {
+      kanji: "府",
+      meaning: "마을",
+      sound: "부",
+      examples: [{ word: "大阪府", reading: "おおさかふ", meaning: "오사카부" }],
+    },
+    {
+      kanji: "県",
+      meaning: "고을",
+      sound: "현",
+      examples: [{ word: "県", reading: "けん", meaning: "현 (행정구역)" }],
+    },
+    {
+      kanji: "京",
+      meaning: "서울",
+      sound: "경",
+      examples: [{ word: "東京", reading: "とうきょう", meaning: "도쿄" }],
+    },
+    {
+      kanji: "市",
+      meaning: "시장",
+      sound: "시",
+      examples: [{ word: "市", reading: "し", meaning: "시 (행정구역)" }],
+    },
+    {
+      kanji: "区",
+      meaning: "구역",
+      sound: "구",
+      examples: [{ word: "区", reading: "く", meaning: "구 (행정구역)" }],
+    },
+    {
+      kanji: "村",
+      meaning: "마을",
+      sound: "촌",
+      examples: [{ word: "村", reading: "むら", meaning: "마을, 촌" }],
+    },
+    {
+      kanji: "番",
+      meaning: "차례",
+      sound: "번",
+      examples: [{ word: "番号", reading: "ばんごう", meaning: "번호" }],
+    },
+    {
+      kanji: "号",
+      meaning: "부를",
+      sound: "호",
+      examples: [{ word: "番号", reading: "ばんごう", meaning: "번호" }],
+    },
+    {
+      kanji: "紙",
+      meaning: "종이",
+      sound: "지",
+      examples: [{ word: "紙", reading: "かみ", meaning: "종이" }],
+    },
+    {
+      kanji: "店",
+      meaning: "가게",
+      sound: "점",
+      examples: [{ word: "店", reading: "みせ", meaning: "가게" }],
+    },
+    {
+      kanji: "客",
+      meaning: "손",
+      sound: "객",
+      examples: [{ word: "お客さん", reading: "おきゃくさん", meaning: "손님" }],
+    },
+    {
+      kanji: "売",
+      meaning: "팔",
+      sound: "매",
+      examples: [{ word: "売る", reading: "うる", meaning: "팔다" }],
+    },
+    {
+      kanji: "品",
+      meaning: "물건",
+      sound: "품",
+      examples: [{ word: "品物", reading: "しなもの", meaning: "물건, 상품" }],
+    },
+    {
+      kanji: "薬",
+      meaning: "약",
+      sound: "약",
+      examples: [{ word: "薬", reading: "くすり", meaning: "약" }],
+    },
+    {
+      kanji: "待",
+      meaning: "기다릴",
+      sound: "대",
+      examples: [{ word: "待つ", reading: "まつ", meaning: "기다리다" }],
+    },
+    {
+      kanji: "合",
+      meaning: "합할",
+      sound: "합",
+      examples: [{ word: "合う", reading: "あう", meaning: "맞다, 어울리다" }],
+    },
+    {
+      kanji: "計",
+      meaning: "셀",
+      sound: "계",
+      examples: [{ word: "会計", reading: "かいけい", meaning: "계산, 회계" }],
+    },
+    {
+      kanji: "辺",
+      meaning: "가",
+      sound: "변",
+      examples: [{ word: "この辺", reading: "このへん", meaning: "이 근처" }],
+    },
+    {
+      kanji: "交",
+      meaning: "사귈",
+      sound: "교",
+      examples: [{ word: "交通", reading: "こうつう", meaning: "교통" }],
+    },
+    {
+      kanji: "通",
+      meaning: "통할",
+      sound: "통",
+      examples: [{ word: "交通", reading: "こうつう", meaning: "교통" }],
+    },
+    {
+      kanji: "荷",
+      meaning: "짐",
+      sound: "하",
+      examples: [{ word: "荷物", reading: "にもつ", meaning: "짐, 화물" }],
+    },
+    {
+      kanji: "送",
+      meaning: "보낼",
+      sound: "송",
+      examples: [{ word: "送る", reading: "おくる", meaning: "보내다" }],
+    },
+    {
+      kanji: "宅",
+      meaning: "집",
+      sound: "택",
+      examples: [{ word: "お宅", reading: "おたく", meaning: "댁, 귀댁" }],
+    },
+    {
+      kanji: "止",
+      meaning: "그칠",
+      sound: "지",
+      examples: [{ word: "止まる", reading: "とまる", meaning: "멈추다, 멈춰서다" }],
+    },
+    {
+      kanji: "急",
+      meaning: "급할",
+      sound: "급",
+      examples: [{ word: "急ぐ", reading: "いそぐ", meaning: "서두르다" }],
+    },
+    {
+      kanji: "特",
+      meaning: "특별할",
+      sound: "특",
+      examples: [{ word: "特別", reading: "とくべつ", meaning: "특별" }],
+    },
+    {
+      kanji: "鉄",
+      meaning: "쇠",
+      sound: "철",
+      examples: [{ word: "地下鉄", reading: "ちかてつ", meaning: "지하철" }],
+    },
+    {
+      kanji: "船",
+      meaning: "배",
+      sound: "선",
+      examples: [{ word: "船", reading: "ふね", meaning: "배, 선박" }],
+    },
+    {
+      kanji: "部",
+      meaning: "거느릴",
+      sound: "부",
+      examples: [{ word: "部屋", reading: "へや", meaning: "방" }],
+    },
+    {
+      kanji: "屋",
+      meaning: "집",
+      sound: "옥",
+      examples: [{ word: "部屋", reading: "へや", meaning: "방" }],
+    },
+    {
+      kanji: "教",
+      meaning: "가르칠",
+      sound: "교",
+      examples: [{ word: "教える", reading: "おしえる", meaning: "가르치다" }],
+    },
+    {
+      kanji: "室",
+      meaning: "집",
+      sound: "실",
+      examples: [{ word: "教室", reading: "きょうしつ", meaning: "교실" }],
+    },
+    {
+      kanji: "会",
+      meaning: "모일",
+      sound: "회",
+      examples: [{ word: "会社", reading: "かいしゃ", meaning: "회사" }],
+    },
+    {
+      kanji: "社",
+      meaning: "모일",
+      sound: "사",
+      examples: [{ word: "会社", reading: "かいしゃ", meaning: "회사" }],
+    },
+    {
+      kanji: "駅",
+      meaning: "역",
+      sound: "역",
+      examples: [{ word: "駅", reading: "えき", meaning: "역(기차역)" }],
+    },
+    {
+      kanji: "工",
+      meaning: "장인",
+      sound: "공",
+      examples: [{ word: "工場", reading: "こうじょう", meaning: "공장" }],
+    },
+    {
+      kanji: "場",
+      meaning: "마당",
+      sound: "장",
+      examples: [{ word: "工場", reading: "こうじょう", meaning: "공장" }],
+    },
+    {
+      kanji: "病",
+      meaning: "병",
+      sound: "병",
+      examples: [{ word: "病院", reading: "びょういん", meaning: "병원" }],
+    },
+    {
+      kanji: "院",
+      meaning: "집",
+      sound: "원",
+      examples: [{ word: "病院", reading: "びょういん", meaning: "병원" }],
+    },
+    {
+      kanji: "公",
+      meaning: "공평할",
+      sound: "공",
+      examples: [{ word: "公園", reading: "こうえん", meaning: "공원" }],
+    },
+    {
+      kanji: "園",
+      meaning: "동산",
+      sound: "원",
+      examples: [{ word: "公園", reading: "こうえん", meaning: "공원" }],
+    },
+    {
+      kanji: "図",
+      meaning: "그림",
+      sound: "도",
+      examples: [{ word: "図書館", reading: "としょかん", meaning: "도서관" }],
+    },
+    {
+      kanji: "館",
+      meaning: "집",
+      sound: "관",
+      examples: [{ word: "図書館", reading: "としょかん", meaning: "도서관" }],
+    },
+    {
+      kanji: "映",
+      meaning: "비칠",
+      sound: "영",
+      examples: [{ word: "映画", reading: "えいが", meaning: "영화" }],
+    },
+    {
+      kanji: "画",
+      meaning: "그림",
+      sound: "화",
+      examples: [{ word: "映画", reading: "えいが", meaning: "영화" }],
+    },
+    {
+      kanji: "勉",
+      meaning: "힘쓸",
+      sound: "면",
+      examples: [{ word: "勉強", reading: "べんきょう", meaning: "공부" }],
+    },
+    {
+      kanji: "強",
+      meaning: "강할",
+      sound: "강",
+      examples: [{ word: "勉強", reading: "べんきょう", meaning: "공부" }],
+    },
+    {
+      kanji: "宿",
+      meaning: "잠잘",
+      sound: "숙",
+      examples: [{ word: "宿題", reading: "しゅくだい", meaning: "숙제" }],
+    },
+    {
+      kanji: "題",
+      meaning: "제목",
+      sound: "제",
+      examples: [{ word: "宿題", reading: "しゅくだい", meaning: "숙제" }],
+    },
+    {
+      kanji: "質",
+      meaning: "바탕",
+      sound: "질",
+      examples: [{ word: "質問", reading: "しつもん", meaning: "질문" }],
+    },
+    {
+      kanji: "問",
+      meaning: "물을",
+      sound: "문",
+      examples: [{ word: "質問", reading: "しつもん", meaning: "질문" }],
+    },
+    {
+      kanji: "試",
+      meaning: "시험",
+      sound: "시",
+      examples: [{ word: "試験", reading: "しけん", meaning: "시험" }],
+    },
+    {
+      kanji: "験",
+      meaning: "시험",
+      sound: "험",
+      examples: [{ word: "試験", reading: "しけん", meaning: "시험" }],
+    },
+    {
+      kanji: "答",
+      meaning: "대답",
+      sound: "답",
+      examples: [{ word: "答え", reading: "こたえ", meaning: "답, 대답" }],
+    },
+    {
+      kanji: "考",
+      meaning: "생각할",
+      sound: "고",
+      examples: [{ word: "考える", reading: "かんがえる", meaning: "생각하다" }],
+    },
+    {
+      kanji: "字",
+      meaning: "글자",
+      sound: "자",
+      examples: [{ word: "漢字", reading: "かんじ", meaning: "한자" }],
+    },
+    {
+      kanji: "文",
+      meaning: "글",
+      sound: "문",
+      examples: [{ word: "文化", reading: "ぶんか", meaning: "문화" }],
+    },
+    {
+      kanji: "漢",
+      meaning: "한나라",
+      sound: "한",
+      examples: [{ word: "漢字", reading: "かんじ", meaning: "한자" }],
+    },
+    {
+      kanji: "数",
+      meaning: "셀",
+      sound: "수",
+      examples: [{ word: "数学", reading: "すうがく", meaning: "수학" }],
+    },
+    {
+      kanji: "英",
+      meaning: "꽃부리",
+      sound: "영",
+      examples: [{ word: "英語", reading: "えいご", meaning: "영어" }],
+    },
+    {
+      kanji: "化",
+      meaning: "될",
+      sound: "화",
+      examples: [{ word: "文化", reading: "ぶんか", meaning: "문화" }],
+    },
+    {
+      kanji: "育",
+      meaning: "기를",
+      sound: "육",
+      examples: [{ word: "教育", reading: "きょういく", meaning: "교육" }],
+    },
+    {
+      kanji: "研",
+      meaning: "갈",
+      sound: "연",
+      examples: [{ word: "研究", reading: "けんきゅう", meaning: "연구" }],
+    },
+    {
+      kanji: "究",
+      meaning: "궁구할",
+      sound: "구",
+      examples: [{ word: "研究", reading: "けんきゅう", meaning: "연구" }],
+    },
+    {
+      kanji: "医",
+      meaning: "의원",
+      sound: "의",
+      examples: [{ word: "医者", reading: "いしゃ", meaning: "의사" }],
+    },
+    {
+      kanji: "科",
+      meaning: "과목",
+      sound: "과",
+      examples: [{ word: "科学", reading: "かがく", meaning: "과학" }],
+    },
+    {
+      kanji: "政",
+      meaning: "정사",
+      sound: "정",
+      examples: [{ word: "政治", reading: "せいじ", meaning: "정치" }],
+    },
+    {
+      kanji: "治",
+      meaning: "다스릴",
+      sound: "치",
+      examples: [{ word: "政治", reading: "せいじ", meaning: "정치" }],
+    },
+    {
+      kanji: "経",
+      meaning: "지날",
+      sound: "경",
+      examples: [{ word: "経済", reading: "けいざい", meaning: "경제" }],
+    },
+    {
+      kanji: "済",
+      meaning: "건널",
+      sound: "제",
+      examples: [{ word: "経済", reading: "けいざい", meaning: "경제" }],
+    },
+    {
+      kanji: "歴",
+      meaning: "지날",
+      sound: "력",
+      examples: [{ word: "歴史", reading: "れきし", meaning: "역사" }],
+    },
+    {
+      kanji: "史",
+      meaning: "역사",
+      sound: "사",
+      examples: [{ word: "歴史", reading: "れきし", meaning: "역사" }],
+    },
+    {
+      kanji: "運",
+      meaning: "옮길",
+      sound: "운",
+      examples: [{ word: "運動", reading: "うんどう", meaning: "운동" }],
+    },
+    {
+      kanji: "動",
+      meaning: "움직일",
+      sound: "동",
+      examples: [{ word: "運動", reading: "うんどう", meaning: "운동" }],
+    },
+    {
+      kanji: "泳",
+      meaning: "헤엄칠",
+      sound: "영",
+      examples: [{ word: "泳ぐ", reading: "およぐ", meaning: "수영하다" }],
+    },
+    {
+      kanji: "旅",
+      meaning: "나그네",
+      sound: "려",
+      examples: [{ word: "旅行", reading: "りょこう", meaning: "여행" }],
+    },
+    {
+      kanji: "世",
+      meaning: "인간(대)",
+      sound: "세",
+      examples: [{ word: "世界", reading: "せかい", meaning: "세계" }],
+    },
+    {
+      kanji: "界",
+      meaning: "지경",
+      sound: "계",
+      examples: [{ word: "世界", reading: "せかい", meaning: "세계" }],
+    },
+    {
+      kanji: "練",
+      meaning: "익힐",
+      sound: "련",
+      examples: [{ word: "練習", reading: "れんしゅう", meaning: "연습" }],
+    },
+    {
+      kanji: "習",
+      meaning: "익힐",
+      sound: "습",
+      examples: [{ word: "練習", reading: "れんしゅう", meaning: "연습" }],
+    },
+    {
+      kanji: "写",
+      meaning: "베낄",
+      sound: "사",
+      examples: [{ word: "写真", reading: "しゃしん", meaning: "사진" }],
+    },
+    {
+      kanji: "真",
+      meaning: "참",
+      sound: "진",
+      examples: [{ word: "写真", reading: "しゃしん", meaning: "사진" }],
+    },
+    {
+      kanji: "楽",
+      meaning: "즐길(노래)",
+      sound: "락(악)",
+      examples: [{ word: "音楽", reading: "おんがく", meaning: "음악" }],
+    },
+    {
+      kanji: "声",
+      meaning: "소리",
+      sound: "성",
+      examples: [{ word: "声", reading: "こえ", meaning: "목소리" }],
+    },
+    {
+      kanji: "歌",
+      meaning: "노래",
+      sound: "가",
+      examples: [{ word: "歌", reading: "うた", meaning: "노래" }],
+    },
+    {
+      kanji: "集",
+      meaning: "모을",
+      sound: "집",
+      examples: [{ word: "集める", reading: "あつめる", meaning: "모으다" }],
+    },
+    {
+      kanji: "作",
+      meaning: "지을",
+      sound: "작",
+      examples: [{ word: "作る", reading: "つくる", meaning: "만들다" }],
+    },
+    {
+      kanji: "使",
+      meaning: "부릴",
+      sound: "사",
+      examples: [{ word: "使う", reading: "つかう", meaning: "사용하다" }],
+    },
+    {
+      kanji: "思",
+      meaning: "생각할",
+      sound: "사",
+      examples: [{ word: "思う", reading: "おもう", meaning: "생각하다" }],
+    },
+    {
+      kanji: "持",
+      meaning: "가질",
+      sound: "지",
+      examples: [{ word: "持つ", reading: "もつ", meaning: "가지다, 들다" }],
+    },
+    {
+      kanji: "当",
+      meaning: "마땅할",
+      sound: "당",
+      examples: [{ word: "当たる", reading: "あたる", meaning: "맞다, 명중하다" }],
+    },
+    {
+      kanji: "知",
+      meaning: "알",
+      sound: "지",
+      examples: [{ word: "知る", reading: "しる", meaning: "알다" }],
+    },
+    {
+      kanji: "働",
+      meaning: "일할",
+      sound: "동",
+      examples: [{ word: "働く", reading: "はたらく", meaning: "일하다" }],
+    },
+    {
+      kanji: "始",
+      meaning: "비로소",
+      sound: "시",
+      examples: [{ word: "始まる", reading: "はじまる", meaning: "시작되다" }],
+    },
+    {
+      kanji: "終",
+      meaning: "끝날",
+      sound: "종",
+      examples: [{ word: "終わる", reading: "おわる", meaning: "끝나다" }],
+    },
+    {
+      kanji: "乗",
+      meaning: "탈",
+      sound: "승",
+      examples: [{ word: "乗る", reading: "のる", meaning: "타다" }],
+    },
+    {
+      kanji: "降",
+      meaning: "내릴",
+      sound: "강",
+      examples: [{ word: "降りる", reading: "おりる", meaning: "내리다" }],
+    },
+    {
+      kanji: "開",
+      meaning: "열",
+      sound: "개",
+      examples: [{ word: "開ける", reading: "あける", meaning: "열다" }],
+    },
+    {
+      kanji: "閉",
+      meaning: "닫을",
+      sound: "폐",
+      examples: [{ word: "閉める", reading: "しめる", meaning: "닫다" }],
+    },
+    {
+      kanji: "発",
+      meaning: "필",
+      sound: "발",
+      examples: [{ word: "出発", reading: "しゅっぱつ", meaning: "출발" }],
+    },
+    {
+      kanji: "着",
+      meaning: "붙을",
+      sound: "착",
+      examples: [{ word: "着く", reading: "つく", meaning: "도착하다" }],
+    },
+    {
+      kanji: "走",
+      meaning: "달릴",
+      sound: "주",
+      examples: [{ word: "走る", reading: "はしる", meaning: "달리다" }],
+    },
+    {
+      kanji: "歩",
+      meaning: "걸음",
+      sound: "보",
+      examples: [{ word: "歩く", reading: "あるく", meaning: "걷다" }],
+    },
+    {
+      kanji: "近",
+      meaning: "가까울",
+      sound: "근",
+      examples: [{ word: "近い", reading: "ちかい", meaning: "가깝다" }],
+    },
+    {
+      kanji: "遠",
+      meaning: "멀",
+      sound: "원",
+      examples: [{ word: "遠い", reading: "とおい", meaning: "멀다" }],
+    },
+    {
+      kanji: "重",
+      meaning: "무거울",
+      sound: "중",
+      examples: [{ word: "重い", reading: "おもい", meaning: "무겁다" }],
+    },
+    {
+      kanji: "軽",
+      meaning: "가벼울",
+      sound: "경",
+      examples: [{ word: "軽い", reading: "かるい", meaning: "가볍다" }],
+    },
+    {
+      kanji: "早",
+      meaning: "일찍",
+      sound: "조",
+      examples: [{ word: "早い", reading: "はやい", meaning: "(시간이) 이르다" }],
+    },
+    {
+      kanji: "速",
+      meaning: "빠를",
+      sound: "속",
+      examples: [{ word: "速い", reading: "はやい", meaning: "(속도가) 빠르다" }],
+    },
+    {
+      kanji: "遅",
+      meaning: "늦을",
+      sound: "지",
+      examples: [{ word: "遅い", reading: "おそい", meaning: "느리다, 늦다" }],
+    },
+    {
+      kanji: "広",
+      meaning: "넓을",
+      sound: "광",
+      examples: [{ word: "広い", reading: "ひろい", meaning: "넓다" }],
+    },
+    {
+      kanji: "細",
+      meaning: "가늘",
+      sound: "세",
+      examples: [{ word: "細い", reading: "ほそい", meaning: "가늘다" }],
+    },
+    {
+      kanji: "太",
+      meaning: "클(굵을)",
+      sound: "태",
+      examples: [{ word: "太い", reading: "ふとい", meaning: "굵다" }],
+    },
+    {
+      kanji: "暑",
+      meaning: "더울",
+      sound: "서",
+      examples: [{ word: "暑い", reading: "あつい", meaning: "(날씨가) 덥다" }],
+    },
+    {
+      kanji: "寒",
+      meaning: "찰",
+      sound: "한",
+      examples: [{ word: "寒い", reading: "さむい", meaning: "춥다" }],
+    },
+    {
+      kanji: "低",
+      meaning: "낮을",
+      sound: "저",
+      examples: [{ word: "低い", reading: "ひくい", meaning: "낮다" }],
+    },
+    {
+      kanji: "短",
+      meaning: "짧을",
+      sound: "단",
+      examples: [{ word: "短い", reading: "みじかい", meaning: "짧다" }],
+    },
+    {
+      kanji: "弱",
+      meaning: "약할",
+      sound: "약",
+      examples: [{ word: "弱い", reading: "よわい", meaning: "약하다" }],
+    },
+    {
+      kanji: "若",
+      meaning: "젊을",
+      sound: "약",
+      examples: [{ word: "若い", reading: "わかい", meaning: "젊다" }],
+    },
+    {
+      kanji: "静",
+      meaning: "고요할",
+      sound: "정",
+      examples: [{ word: "静か", reading: "しずか", meaning: "조용함" }],
+    },
+    {
+      kanji: "有",
+      meaning: "있을",
+      sound: "유",
+      examples: [{ word: "有名", reading: "ゆうめい", meaning: "유명함" }],
+    },
+    {
+      kanji: "心",
+      meaning: "마음",
+      sound: "심",
+      examples: [{ word: "心", reading: "こころ", meaning: "마음" }],
+    },
+    {
+      kanji: "同",
+      meaning: "같을",
+      sound: "동",
+      examples: [{ word: "同じ", reading: "おなじ", meaning: "같음" }],
+    },
+    {
+      kanji: "便",
+      meaning: "편할",
+      sound: "편",
+      examples: [{ word: "便利", reading: "べんり", meaning: "편리함" }],
+    },
+    {
+      kanji: "利",
+      meaning: "이로울",
+      sound: "리",
+      examples: [{ word: "便利", reading: "べんり", meaning: "편리함" }],
+    },
+    {
+      kanji: "親",
+      meaning: "친할",
+      sound: "친",
+      examples: [{ word: "親切", reading: "しんせつ", meaning: "친절함" }],
+    },
+    {
+      kanji: "切",
+      meaning: "끊을",
+      sound: "절",
+      examples: [{ word: "親切", reading: "しんせつ", meaning: "친절함" }],
+    },
+    {
+      kanji: "不",
+      meaning: "아닐",
+      sound: "불",
+      examples: [{ word: "不便", reading: "ふべん", meaning: "불편함" }],
+    },
+  ],
   N3: [],
   N2: [],
   N1: [],
@@ -915,7 +2108,7 @@ const JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"];
 
 /* STREAMING_CHUNK:Defining Vocabulary and Grammar datasets... */
 // ── 단어 & 문법 데이터 (JLPT 급수별 단어, 형용사, 조사 등) ─────────────────────
-const VOCAB_DATA: Record<string, any[]> = {
+const VOCAB_DATA = {
   N5: [
     {
       word: "大きい",
@@ -3483,7 +4676,7 @@ const VOCAB_DATA: Record<string, any[]> = {
 const JLPT_VOCAB_LEVELS = ["N5", "N4"];
 
 // 배열 셔플 헬퍼 함수
-const shuffleArray = <T,>(array: T[]) => {
+const shuffleArray = (array) => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -3500,7 +4693,7 @@ const MATCH_MIN_GROUP_SIZE = 3;
 
 /* STREAMING_CHUNK:Grouping Kana data by types... */
 // 가나 데이터를 종류별(청음, 탁음, 반탁음)로 그룹화합니다.
-const groupedKana = KANA_DATA.reduce((acc: Record<string, any[]>, item: any) => {
+const groupedKana = KANA_DATA.reduce((acc, item) => {
   if (!acc[item.type]) {
     acc[item.type] = [];
   }
@@ -3515,39 +4708,39 @@ export default function App() {
 
   // 학습 모드 상태
   const [currentScreen, setCurrentScreen] = useState("menu");
-  const [activeType, setActiveType] = useState<any>(null);
-  const [activeKana, setActiveKana] = useState<any>(null);
-  const [activeLevel, setActiveLevel] = useState<any>(null);
-  const [activeKanji, setActiveKanji] = useState<any>(null);
-  const [activeVocabLevel, setActiveVocabLevel] = useState<any>(null);
+  const [activeType, setActiveType] = useState(null);
+  const [activeKana, setActiveKana] = useState(null);
+  const [activeLevel, setActiveLevel] = useState(null);
+  const [activeKanji, setActiveKanji] = useState(null);
+  const [activeVocabLevel, setActiveVocabLevel] = useState(null);
   const [activeVocabIndex, setActiveVocabIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
 
   // 테스트 모드 상태
   const [testScreen, setTestScreen] = useState("menu");
-  const [testType, setTestType] = useState<any>(null);
-  const [selectedTestItems, setSelectedTestItems] = useState<any[]>([]);
-  const [expandedRows, setExpandedRows] = useState<Record<string, any>>({});
-  const [quizQueue, setQuizQueue] = useState<any[]>([]);
-  const [currentQuestion, setCurrentQuestion] = useState<any>(null);
-  const [options, setOptions] = useState<any[]>([]);
+  const [testType, setTestType] = useState(null);
+  const [selectedTestItems, setSelectedTestItems] = useState([]);
+  const [expandedRows, setExpandedRows] = useState({});
+  const [quizQueue, setQuizQueue] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [options, setOptions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [wrongAnswers, setWrongAnswers] = useState<any[]>([]);
-  const [selectedAnswer, setSelectedAnswer] = useState<any>(null);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [shake, setShake] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
 
   // 문장 번역(단어 조합) 문제 상태
-  const [placedTiles, setPlacedTiles] = useState<any[]>([]);
+  const [placedTiles, setPlacedTiles] = useState([]);
 
   // 단어 매칭 문제 상태
-  const [matchedIds, setMatchedIds] = useState<any[]>([]);
-  const [selectedLeftId, setSelectedLeftId] = useState<any>(null);
-  const [selectedRightId, setSelectedRightId] = useState<any>(null);
-  const [mismatchPair, setMismatchPair] = useState<any>(null);
+  const [matchedIds, setMatchedIds] = useState([]);
+  const [selectedLeftId, setSelectedLeftId] = useState(null);
+  const [selectedRightId, setSelectedRightId] = useState(null);
+  const [mismatchPair, setMismatchPair] = useState(null);
   const [matchHadMistake, setMatchHadMistake] = useState(false);
 
   const scrollPosRef = useRef({ kanaList: 0, kanjiList: 0, vocabList: 0, testSelectList: 0 });
@@ -3639,19 +4832,19 @@ export default function App() {
     else if (currentScreen === "vocabLevels") setCurrentScreen("menu");
   };
 
-  const openKanaDetail = (rowItem: any, charIdx: number) => {
+  const openKanaDetail = (rowItem, charIdx) => {
     scrollPosRef.current.kanaList = window.scrollY;
     setActiveKana({ rowItem, charIdx });
     setCurrentScreen("kanaDetail");
   };
 
-  const openKanjiDetail = (kanjiObj: any) => {
+  const openKanjiDetail = (kanjiObj) => {
     scrollPosRef.current.kanjiList = window.scrollY;
     setActiveKanji(kanjiObj);
     setCurrentScreen("kanjiDetail");
   };
 
-  const openVocabDetail = (idx: number) => {
+  const openVocabDetail = (idx) => {
     scrollPosRef.current.vocabList = window.scrollY;
     setActiveVocabIndex(idx);
     setCurrentScreen("vocabDetail");
@@ -3778,7 +4971,7 @@ export default function App() {
                   <h3 className="text-lg font-black text-slate-800">{type}</h3>
                 </div>
                 <div className="space-y-3">
-                  {rows.map((rowItem: any, idx: number) => (
+                  {rows.map((rowItem, idx) => (
                     <div
                       key={idx}
                       className="bg-white p-4 rounded-3xl shadow-sm border border-slate-200"
@@ -3787,7 +4980,7 @@ export default function App() {
                         {rowItem.row}
                       </h4>
                       <div className="grid grid-cols-5 gap-2">
-                        {rowItem.kana.map((char: string, charIdx: number) => {
+                        {rowItem.kana.map((char, charIdx) => {
                           const displayChar = isHiragana
                             ? char
                             : rowItem.kata[charIdx];
@@ -3852,11 +5045,11 @@ export default function App() {
         }
       };
 
-      const handleTouchStart = (e: React.TouchEvent) => {
+      const handleTouchStart = (e) => {
         touchStartX.current = e.changedTouches[0].screenX;
         touchEndX.current = e.changedTouches[0].screenX;
       };
-      const handleTouchMove = (e: React.TouchEvent) => {
+      const handleTouchMove = (e) => {
         touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchEnd = () => {
@@ -4025,7 +5218,7 @@ export default function App() {
             </div>
           ) : (
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 sm:gap-4">
-              {kanjiList.map((item: any, idx: number) => (
+              {kanjiList.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => openKanjiDetail(item)}
@@ -4090,7 +5283,7 @@ export default function App() {
                 <Sparkles size={16} /> 이 한자, 이렇게도 읽고 쓰여요
               </div>
               <div className="flex flex-wrap gap-2">
-                {activeKanji.altReadings.map((alt: any, idx: number) => (
+                {activeKanji.altReadings.map((alt, idx) => (
                   <div
                     key={idx}
                     className="bg-amber-50 border border-amber-100 rounded-2xl px-4 py-2.5 text-sm"
@@ -4113,7 +5306,7 @@ export default function App() {
             </div>
             <div className="flex flex-col gap-6">
               {activeKanji.examples &&
-                activeKanji.examples.map((ex: any, idx: number) => (
+                activeKanji.examples.map((ex, idx) => (
                   <div
                     key={idx}
                     className="border-b border-slate-100 pb-5 last:border-0 last:pb-0 flex items-center justify-between gap-3"
@@ -4196,7 +5389,7 @@ export default function App() {
 
     if (currentScreen === "vocabList") {
       const vocabList = VOCAB_DATA[activeVocabLevel] || [];
-      const posColors: Record<string, string> = {
+      const posColors = {
         "い형용사": "bg-rose-50 text-rose-500",
         "な형용사": "bg-purple-50 text-purple-500",
         동사: "bg-blue-50 text-blue-500",
@@ -4222,7 +5415,7 @@ export default function App() {
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-              {vocabList.map((item: any, idx: number) => (
+              {vocabList.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => openVocabDetail(idx)}
@@ -4280,11 +5473,11 @@ export default function App() {
         }
       };
 
-      const handleTouchStart = (e: React.TouchEvent) => {
+      const handleTouchStart = (e) => {
         touchStartX.current = e.changedTouches[0].screenX;
         touchEndX.current = e.changedTouches[0].screenX;
       };
-      const handleTouchMove = (e: React.TouchEvent) => {
+      const handleTouchMove = (e) => {
         touchEndX.current = e.changedTouches[0].screenX;
       };
       const handleTouchEnd = () => {
@@ -4377,7 +5570,7 @@ export default function App() {
                       className="flex-1 leading-[2.6]"
                     />
                     <SpeakButton
-                      text={item.examples[0].segments.map((s: any) => s.t).join("")}
+                      text={item.examples[0].segments.map((s) => s.t).join("")}
                       iconSize={14}
                       diameter={30}
                       className="shrink-0 mt-1"
@@ -4449,7 +5642,7 @@ export default function App() {
   };
 
   const getAvailableTestChars = () => {
-    let pool: any[] = [];
+    let pool = [];
     if (testType === "hiragana") {
       KANA_DATA.forEach((row) =>
         row.kana.forEach((char) => {
@@ -4472,7 +5665,7 @@ export default function App() {
 
   const toggleAllTestChars = () => {
     const available = getAvailableTestChars();
-    const isAllSelected = available.every((c: any) => selectedTestItems.includes(c));
+    const isAllSelected = available.every((c) => selectedTestItems.includes(c));
     if (isAllSelected) {
       setSelectedTestItems([]);
     } else {
@@ -4480,21 +5673,21 @@ export default function App() {
     }
   };
 
-  const toggleRowSelect = (chars: any) => {
+  const toggleRowSelect = (chars) => {
     const validChars = chars.filter(Boolean);
-    const isRowSelected = validChars.every((c: any) =>
+    const isRowSelected = validChars.every((c) =>
       selectedTestItems.includes(c)
     );
     if (isRowSelected) {
       setSelectedTestItems((prev) =>
-        prev.filter((c: any) => !validChars.includes(c))
+        prev.filter((c) => !validChars.includes(c))
       );
     } else {
       setSelectedTestItems((prev) => [...new Set([...prev, ...validChars])]);
     }
   };
 
-  const toggleSingleChar = (char: any) => {
+  const toggleSingleChar = (char) => {
     if (!char) return;
     if (selectedTestItems.includes(char)) {
       setSelectedTestItems((prev) => prev.filter((c) => c !== char));
@@ -4503,13 +5696,13 @@ export default function App() {
     }
   };
 
-  const toggleAccordion = (rowName: string) => {
+  const toggleAccordion = (rowName) => {
     setExpandedRows((prev) => ({ ...prev, [rowName]: !prev[rowName] }));
   };
 
   // item.furigana(단어의 세그먼트 구성)와 정확히 일치하는 구간을 예문 세그먼트에서 찾습니다.
   // (활용형 예문은 세그먼트가 달라지므로 매칭되지 않으면 건너뜁니다)
-  const findFuriganaMatch = (segments: any, furigana: any) => {
+  const findFuriganaMatch = (segments, furigana) => {
     if (!segments || !furigana || furigana.length === 0) return -1;
     for (let i = 0; i <= segments.length - furigana.length; i++) {
       let match = true;
@@ -4527,9 +5720,9 @@ export default function App() {
   };
 
   // 단어의 예문 중 하나를 골라 해당 단어 부분을 빈칸으로 치환합니다.
-  const buildSentenceBlank = (item: any) => {
+  const buildSentenceBlank = (item) => {
     if (!item.examples || item.examples.length === 0) return null;
-    for (const ex of shuffleArray<any>(item.examples)) {
+    for (const ex of shuffleArray(item.examples)) {
       const idx = findFuriganaMatch(ex.segments, item.furigana);
       if (idx !== -1) {
         const before = ex.segments.slice(0, idx);
@@ -4537,7 +5730,7 @@ export default function App() {
         return {
           segments: [...before, { t: "", blank: true }, ...after],
           kr: ex.kr,
-          speakText: ex.segments.map((s: any) => s.t).join(""),
+          speakText: ex.segments.map((s) => s.t).join(""),
         };
       }
     }
@@ -4545,11 +5738,11 @@ export default function App() {
   };
 
   // 선택된 단어들의 예문으로 "문장 번역" 문제 풀을 만듭니다.
-  const buildTranslatePool = (selectedItems: any[]) => {
+  const buildTranslatePool = (selectedItems) => {
     const candidates = selectedItems
       .filter((item) => item.examples && item.examples.length > 0)
       .map((item) => {
-        const ex = shuffleArray<any>(item.examples)[0];
+        const ex = shuffleArray(item.examples)[0];
         const tokens = ex.kr.split(/\s+/).filter(Boolean);
         return { item, ex, tokens };
       });
@@ -4561,14 +5754,14 @@ export default function App() {
     // 방해 토큰 후보가 부족하면 전체 N5 단어의 예문에서 보충합니다.
     if (tokenUniverse.length < TRANSLATE_DISTRACTOR_COUNT + 1) {
       const allTokens = VOCAB_DATA["N5"].flatMap((item) =>
-        (item.examples || []).flatMap((ex: any) =>
+        (item.examples || []).flatMap((ex) =>
           ex.kr.split(/\s+/).filter(Boolean)
         )
       );
       tokenUniverse = [...new Set([...tokenUniverse, ...allTokens])];
     }
 
-    return candidates.map(({ item, ex, tokens }: { item: any; ex: any; tokens: any }) => {
+    return candidates.map(({ item, ex, tokens }) => {
       const distractorSource = tokenUniverse.filter(
         (t) => !tokens.includes(t)
       );
@@ -4577,7 +5770,7 @@ export default function App() {
         TRANSLATE_DISTRACTOR_COUNT
       );
       const tiles = shuffleArray([
-        ...tokens.map((t: any, i: number) => ({ id: `c${i}`, text: t })),
+        ...tokens.map((t, i) => ({ id: `c${i}`, text: t })),
         ...distractors.map((t, i) => ({ id: `d${i}`, text: t })),
       ]);
       return {
@@ -4585,7 +5778,7 @@ export default function App() {
         reading: item.reading,
         answer: ex.kr,
         sentenceSegments: ex.segments,
-        speakText: ex.segments.map((s: any) => s.t).join(""),
+        speakText: ex.segments.map((s) => s.t).join(""),
         correctTokens: tokens,
         tiles,
         type: "vocabTranslate",
@@ -4594,9 +5787,9 @@ export default function App() {
   };
 
   // 선택된 단어들을 몇 개씩 묶어 "단어 매칭" 문제 풀을 만듭니다.
-  const buildMatchPool = (selectedItems: any[]) => {
+  const buildMatchPool = (selectedItems) => {
     const shuffled = shuffleArray(selectedItems);
-    const groups: any[] = [];
+    const groups = [];
     for (let i = 0; i < shuffled.length; i += MATCH_GROUP_SIZE) {
       groups.push(shuffled.slice(i, i + MATCH_GROUP_SIZE));
     }
@@ -4609,17 +5802,17 @@ export default function App() {
       .filter((group) => group.length >= MATCH_MIN_GROUP_SIZE)
       .map((group) => ({
         type: "vocabMatch",
-        pairs: group.map((item: any) => ({
+        pairs: group.map((item) => ({
           id: item.word,
           word: item.word,
           furigana: item.furigana,
           meaning: item.meaning,
         })),
         leftTiles: shuffleArray(
-          group.map((item: any) => ({ id: item.word, furigana: item.furigana }))
+          group.map((item) => ({ id: item.word, furigana: item.furigana }))
         ),
         rightTiles: shuffleArray(
-          group.map((item: any) => ({ id: item.word, text: item.meaning }))
+          group.map((item) => ({ id: item.word, text: item.meaning }))
         ),
       }));
   };
@@ -4627,8 +5820,8 @@ export default function App() {
   // ignoreSelection=true는 사용자가 고른 범위와 상관없이 전체 데이터를 훑어서
   // 보기(선택지)가 부족할 때 채울 여분의 오답 후보를 만드는 용도로만 씁니다.
   const buildTestPool = (ignoreSelection = false) => {
-    const isSelected = (val: any) => ignoreSelection || selectedTestItems.includes(val);
-    let pool: any[] = [];
+    const isSelected = (val) => ignoreSelection || selectedTestItems.includes(val);
+    let pool = [];
     if (testType === "hiragana") {
       KANA_DATA.forEach((row) => {
         row.kana.forEach((char, idx) => {
@@ -4714,7 +5907,7 @@ export default function App() {
     setTestScreen("playing");
   };
 
-  const loadTestQuestion = (queue: any[], index: number, fullPool: any[]) => {
+  const loadTestQuestion = (queue, index, fullPool) => {
     const correct = queue[index];
 
     setCurrentQuestion(correct);
@@ -4734,14 +5927,14 @@ export default function App() {
     }
 
     let poolWithoutCorrect = fullPool.filter(
-      (item: any) => item.answer !== correct.answer && item.type === correct.type
+      (item) => item.answer !== correct.answer && item.type === correct.type
     );
 
     // 선택한 범위 안에서 오답 후보가 3개보다 적으면(보기가 4개가 안 되면)
     // 전체 데이터에서 부족한 만큼 채웁니다.
     if (poolWithoutCorrect.length < 3) {
       const seenAnswers = new Set(
-        poolWithoutCorrect.map((item: any) => item.answer)
+        poolWithoutCorrect.map((item) => item.answer)
       );
       seenAnswers.add(correct.answer);
       const backupPool = buildTestPool(true).filter(
@@ -4763,7 +5956,7 @@ export default function App() {
     setOptions(finalOptions);
   };
 
-  const handleTestOptionSelect = (option: any) => {
+  const handleTestOptionSelect = (option) => {
     if (isRevealed) return;
     setSelectedAnswer(option);
     setIsRevealed(true);
@@ -4785,7 +5978,7 @@ export default function App() {
   };
 
   // 문장 번역 문제: 타일을 탭하면 배치하고, 배치된 타일을 다시 탭하면 되돌립니다.
-  const handleTileTap = (tile: any) => {
+  const handleTileTap = (tile) => {
     if (isRevealed) return;
     const placedIdx = placedTiles.findIndex((t) => t.id === tile.id);
     if (placedIdx !== -1) {
@@ -4820,12 +6013,12 @@ export default function App() {
   };
 
   // 단어 매칭 문제: 좌/우에서 하나씩 선택하면 일치 여부를 확인합니다.
-  const handleMatchTap = (side: "left" | "right", id: any) => {
+  const handleMatchTap = (side, id) => {
     if (isRevealed || matchedIds.includes(id)) return;
     if (side === "left") {
-      setSelectedLeftId((prev: any) => (prev === id ? null : id));
+      setSelectedLeftId((prev) => (prev === id ? null : id));
     } else {
-      setSelectedRightId((prev: any) => (prev === id ? null : id));
+      setSelectedRightId((prev) => (prev === id ? null : id));
     }
   };
 
@@ -5051,12 +6244,12 @@ export default function App() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {rows.map((rowItem: any, idx: number) => {
+                    {rows.map((rowItem, idx) => {
                       const rowChars = isHiragana ? rowItem.kana : rowItem.kata;
                       const validChars = rowChars.filter(Boolean);
                       const isRowSelected =
                         validChars.length > 0 &&
-                        validChars.every((c: string) => selectedTestItems.includes(c));
+                        validChars.every((c) => selectedTestItems.includes(c));
                       const isExpanded = expandedRows[rowItem.row];
 
                       return (
@@ -5098,7 +6291,7 @@ export default function App() {
 
                           {isExpanded && (
                             <div className="p-4 pt-0 grid grid-cols-5 gap-2 border-t border-slate-100 bg-slate-50/50 mt-2">
-                              {rowChars.map((char: string, charIdx: number) => {
+                              {rowChars.map((char, charIdx) => {
                                 if (!char) return <div key={charIdx} />;
                                 const isSelected =
                                   selectedTestItems.includes(char);
@@ -5432,7 +6625,7 @@ export default function App() {
             {currentQuestion?.type === "vocabTranslate" ? (
               <div className="flex flex-col gap-4 p-5">
                 <div className="flex flex-wrap gap-2 justify-center min-h-[3rem]">
-                  {currentQuestion.correctTokens.map((correctText: any, i: number) => {
+                  {currentQuestion.correctTokens.map((correctText, i) => {
                     const tile = placedTiles[i];
                     let slotStyle =
                       "border-dashed border-slate-300 text-slate-300";
@@ -5461,9 +6654,9 @@ export default function App() {
                   <div className="flex flex-wrap gap-2 justify-center pt-2 border-t border-dashed border-slate-200">
                     {currentQuestion.tiles
                       .filter(
-                        (t: any) => !placedTiles.some((p) => p.id === t.id)
+                        (t) => !placedTiles.some((p) => p.id === t.id)
                       )
-                      .map((t: any) => (
+                      .map((t) => (
                         <button
                           key={t.id}
                           onClick={() => handleTileTap(t)}
@@ -5495,7 +6688,7 @@ export default function App() {
                 className="grid gap-2 p-5"
                 style={{ gridTemplateColumns: "1fr 1fr" }}
               >
-                {currentQuestion.leftTiles.map((t: any, i: number) => {
+                {currentQuestion.leftTiles.map((t, i) => {
                   const rt = currentQuestion.rightTiles[i];
                   let leftStyle = "bg-white border-slate-200 text-slate-800";
                   if (matchedIds.includes(t.id))
@@ -5777,7 +6970,7 @@ export default function App() {
                       이 판에서 짝을 잘못 맞춘 적이 있어요.
                     </div>
                     <div className="flex flex-col gap-2">
-                      {q.pairs.map((pair: any) => (
+                      {q.pairs.map((pair) => (
                         <div
                           key={pair.id}
                           className="flex items-center justify-between gap-3 bg-slate-50 rounded-xl px-4 py-2"
