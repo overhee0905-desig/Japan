@@ -135,567 +135,3469 @@ export const KANJI_DATA = {
       kanji: "人",
       meaning: "사람",
       sound: "인",
+      onyomi: [
+        { reading: "ジン", kr: "진", word: "外人", wordReading: "がいじん", meaning: "외국인" },
+        { reading: "ニン", kr: "닌", word: "三人", wordReading: "さんにん", meaning: "세 사람" },
+      ],
+      kunyomi: [
+        { reading: "ひと", kr: "히토", word: "人", wordReading: "ひと", meaning: "사람, 인간" },
+      ],
       examples: [
         { word: "人", reading: "ひと", meaning: "사람, 인간" },
         { word: "三人", reading: "さんにん", meaning: "세 사람" },
-      ],
-      altReadings: [
-        { sound: "닌 / 진", meaning: "사람을 세는 단위 (명) · 음독" },
       ],
     },
     {
       kanji: "大",
       meaning: "큰",
       sound: "대",
+      onyomi: [
+        { reading: "ダイ", kr: "다이", word: "大学", wordReading: "だいがく", meaning: "대학" },
+        { reading: "タイ", kr: "타이", word: "大切", wordReading: "たいせつ", meaning: "소중함" },
+      ],
+      kunyomi: [
+        { reading: "おお", kr: "오오", word: "大きい", wordReading: "おおきい", meaning: "크다" },
+      ],
       examples: [{ word: "大きい", reading: "おおきい", meaning: "크다" }],
     },
     {
       kanji: "一",
       meaning: "한",
       sound: "일",
+      onyomi: [
+        { reading: "イチ", kr: "이치", word: "一", wordReading: "いち", meaning: "일, 하나" },
+        { reading: "イツ", kr: "이츠", word: "統一", wordReading: "とういつ", meaning: "통일" },
+      ],
+      kunyomi: [
+        { reading: "ひと", kr: "히토", word: "一つ", wordReading: "ひとつ", meaning: "한 개" },
+      ],
       examples: [
         { word: "一", reading: "いち", meaning: "일, 하나" },
-        { word: "一つ", reading: "ひとつ", meaning: "한 개" },
+        { word: "一番", reading: "いちばん", meaning: "가장, 제일" },
       ],
-      altReadings: [{ sound: "히토(츠)", meaning: "~개, 하나 · 훈독" }],
     },
     {
       kanji: "分",
       meaning: "나눌",
       sound: "분",
-      examples: [
-        { word: "分", reading: "ふん / ぷん", meaning: "-분 (시간 단위)" },
+      onyomi: [
+        { reading: "ブン", kr: "분", word: "十分", wordReading: "じゅうぶん", meaning: "충분함" },
+        { reading: "フン", kr: "훈", word: "分", wordReading: "ふん / ぷん", meaning: "-분 (시간 단위)" },
+        { reading: "ブ", kr: "부", word: "一分", wordReading: "いちぶ", meaning: "일부, 약간" },
       ],
-      altReadings: [
-        { sound: "와(ける)", meaning: "나누다 (分ける)" },
-        { sound: "와(かる)", meaning: "이해하다 (分かる)" },
+      kunyomi: [
+        { reading: "わ", kr: "와", word: "分かる", wordReading: "わかる", meaning: "이해하다, 알다" },
       ],
+      examples: [{ word: "分", reading: "ふん / ぷん", meaning: "-분 (시간 단위)" }],
     },
     {
       kanji: "見",
       meaning: "볼",
       sound: "견",
+      onyomi: [
+        { reading: "ケン", kr: "켄", word: "見学", wordReading: "けんがく", meaning: "견학" },
+      ],
+      kunyomi: [
+        { reading: "み", kr: "미", word: "見る", wordReading: "みる", meaning: "보다" },
+      ],
       examples: [
         { word: "見る", reading: "みる", meaning: "보다" },
         { word: "見学", reading: "けんがく", meaning: "견학" },
-      ],
-      altReadings: [
-        { sound: "켄", meaning: "보다, 견학 · 음독" },
-        { sound: "미(せる)", meaning: "보여주다 (見せる)" },
       ],
     },
     {
       kanji: "出",
       meaning: "날",
       sound: "출",
+      onyomi: [
+        { reading: "シュツ", kr: "슈츠", word: "出席", wordReading: "しゅっせき", meaning: "출석" },
+        { reading: "スイ", kr: "스이", word: "出納", wordReading: "すいとう", meaning: "출납" },
+      ],
+      kunyomi: [
+        { reading: "で", kr: "데", word: "出る", wordReading: "でる", meaning: "나가다, 나오다" },
+        { reading: "だ", kr: "다", word: "出す", wordReading: "だす", meaning: "꺼내다, 내다" },
+      ],
       examples: [
         { word: "出る", reading: "でる", meaning: "나가다, 나오다" },
         { word: "出発", reading: "しゅっぱつ", meaning: "출발" },
-      ],
-      altReadings: [
-        { sound: "슈츠", meaning: "나가다, 출발 · 음독" },
-        { sound: "다(す)", meaning: "꺼내다 (出す)" },
       ],
     },
     {
       kanji: "日",
       meaning: "날",
       sound: "일",
+      onyomi: [
+        { reading: "ニチ", kr: "니치", word: "日曜日", wordReading: "にちようび", meaning: "일요일" },
+        { reading: "ジツ", kr: "지츠", word: "休日", wordReading: "きゅうじつ", meaning: "휴일" },
+      ],
+      kunyomi: [
+        { reading: "ひ", kr: "히", word: "日", wordReading: "ひ", meaning: "날, 해, 낮" },
+        { reading: "か", kr: "카", word: "三日", wordReading: "みっか", meaning: "3일" },
+      ],
       examples: [
         { word: "日", reading: "ひ", meaning: "날, 해, 낮" },
         { word: "日曜日", reading: "にちようび", meaning: "일요일" },
       ],
-      altReadings: [{ sound: "니치 / 지츠", meaning: "날, 요일 · 음독" }],
     },
     {
       kanji: "行",
       meaning: "다닐",
       sound: "행",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "旅行", wordReading: "りょこう", meaning: "여행" },
+        { reading: "ギョウ", kr: "교우", word: "行事", wordReading: "ぎょうじ", meaning: "행사" },
+        { reading: "アン", kr: "안", word: "行脚", wordReading: "あんぎゃ", meaning: "순례, 방랑" },
+      ],
+      kunyomi: [
+        { reading: "い", kr: "이", word: "行く", wordReading: "いく", meaning: "가다" },
+        { reading: "おこな", kr: "오코나", word: "行う", wordReading: "おこなう", meaning: "행하다, 실시하다" },
+      ],
       examples: [
         { word: "行く", reading: "いく", meaning: "가다" },
         { word: "旅行", reading: "りょこう", meaning: "여행" },
-      ],
-      altReadings: [
-        { sound: "코우", meaning: "가다, 여행 · 음독" },
-        { sound: "교우", meaning: "행하다 (銀行 등) · 음독" },
       ],
     },
     {
       kanji: "前",
       meaning: "앞",
       sound: "전",
+      onyomi: [
+        { reading: "ゼン", kr: "젠", word: "前後", wordReading: "ぜんご", meaning: "전후" },
+      ],
+      kunyomi: [
+        { reading: "まえ", kr: "마에", word: "前", wordReading: "まえ", meaning: "앞, 이전" },
+      ],
       examples: [{ word: "前", reading: "まえ", meaning: "앞, 이전" }],
     },
     {
       kanji: "時",
       meaning: "때",
       sound: "시",
+      onyomi: [
+        { reading: "ジ", kr: "지", word: "時間", wordReading: "じかん", meaning: "시간 (기간)" },
+      ],
+      kunyomi: [
+        { reading: "とき", kr: "토키", word: "時々", wordReading: "ときどき", meaning: "가끔, 때때로" },
+      ],
       examples: [{ word: "時間", reading: "じかん", meaning: "시간 (기간)" }],
     },
     {
       kanji: "生",
       meaning: "날",
       sound: "생",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "生徒", wordReading: "せいと", meaning: "학생, 생도" },
+        { reading: "ショウ", kr: "쇼우", word: "一生", wordReading: "いっしょう", meaning: "일생, 평생" },
+      ],
+      kunyomi: [
+        { reading: "い", kr: "이", word: "生きる", wordReading: "いきる", meaning: "살다" },
+        { reading: "う", kr: "우", word: "生まれる", wordReading: "うまれる", meaning: "태어나다" },
+        { reading: "なま", kr: "나마", word: "生ビール", wordReading: "なまビール", meaning: "생맥주" },
+        { reading: "は", kr: "하", word: "生える", wordReading: "はえる", meaning: "자라나다, 나다" },
+      ],
       examples: [
         { word: "生きる", reading: "いきる", meaning: "살다" },
         { word: "生まれる", reading: "うまれる", meaning: "태어나다" },
-      ],
-      altReadings: [
-        { sound: "세이 / 쇼우", meaning: "학생, 인생 등 · 음독" },
-        { sound: "나마", meaning: "날것, 생것 (生)" },
       ],
     },
     {
       kanji: "本",
       meaning: "근본",
       sound: "본",
+      onyomi: [
+        { reading: "ホン", kr: "혼", word: "本", wordReading: "ほん", meaning: "책" },
+      ],
+      kunyomi: [
+        { reading: "もと", kr: "모토", word: "本より", wordReading: "もとより", meaning: "원래, 본래" },
+      ],
       examples: [{ word: "本", reading: "ほん", meaning: "책" }],
     },
     {
       kanji: "中",
       meaning: "가운데",
       sound: "중",
+      onyomi: [
+        { reading: "チュウ", kr: "츄우", word: "中止", wordReading: "ちゅうし", meaning: "중지" },
+      ],
+      kunyomi: [
+        { reading: "なか", kr: "나카", word: "中", wordReading: "なか", meaning: "안, 속, 가운데" },
+      ],
       examples: [{ word: "中", reading: "なか", meaning: "안, 속, 가운데" }],
     },
     {
       kanji: "今",
       meaning: "이제",
       sound: "금",
+      onyomi: [
+        { reading: "コン", kr: "콘", word: "今回", wordReading: "こんかい", meaning: "이번" },
+        { reading: "キン", kr: "킨", word: "今上", wordReading: "きんじょう", meaning: "현재의 천황(존칭)" },
+      ],
+      kunyomi: [
+        { reading: "いま", kr: "이마", word: "今", wordReading: "いま", meaning: "지금" },
+      ],
       examples: [{ word: "今", reading: "いま", meaning: "지금" }],
     },
     {
       kanji: "間",
       meaning: "사이",
       sound: "간",
+      onyomi: [
+        { reading: "カン", kr: "칸", word: "間隔", wordReading: "かんかく", meaning: "간격" },
+        { reading: "ケン", kr: "켄", word: "世間", wordReading: "せけん", meaning: "세상" },
+      ],
+      kunyomi: [
+        { reading: "あいだ", kr: "아이다", word: "間", wordReading: "あいだ", meaning: "사이, 간격" },
+        { reading: "ま", kr: "마", word: "間に合う", wordReading: "まにあう", meaning: "시간에 맞추다" },
+      ],
       examples: [{ word: "間", reading: "あいだ", meaning: "사이, 간격" }],
-      altReadings: [{ sound: "마", meaning: "틈, 사이 (間に合う 등)" }],
     },
     {
       kanji: "年",
       meaning: "해",
       sound: "년",
+      onyomi: [
+        { reading: "ネン", kr: "넨", word: "来年", wordReading: "らいねん", meaning: "내년" },
+      ],
+      kunyomi: [
+        { reading: "とし", kr: "토시", word: "年", wordReading: "とし", meaning: "해, 나이" },
+      ],
       examples: [{ word: "年", reading: "とし", meaning: "해, 나이" }],
     },
     {
       kanji: "子",
       meaning: "아들",
       sound: "자",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "帽子", wordReading: "ぼうし", meaning: "모자" },
+        { reading: "ス", kr: "스", word: "様子", wordReading: "ようす", meaning: "모습, 상황" },
+      ],
+      kunyomi: [
+        { reading: "こ", kr: "코", word: "子供", wordReading: "こども", meaning: "어린이" },
+      ],
       examples: [{ word: "子供", reading: "こども", meaning: "어린이" }],
     },
     {
       kanji: "長",
       meaning: "길",
       sound: "장",
+      onyomi: [
+        { reading: "チョウ", kr: "쵸우", word: "社長", wordReading: "しゃちょう", meaning: "사장" },
+      ],
+      kunyomi: [
+        { reading: "なが", kr: "나가", word: "長い", wordReading: "ながい", meaning: "길다" },
+      ],
       examples: [{ word: "長い", reading: "ながい", meaning: "길다" }],
     },
     {
       kanji: "上",
       meaning: "윗",
       sound: "상",
+      onyomi: [
+        { reading: "ジョウ", kr: "죠우", word: "上手", wordReading: "じょうず", meaning: "잘함, 능숙함" },
+        { reading: "ショウ", kr: "쇼우", word: "上人", wordReading: "しょうにん", meaning: "스님(높임말)" },
+      ],
+      kunyomi: [
+        { reading: "うえ", kr: "우에", word: "上", wordReading: "うえ", meaning: "위" },
+        { reading: "あ", kr: "아", word: "上がる", wordReading: "あがる", meaning: "오르다" },
+        { reading: "のぼ", kr: "노보", word: "上る", wordReading: "のぼる", meaning: "오르다" },
+        { reading: "かみ", kr: "카미", word: "川上", wordReading: "かわかみ", meaning: "강 상류" },
+      ],
       examples: [
         { word: "上", reading: "うえ", meaning: "위" },
-        { word: "上がる", reading: "あがる", meaning: "오르다" },
-      ],
-      altReadings: [
-        { sound: "조우(じょう)", meaning: "위, 상 · 음독" },
-        { sound: "아(がる)", meaning: "오르다 (上がる)" },
+        { word: "上手", reading: "じょうず", meaning: "잘함, 능숙함" },
       ],
     },
     {
       kanji: "入",
       meaning: "들",
       sound: "입",
+      onyomi: [
+        { reading: "ニュウ", kr: "뉴우", word: "入学", wordReading: "にゅうがく", meaning: "입학" },
+      ],
+      kunyomi: [
+        { reading: "はい", kr: "하이", word: "入る", wordReading: "はいる", meaning: "들어가다" },
+        { reading: "い", kr: "이", word: "入る", wordReading: "はいる", meaning: "들어가다" },
+      ],
       examples: [{ word: "入る", reading: "はいる", meaning: "들어가다" }],
     },
     {
       kanji: "後",
       meaning: "뒤",
       sound: "후",
+      onyomi: [
+        { reading: "ゴ", kr: "고", word: "午後", wordReading: "ごご", meaning: "오후" },
+        { reading: "コウ", kr: "코우", word: "後輩", wordReading: "こうはい", meaning: "후배" },
+      ],
+      kunyomi: [
+        { reading: "うしろ", kr: "우시로", word: "後ろ", wordReading: "うしろ", meaning: "뒤" },
+        { reading: "あと", kr: "아토", word: "後で", wordReading: "あとで", meaning: "나중에" },
+        { reading: "のち", kr: "노치", word: "後ほど", wordReading: "のちほど", meaning: "나중에(격식)" },
+      ],
       examples: [{ word: "後ろ", reading: "うしろ", meaning: "뒤" }],
     },
     {
       kanji: "気",
       meaning: "기운",
       sound: "기",
+      onyomi: [
+        { reading: "キ", kr: "키", word: "気", wordReading: "き", meaning: "기운, 마음" },
+        { reading: "ケ", kr: "케", word: "気配", wordReading: "けはい", meaning: "기색, 기미" },
+      ],
+      kunyomi: [],
       examples: [{ word: "気", reading: "き", meaning: "기운, 마음" }],
     },
     {
       kanji: "来",
       meaning: "올",
       sound: "래",
+      onyomi: [
+        { reading: "ライ", kr: "라이", word: "来週", wordReading: "らいしゅう", meaning: "다음 주" },
+      ],
+      kunyomi: [
+        { reading: "く", kr: "쿠", word: "来る", wordReading: "くる", meaning: "오다" },
+        { reading: "きた", kr: "키타", word: "来る", wordReading: "きたる", meaning: "다가오는, 오는(격식)" },
+      ],
       examples: [{ word: "来る", reading: "くる", meaning: "오다" }],
     },
     {
       kanji: "話",
       meaning: "말씀",
       sound: "화",
+      onyomi: [
+        { reading: "ワ", kr: "와", word: "会話", wordReading: "かいわ", meaning: "회화, 대화" },
+      ],
+      kunyomi: [
+        { reading: "はな", kr: "하나", word: "話す", wordReading: "はなす", meaning: "말하다" },
+        { reading: "はなし", kr: "하나시", word: "話", wordReading: "はなし", meaning: "이야기" },
+      ],
       examples: [{ word: "話す", reading: "はなす", meaning: "말하다" }],
     },
     {
       kanji: "女",
       meaning: "계집",
       sound: "녀",
+      onyomi: [
+        { reading: "ジョ", kr: "죠", word: "女性", wordReading: "じょせい", meaning: "여성" },
+        { reading: "ニョ", kr: "뇨", word: "天女", wordReading: "てんにょ", meaning: "선녀" },
+      ],
+      kunyomi: [
+        { reading: "おんな", kr: "온나", word: "女", wordReading: "おんな", meaning: "여자" },
+        { reading: "め", kr: "메", word: "女神", wordReading: "めがみ", meaning: "여신" },
+      ],
       examples: [{ word: "女", reading: "おんな", meaning: "여자" }],
     },
     {
       kanji: "国",
       meaning: "나라",
       sound: "국",
+      onyomi: [
+        { reading: "コク", kr: "코쿠", word: "外国", wordReading: "がいこく", meaning: "외국" },
+      ],
+      kunyomi: [
+        { reading: "くに", kr: "쿠니", word: "国", wordReading: "くに", meaning: "나라, 국가" },
+      ],
       examples: [{ word: "国", reading: "くに", meaning: "나라, 국가" }],
     },
     {
       kanji: "金",
       meaning: "쇠",
       sound: "금",
+      onyomi: [
+        { reading: "キン", kr: "킨", word: "金曜日", wordReading: "きんようび", meaning: "금요일" },
+        { reading: "コン", kr: "콘", word: "金色", wordReading: "こんじき", meaning: "금색(고어체)" },
+      ],
+      kunyomi: [
+        { reading: "かね", kr: "카네", word: "お金", wordReading: "おかね", meaning: "돈" },
+      ],
       examples: [
         { word: "お金", reading: "おかね", meaning: "돈" },
         { word: "金曜日", reading: "きんようび", meaning: "금요일" },
       ],
-      altReadings: [{ sound: "킨", meaning: "돈, 금요일 · 음독" }],
     },
     {
       kanji: "高",
       meaning: "높을",
       sound: "고",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "高校", wordReading: "こうこう", meaning: "고등학교" },
+      ],
+      kunyomi: [
+        { reading: "たか", kr: "타카", word: "高い", wordReading: "たかい", meaning: "높다" },
+      ],
       examples: [{ word: "高い", reading: "たかい", meaning: "높다" }],
     },
     {
       kanji: "下",
       meaning: "아래",
       sound: "하",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "下記", wordReading: "かき", meaning: "하기(아래에 기재)" },
+        { reading: "ゲ", kr: "게", word: "下車", wordReading: "げしゃ", meaning: "하차" },
+      ],
+      kunyomi: [
+        { reading: "した", kr: "시타", word: "下", wordReading: "した", meaning: "아래" },
+        { reading: "さ", kr: "사", word: "下さい", wordReading: "ください", meaning: "주세요" },
+        { reading: "くだ", kr: "쿠다", word: "下さい", wordReading: "ください", meaning: "주세요" },
+        { reading: "もと", kr: "모토", word: "足下", wordReading: "あしもと", meaning: "발밑" },
+      ],
       examples: [
         { word: "下", reading: "した", meaning: "아래" },
-        { word: "下さい", reading: "ください", meaning: "주세요" },
-      ],
-      altReadings: [
-        { sound: "카 / 게", meaning: "아래, 하 · 음독" },
-        { sound: "쿠다(さい)", meaning: "내리다, 주시다 (下さい)" },
+        { word: "下手", reading: "へた", meaning: "서투름, 못함" },
       ],
     },
     {
       kanji: "学",
       meaning: "배울",
       sound: "학",
+      onyomi: [
+        { reading: "ガク", kr: "가쿠", word: "学生", wordReading: "がくせい", meaning: "학생" },
+      ],
+      kunyomi: [
+        { reading: "まな", kr: "마나", word: "学ぶ", wordReading: "まなぶ", meaning: "배우다" },
+      ],
       examples: [{ word: "学ぶ", reading: "まなぶ", meaning: "배우다" }],
     },
     {
       kanji: "先",
       meaning: "먼저",
       sound: "선",
+      onyomi: [
+        { reading: "セン", kr: "센", word: "先生", wordReading: "せんせい", meaning: "선생님" },
+      ],
+      kunyomi: [
+        { reading: "さき", kr: "사키", word: "先", wordReading: "さき", meaning: "앞, 먼저" },
+      ],
       examples: [{ word: "先", reading: "さき", meaning: "앞, 먼저" }],
     },
     {
       kanji: "外",
       meaning: "바깥",
       sound: "외",
+      onyomi: [
+        { reading: "ガイ", kr: "가이", word: "外国", wordReading: "がいこく", meaning: "외국" },
+        { reading: "ゲ", kr: "게", word: "外科", wordReading: "げか", meaning: "외과" },
+      ],
+      kunyomi: [
+        { reading: "そと", kr: "소토", word: "外", wordReading: "そと", meaning: "밖" },
+        { reading: "ほか", kr: "호카", word: "外", wordReading: "ほか", meaning: "다른 것, 밖" },
+        { reading: "はず", kr: "하즈", word: "外す", wordReading: "はずす", meaning: "떼다, 벗기다" },
+      ],
       examples: [{ word: "外", reading: "そと", meaning: "밖" }],
     },
     {
       kanji: "何",
       meaning: "어찌",
       sound: "하",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "幾何学", wordReading: "きかがく", meaning: "기하학" },
+      ],
+      kunyomi: [
+        { reading: "なに", kr: "나니", word: "何", wordReading: "なに", meaning: "무엇" },
+        { reading: "なん", kr: "난", word: "何人", wordReading: "なんにん", meaning: "몇 명" },
+      ],
       examples: [{ word: "何", reading: "なに", meaning: "무엇" }],
     },
     {
       kanji: "男",
       meaning: "사내",
       sound: "남",
+      onyomi: [
+        { reading: "ダン", kr: "단", word: "男性", wordReading: "だんせい", meaning: "남성" },
+        { reading: "ナン", kr: "난", word: "長男", wordReading: "ちょうなん", meaning: "장남" },
+      ],
+      kunyomi: [
+        { reading: "おとこ", kr: "오토코", word: "男", wordReading: "おとこ", meaning: "남자" },
+      ],
       examples: [{ word: "男", reading: "おとこ", meaning: "남자" }],
     },
     {
       kanji: "名",
       meaning: "이름",
       sound: "명",
+      onyomi: [
+        { reading: "メイ", kr: "메이", word: "有名", wordReading: "ゆうめい", meaning: "유명" },
+        { reading: "ミョウ", kr: "묘우", word: "名字", wordReading: "みょうじ", meaning: "성씨" },
+      ],
+      kunyomi: [
+        { reading: "な", kr: "나", word: "名前", wordReading: "なまえ", meaning: "이름" },
+      ],
       examples: [{ word: "名前", reading: "なまえ", meaning: "이름" }],
     },
     {
       kanji: "月",
       meaning: "달",
       sound: "월",
+      onyomi: [
+        { reading: "ゲツ", kr: "게츠", word: "月曜日", wordReading: "げつようび", meaning: "월요일" },
+        { reading: "ガツ", kr: "가츠", word: "一月", wordReading: "いちがつ", meaning: "1월" },
+      ],
+      kunyomi: [
+        { reading: "つき", kr: "츠키", word: "月", wordReading: "つき", meaning: "달" },
+      ],
       examples: [{ word: "月", reading: "つき", meaning: "달" }],
     },
     {
       kanji: "小",
       meaning: "작을",
       sound: "소",
+      onyomi: [
+        { reading: "ショウ", kr: "쇼우", word: "小学校", wordReading: "しょうがっこう", meaning: "초등학교" },
+      ],
+      kunyomi: [
+        { reading: "ちい", kr: "치이", word: "小さい", wordReading: "ちいさい", meaning: "작다" },
+        { reading: "こ", kr: "코", word: "小型", wordReading: "こがた", meaning: "소형" },
+      ],
       examples: [{ word: "小さい", reading: "ちいさい", meaning: "작다" }],
     },
     {
       kanji: "聞",
       meaning: "들을",
       sound: "문",
+      onyomi: [
+        { reading: "ブン", kr: "분", word: "新聞", wordReading: "しんぶん", meaning: "신문" },
+        { reading: "モン", kr: "몬", word: "聴聞", wordReading: "ちょうもん", meaning: "청문" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "聞く", wordReading: "きく", meaning: "듣다" },
+      ],
       examples: [{ word: "聞く", reading: "きく", meaning: "듣다" }],
     },
     {
       kanji: "食",
       meaning: "먹을",
       sound: "식",
+      onyomi: [
+        { reading: "ショク", kr: "쇼쿠", word: "食事", wordReading: "しょくじ", meaning: "식사" },
+      ],
+      kunyomi: [
+        { reading: "た", kr: "타", word: "食べる", wordReading: "たべる", meaning: "먹다" },
+        { reading: "く", kr: "쿠", word: "食う", wordReading: "くう", meaning: "먹다(거친 말투)" },
+      ],
       examples: [{ word: "食べる", reading: "たべる", meaning: "먹다" }],
     },
     {
       kanji: "書",
       meaning: "글",
       sound: "서",
+      onyomi: [
+        { reading: "ショ", kr: "쇼", word: "図書館", wordReading: "としょかん", meaning: "도서관" },
+      ],
+      kunyomi: [
+        { reading: "か", kr: "카", word: "書く", wordReading: "かく", meaning: "쓰다" },
+      ],
       examples: [{ word: "書く", reading: "かく", meaning: "쓰다" }],
     },
     {
       kanji: "山",
       meaning: "뫼",
       sound: "산",
+      onyomi: [
+        { reading: "サン", kr: "산", word: "富士山", wordReading: "ふじさん", meaning: "후지산" },
+      ],
+      kunyomi: [
+        { reading: "やま", kr: "야마", word: "山", wordReading: "やま", meaning: "산" },
+      ],
       examples: [{ word: "山", reading: "やま", meaning: "산" }],
     },
     {
       kanji: "電",
       meaning: "번개",
       sound: "전",
+      onyomi: [
+        { reading: "デン", kr: "덴", word: "電気", wordReading: "でんき", meaning: "전기" },
+      ],
+      kunyomi: [],
       examples: [{ word: "電気", reading: "でんき", meaning: "전기" }],
     },
     {
       kanji: "二",
       meaning: "두",
       sound: "이",
+      onyomi: [
+        { reading: "ニ", kr: "니", word: "二", wordReading: "に", meaning: "이, 둘" },
+      ],
+      kunyomi: [
+        { reading: "ふた", kr: "후타", word: "二つ", wordReading: "ふたつ", meaning: "두 개" },
+      ],
       examples: [{ word: "二", reading: "に", meaning: "이, 둘" }],
     },
     {
       kanji: "車",
       meaning: "수레",
       sound: "차",
+      onyomi: [
+        { reading: "シャ", kr: "샤", word: "電車", wordReading: "でんしゃ", meaning: "전철" },
+      ],
+      kunyomi: [
+        { reading: "くるま", kr: "쿠루마", word: "車", wordReading: "くるま", meaning: "자동차" },
+      ],
       examples: [{ word: "車", reading: "くるま", meaning: "자동차" }],
     },
     {
       kanji: "水",
       meaning: "물",
       sound: "수",
+      onyomi: [
+        { reading: "スイ", kr: "스이", word: "水曜日", wordReading: "すいようび", meaning: "수요일" },
+      ],
+      kunyomi: [
+        { reading: "みず", kr: "미즈", word: "水", wordReading: "みず", meaning: "물" },
+      ],
       examples: [
         { word: "水", reading: "みず", meaning: "물" },
         { word: "水曜日", reading: "すいようび", meaning: "수요일" },
       ],
-      altReadings: [{ sound: "스이", meaning: "물, 수요일 · 음독" }],
     },
     {
       kanji: "木",
       meaning: "나무",
       sound: "목",
+      onyomi: [
+        { reading: "モク", kr: "모쿠", word: "木曜日", wordReading: "もくようび", meaning: "목요일" },
+        { reading: "ボク", kr: "보쿠", word: "大木", wordReading: "たいぼく", meaning: "큰 나무" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "木", wordReading: "き", meaning: "나무" },
+        { reading: "こ", kr: "코", word: "木陰", wordReading: "こかげ", meaning: "나무 그늘" },
+      ],
       examples: [
         { word: "木", reading: "き", meaning: "나무" },
         { word: "木曜日", reading: "もくようび", meaning: "목요일" },
       ],
-      altReadings: [{ sound: "모쿠", meaning: "나무, 목요일 · 음독" }],
     },
     {
       kanji: "母",
       meaning: "어미",
       sound: "모",
+      onyomi: [
+        { reading: "ボ", kr: "보", word: "母国", wordReading: "ぼこく", meaning: "모국" },
+      ],
+      kunyomi: [
+        { reading: "はは", kr: "하하", word: "母", wordReading: "はは", meaning: "어머니" },
+      ],
       examples: [{ word: "母", reading: "はは", meaning: "어머니" }],
     },
     {
       kanji: "校",
       meaning: "학교",
       sound: "교",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "学校", wordReading: "がっこう", meaning: "학교" },
+      ],
+      kunyomi: [],
       examples: [{ word: "学校", reading: "がっこう", meaning: "학교" }],
     },
     {
       kanji: "父",
       meaning: "아비",
       sound: "부",
+      onyomi: [
+        { reading: "フ", kr: "후", word: "父母", wordReading: "ふぼ", meaning: "부모" },
+      ],
+      kunyomi: [
+        { reading: "ちち", kr: "치치", word: "父", wordReading: "ちち", meaning: "아버지" },
+      ],
       examples: [{ word: "父", reading: "ちち", meaning: "아버지" }],
     },
     {
       kanji: "白",
       meaning: "흰",
       sound: "백",
+      onyomi: [
+        { reading: "ハク", kr: "하쿠", word: "白紙", wordReading: "はくし", meaning: "백지" },
+        { reading: "ビャク", kr: "뱌쿠", word: "白夜", wordReading: "びゃくや", meaning: "백야" },
+      ],
+      kunyomi: [
+        { reading: "しろ", kr: "시로", word: "白い", wordReading: "しろい", meaning: "하얗다" },
+      ],
       examples: [{ word: "白い", reading: "しろい", meaning: "하얗다" }],
     },
     {
       kanji: "語",
       meaning: "말씀",
       sound: "어",
+      onyomi: [
+        { reading: "ゴ", kr: "고", word: "日本語", wordReading: "にほんご", meaning: "일본어" },
+      ],
+      kunyomi: [
+        { reading: "かた", kr: "카타", word: "語る", wordReading: "かたる", meaning: "이야기하다" },
+      ],
       examples: [{ word: "日本語", reading: "にほんご", meaning: "일본어" }],
     },
     {
       kanji: "十",
       meaning: "열",
       sound: "십",
+      onyomi: [
+        { reading: "ジュウ", kr: "쥬우", word: "十", wordReading: "じゅう", meaning: "십, 열" },
+        { reading: "ジッ", kr: "짓", word: "十分", wordReading: "じっぷん", meaning: "10분" },
+      ],
+      kunyomi: [
+        { reading: "とお", kr: "토오", word: "十日", wordReading: "とおか", meaning: "10일" },
+      ],
       examples: [{ word: "十", reading: "じゅう", meaning: "십, 열" }],
     },
     {
       kanji: "万",
       meaning: "일만",
       sound: "만",
+      onyomi: [
+        { reading: "マン", kr: "만", word: "一万", wordReading: "いちまん", meaning: "1만" },
+        { reading: "バン", kr: "반", word: "万歳", wordReading: "ばんざい", meaning: "만세" },
+      ],
+      kunyomi: [],
       examples: [{ word: "一万", reading: "いちまん", meaning: "1만" }],
     },
     {
       kanji: "友",
       meaning: "벗",
       sound: "우",
+      onyomi: [
+        { reading: "ユウ", kr: "유우", word: "友人", wordReading: "ゆうじん", meaning: "친구, 벗" },
+      ],
+      kunyomi: [
+        { reading: "とも", kr: "토모", word: "友だち", wordReading: "ともだち", meaning: "친구" },
+      ],
       examples: [{ word: "友だち", reading: "ともだち", meaning: "친구" }],
     },
     {
       kanji: "川",
       meaning: "내",
       sound: "천",
+      onyomi: [
+        { reading: "セン", kr: "센", word: "河川", wordReading: "かせん", meaning: "하천" },
+      ],
+      kunyomi: [
+        { reading: "かわ", kr: "카와", word: "川", wordReading: "かわ", meaning: "강" },
+      ],
       examples: [{ word: "川", reading: "かわ", meaning: "강" }],
     },
     {
       kanji: "三",
       meaning: "석",
       sound: "삼",
+      onyomi: [
+        { reading: "サン", kr: "산", word: "三", wordReading: "さん", meaning: "삼, 셋" },
+      ],
+      kunyomi: [
+        { reading: "み", kr: "미", word: "三日月", wordReading: "みかづき", meaning: "초승달" },
+      ],
       examples: [{ word: "三", reading: "さん", meaning: "삼, 셋" }],
     },
     {
       kanji: "天",
       meaning: "하늘",
       sound: "천",
+      onyomi: [
+        { reading: "テン", kr: "텐", word: "天気", wordReading: "てんき", meaning: "날씨" },
+      ],
+      kunyomi: [
+        { reading: "あめ", kr: "아메", word: "天が下", wordReading: "あめがした", meaning: "온 세상(고어)" },
+        { reading: "あま", kr: "아마", word: "天の川", wordReading: "あまのがわ", meaning: "은하수" },
+      ],
       examples: [{ word: "天気", reading: "てんき", meaning: "날씨" }],
     },
     {
       kanji: "東",
       meaning: "동녘",
       sound: "동",
+      onyomi: [
+        { reading: "トウ", kr: "토우", word: "東西", wordReading: "とうざい", meaning: "동서" },
+      ],
+      kunyomi: [
+        { reading: "ひがし", kr: "히가시", word: "東", wordReading: "ひがし", meaning: "동쪽" },
+      ],
       examples: [{ word: "東", reading: "ひがし", meaning: "동쪽" }],
     },
     {
       kanji: "半",
       meaning: "반",
       sound: "반",
+      onyomi: [
+        { reading: "ハン", kr: "한", word: "半分", wordReading: "はんぶん", meaning: "절반" },
+      ],
+      kunyomi: [
+        { reading: "なか", kr: "나카", word: "半ば", wordReading: "なかば", meaning: "절반, 중간" },
+      ],
       examples: [{ word: "半分", reading: "はんぶん", meaning: "절반" }],
     },
     {
       kanji: "北",
       meaning: "북녘",
       sound: "북",
+      onyomi: [
+        { reading: "ホク", kr: "호쿠", word: "敗北", wordReading: "はいぼく", meaning: "패배" },
+      ],
+      kunyomi: [
+        { reading: "きた", kr: "키타", word: "北", wordReading: "きた", meaning: "북쪽" },
+      ],
       examples: [{ word: "北", reading: "きた", meaning: "북쪽" }],
     },
     {
       kanji: "火",
       meaning: "불",
       sound: "화",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "火曜日", wordReading: "かようび", meaning: "화요일" },
+      ],
+      kunyomi: [
+        { reading: "ひ", kr: "히", word: "火", wordReading: "ひ", meaning: "불" },
+      ],
       examples: [
         { word: "火", reading: "ひ", meaning: "불" },
         { word: "火曜日", reading: "かようび", meaning: "화요일" },
       ],
-      altReadings: [{ sound: "카", meaning: "불, 화요일 · 음독" }],
     },
     {
       kanji: "土",
       meaning: "흙",
       sound: "토",
+      onyomi: [
+        { reading: "ド", kr: "도", word: "土曜日", wordReading: "どようび", meaning: "토요일" },
+        { reading: "ト", kr: "토", word: "土地", wordReading: "とち", meaning: "토지" },
+      ],
+      kunyomi: [
+        { reading: "つち", kr: "츠치", word: "土", wordReading: "つち", meaning: "흙" },
+      ],
       examples: [
         { word: "土", reading: "つち", meaning: "흙" },
         { word: "土曜日", reading: "どようび", meaning: "토요일" },
       ],
-      altReadings: [{ sound: "도", meaning: "흙, 토요일 · 음독" }],
     },
     {
       kanji: "南",
       meaning: "남녘",
       sound: "남",
+      onyomi: [
+        { reading: "ナン", kr: "난", word: "南極", wordReading: "なんきょく", meaning: "남극" },
+        { reading: "ナ", kr: "나", word: "南", wordReading: "みなみ", meaning: "남쪽" },
+      ],
+      kunyomi: [
+        { reading: "みなみ", kr: "미나미", word: "南", wordReading: "みなみ", meaning: "남쪽" },
+      ],
       examples: [{ word: "南", reading: "みなみ", meaning: "남쪽" }],
     },
     {
       kanji: "千",
       meaning: "일천",
       sound: "천",
+      onyomi: [
+        { reading: "セン", kr: "센", word: "千", wordReading: "せん", meaning: "천" },
+      ],
+      kunyomi: [
+        { reading: "ち", kr: "치", word: "千歳", wordReading: "ちとせ", meaning: "천년, 오랜 세월" },
+      ],
       examples: [{ word: "千", reading: "せん", meaning: "천" }],
     },
     {
       kanji: "西",
       meaning: "서녘",
       sound: "서",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "西洋", wordReading: "せいよう", meaning: "서양" },
+        { reading: "サイ", kr: "사이", word: "西方", wordReading: "さいほう", meaning: "서쪽, 서방" },
+      ],
+      kunyomi: [
+        { reading: "にし", kr: "니시", word: "西", wordReading: "にし", meaning: "서쪽" },
+      ],
       examples: [{ word: "西", reading: "にし", meaning: "서쪽" }],
     },
     {
       kanji: "毎",
       meaning: "매양",
       sound: "매",
+      onyomi: [
+        { reading: "マイ", kr: "마이", word: "毎日", wordReading: "まいにち", meaning: "매일" },
+      ],
+      kunyomi: [],
       examples: [{ word: "毎日", reading: "まいにち", meaning: "매일" }],
     },
     {
       kanji: "休",
       meaning: "쉴",
       sound: "휴",
+      onyomi: [
+        { reading: "キュウ", kr: "큐우", word: "休憩", wordReading: "きゅうけい", meaning: "휴게, 휴식" },
+      ],
+      kunyomi: [
+        { reading: "やす", kr: "야스", word: "休む", wordReading: "やすむ", meaning: "쉬다" },
+      ],
       examples: [{ word: "休む", reading: "やすむ", meaning: "쉬다" }],
     },
     {
       kanji: "八",
       meaning: "여덟",
       sound: "팔",
+      onyomi: [
+        { reading: "ハチ", kr: "하치", word: "八", wordReading: "はち", meaning: "팔, 여덟" },
+      ],
+      kunyomi: [
+        { reading: "や", kr: "야", word: "八百屋", wordReading: "やおや", meaning: "채소 가게" },
+      ],
       examples: [{ word: "八", reading: "はち", meaning: "팔, 여덟" }],
     },
     {
       kanji: "読",
       meaning: "읽을",
       sound: "독",
+      onyomi: [
+        { reading: "ドク", kr: "도쿠", word: "読書", wordReading: "どくしょ", meaning: "독서" },
+        { reading: "トク", kr: "토쿠", word: "読本", wordReading: "とくほん", meaning: "독본(읽기 교재)" },
+      ],
+      kunyomi: [
+        { reading: "よ", kr: "요", word: "読む", wordReading: "よむ", meaning: "읽다" },
+      ],
       examples: [{ word: "読む", reading: "よむ", meaning: "읽다" }],
     },
     {
       kanji: "五",
       meaning: "다섯",
       sound: "오",
+      onyomi: [
+        { reading: "ゴ", kr: "고", word: "五", wordReading: "ご", meaning: "오, 다섯" },
+      ],
+      kunyomi: [
+        { reading: "いつ", kr: "이츠", word: "五日", wordReading: "いつか", meaning: "5일" },
+      ],
       examples: [{ word: "五", reading: "ご", meaning: "오, 다섯" }],
     },
     {
       kanji: "四",
       meaning: "넉",
       sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "四季", wordReading: "しき", meaning: "사계절" },
+      ],
+      kunyomi: [
+        { reading: "よ", kr: "요", word: "四", wordReading: "よん", meaning: "사, 넷" },
+        { reading: "よん", kr: "욘", word: "四", wordReading: "よん", meaning: "사, 넷" },
+      ],
       examples: [{ word: "四", reading: "よん", meaning: "사, 넷" }],
     },
     {
       kanji: "百",
       meaning: "일백",
       sound: "백",
+      onyomi: [
+        { reading: "ヒャク", kr: "햐쿠", word: "百", wordReading: "ひゃく", meaning: "백" },
+      ],
+      kunyomi: [],
       examples: [{ word: "百", reading: "ひゃく", meaning: "백" }],
     },
     {
       kanji: "円",
       meaning: "둥글",
       sound: "원",
+      onyomi: [
+        { reading: "エン", kr: "엔", word: "円", wordReading: "えん", meaning: "엔" },
+      ],
+      kunyomi: [
+        { reading: "まる", kr: "마루", word: "円い", wordReading: "まるい", meaning: "둥글다" },
+      ],
       examples: [{ word: "円", reading: "えん", meaning: "엔" }],
     },
     {
       kanji: "午",
       meaning: "낮",
       sound: "오",
+      onyomi: [
+        { reading: "ゴ", kr: "고", word: "午後", wordReading: "ごご", meaning: "오후" },
+      ],
+      kunyomi: [],
       examples: [{ word: "午後", reading: "ごご", meaning: "오후" }],
     },
     {
       kanji: "七",
       meaning: "일곱",
       sound: "칠",
+      onyomi: [
+        { reading: "シチ", kr: "시치", word: "七月", wordReading: "しちがつ", meaning: "7월" },
+      ],
+      kunyomi: [
+        { reading: "なな", kr: "나나", word: "七", wordReading: "なな", meaning: "칠, 일곱" },
+      ],
       examples: [{ word: "七", reading: "なな", meaning: "칠, 일곱" }],
     },
     {
       kanji: "左",
       meaning: "왼",
       sound: "좌",
+      onyomi: [
+        { reading: "サ", kr: "사", word: "左右", wordReading: "さゆう", meaning: "좌우" },
+      ],
+      kunyomi: [
+        { reading: "ひだり", kr: "히다리", word: "左", wordReading: "ひだり", meaning: "왼쪽" },
+      ],
       examples: [{ word: "左", reading: "ひだり", meaning: "왼쪽" }],
     },
     {
       kanji: "右",
       meaning: "오른",
       sound: "우",
+      onyomi: [
+        { reading: "ウ", kr: "우", word: "右折", wordReading: "うせつ", meaning: "우회전" },
+        { reading: "ユウ", kr: "유우", word: "座右の銘", wordReading: "ざゆうのめい", meaning: "좌우명" },
+      ],
+      kunyomi: [
+        { reading: "みぎ", kr: "미기", word: "右", wordReading: "みぎ", meaning: "오른쪽" },
+      ],
       examples: [{ word: "右", reading: "みぎ", meaning: "오른쪽" }],
     },
     {
       kanji: "雨",
       meaning: "비",
       sound: "우",
+      onyomi: [
+        { reading: "ウ", kr: "우", word: "雨天", wordReading: "うてん", meaning: "우천" },
+      ],
+      kunyomi: [
+        { reading: "あめ", kr: "아메", word: "雨", wordReading: "あめ", meaning: "비" },
+      ],
       examples: [{ word: "雨", reading: "あめ", meaning: "비" }],
     },
     {
       kanji: "六",
       meaning: "여섯",
       sound: "육",
+      onyomi: [
+        { reading: "ロク", kr: "로쿠", word: "六", wordReading: "ろく", meaning: "육, 여섯" },
+      ],
+      kunyomi: [
+        { reading: "む", kr: "무", word: "六つ", wordReading: "むっつ", meaning: "여섯 개" },
+      ],
       examples: [{ word: "六", reading: "ろく", meaning: "육, 여섯" }],
     },
     {
       kanji: "九",
       meaning: "아홉",
       sound: "구",
+      onyomi: [
+        { reading: "キュウ", kr: "큐우", word: "九", wordReading: "きゅう", meaning: "구, 아홉" },
+        { reading: "ク", kr: "쿠", word: "九月", wordReading: "くがつ", meaning: "9월" },
+      ],
+      kunyomi: [
+        { reading: "ここの", kr: "코코노", word: "九日", wordReading: "ここのか", meaning: "9일" },
+      ],
       examples: [{ word: "九", reading: "きゅう", meaning: "구, 아홉" }],
     },
   ],
-  N4: [],
+  N4: [
+    {
+      kanji: "朝",
+      meaning: "아침",
+      sound: "조",
+      onyomi: [
+        { reading: "チョウ", kr: "쵸우", word: "早朝", wordReading: "そうちょう", meaning: "이른 아침" },
+      ],
+      kunyomi: [
+        { reading: "あさ", kr: "아사", word: "朝", wordReading: "あさ", meaning: "아침" },
+      ],
+      examples: [{ word: "朝", reading: "あさ", meaning: "아침" }],
+    },
+    {
+      kanji: "昼",
+      meaning: "낮",
+      sound: "주",
+      onyomi: [
+        { reading: "チュウ", kr: "츄우", word: "昼食", wordReading: "ちゅうしょく", meaning: "점심 식사" },
+      ],
+      kunyomi: [
+        { reading: "ひる", kr: "히루", word: "昼", wordReading: "ひる", meaning: "낮" },
+      ],
+      examples: [{ word: "昼", reading: "ひる", meaning: "낮" }],
+    },
+    {
+      kanji: "晩",
+      meaning: "저녁",
+      sound: "만",
+      onyomi: [
+        { reading: "バン", kr: "반", word: "今晩", wordReading: "こんばん", meaning: "오늘 밤" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "今晩", reading: "こんばん", meaning: "오늘 밤" }],
+    },
+    {
+      kanji: "夜",
+      meaning: "밤",
+      sound: "야",
+      onyomi: [
+        { reading: "ヤ", kr: "야", word: "夜間", wordReading: "やかん", meaning: "야간" },
+      ],
+      kunyomi: [
+        { reading: "よる", kr: "요루", word: "夜", wordReading: "よる", meaning: "밤" },
+        { reading: "よ", kr: "요", word: "夜", wordReading: "よる", meaning: "밤" },
+      ],
+      examples: [{ word: "夜", reading: "よる", meaning: "밤" }],
+    },
+    {
+      kanji: "正",
+      meaning: "바를",
+      sound: "정",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "正確", wordReading: "せいかく", meaning: "정확" },
+        { reading: "ショウ", kr: "쇼우", word: "正月", wordReading: "しょうがつ", meaning: "정월, 설" },
+      ],
+      kunyomi: [
+        { reading: "ただ", kr: "타다", word: "正しい", wordReading: "ただしい", meaning: "옳다" },
+        { reading: "まさ", kr: "마사", word: "正に", wordReading: "まさに", meaning: "바로, 틀림없이" },
+      ],
+      examples: [{ word: "正月", reading: "しょうがつ", meaning: "정월, 설" }],
+    },
+    {
+      kanji: "週",
+      meaning: "주(週)",
+      sound: "주",
+      onyomi: [
+        { reading: "シュウ", kr: "슈우", word: "今週", wordReading: "こんしゅう", meaning: "이번 주" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "今週", reading: "こんしゅう", meaning: "이번 주" }],
+    },
+    {
+      kanji: "去",
+      meaning: "갈",
+      sound: "거",
+      onyomi: [
+        { reading: "キョ", kr: "쿄", word: "去年", wordReading: "きょねん", meaning: "작년" },
+        { reading: "コ", kr: "코", word: "過去", wordReading: "かこ", meaning: "과거" },
+      ],
+      kunyomi: [
+        { reading: "さ", kr: "사", word: "去る", wordReading: "さる", meaning: "떠나다" },
+      ],
+      examples: [{ word: "去年", reading: "きょねん", meaning: "작년" }],
+    },
+    {
+      kanji: "家",
+      meaning: "집",
+      sound: "가",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "家族", wordReading: "かぞく", meaning: "가족" },
+        { reading: "ケ", kr: "케", word: "本家", wordReading: "ほんけ", meaning: "본가" },
+      ],
+      kunyomi: [
+        { reading: "いえ", kr: "이에", word: "家", wordReading: "いえ", meaning: "집" },
+        { reading: "や", kr: "야", word: "大家", wordReading: "おおや", meaning: "집주인" },
+      ],
+      examples: [{ word: "家族", reading: "かぞく", meaning: "가족" }],
+    },
+    {
+      kanji: "族",
+      meaning: "겨레",
+      sound: "족",
+      onyomi: [
+        { reading: "ゾク", kr: "조쿠", word: "家族", wordReading: "かぞく", meaning: "가족" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "家族", reading: "かぞく", meaning: "가족" }],
+    },
+    {
+      kanji: "兄",
+      meaning: "형",
+      sound: "형",
+      onyomi: [
+        { reading: "ケイ", kr: "케이", word: "父兄", wordReading: "ふけい", meaning: "학부형" },
+        { reading: "キョウ", kr: "쿄우", word: "兄弟", wordReading: "きょうだい", meaning: "형제" },
+      ],
+      kunyomi: [
+        { reading: "あに", kr: "아니", word: "兄", wordReading: "あに", meaning: "형, 오빠" },
+      ],
+      examples: [{ word: "兄", reading: "あに", meaning: "형, 오빠" }],
+    },
+    {
+      kanji: "弟",
+      meaning: "아우",
+      sound: "제",
+      onyomi: [
+        { reading: "テイ", kr: "테이", word: "師弟", wordReading: "してい", meaning: "사제(스승과 제자)" },
+        { reading: "ダイ", kr: "다이", word: "兄弟", wordReading: "きょうだい", meaning: "형제" },
+        { reading: "デ", kr: "데", word: "弟子", wordReading: "でし", meaning: "제자" },
+      ],
+      kunyomi: [
+        { reading: "おとうと", kr: "오토우토", word: "弟", wordReading: "おとうと", meaning: "남동생" },
+      ],
+      examples: [{ word: "弟", reading: "おとうと", meaning: "남동생" }],
+    },
+    {
+      kanji: "姉",
+      meaning: "누이",
+      sound: "자",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "姉妹", wordReading: "しまい", meaning: "자매" },
+      ],
+      kunyomi: [
+        { reading: "あね", kr: "아네", word: "姉", wordReading: "あね", meaning: "누나, 언니" },
+      ],
+      examples: [{ word: "姉", reading: "あね", meaning: "누나, 언니" }],
+    },
+    {
+      kanji: "妹",
+      meaning: "누이",
+      sound: "매",
+      onyomi: [
+        { reading: "マイ", kr: "마이", word: "姉妹", wordReading: "しまい", meaning: "자매" },
+      ],
+      kunyomi: [
+        { reading: "いもうと", kr: "이모우토", word: "妹", wordReading: "いもうと", meaning: "여동생" },
+      ],
+      examples: [{ word: "妹", reading: "いもうと", meaning: "여동생" }],
+    },
+    {
+      kanji: "夫",
+      meaning: "남편",
+      sound: "부",
+      onyomi: [
+        { reading: "フ", kr: "후", word: "夫妻", wordReading: "ふさい", meaning: "부부" },
+        { reading: "フウ", kr: "후우", word: "夫婦", wordReading: "ふうふ", meaning: "부부" },
+      ],
+      kunyomi: [
+        { reading: "おっと", kr: "옷토", word: "夫", wordReading: "おっと", meaning: "남편" },
+      ],
+      examples: [{ word: "夫", reading: "おっと", meaning: "남편" }],
+    },
+    {
+      kanji: "妻",
+      meaning: "아내",
+      sound: "처",
+      onyomi: [
+        { reading: "サイ", kr: "사이", word: "妻子", wordReading: "さいし", meaning: "처자식" },
+      ],
+      kunyomi: [
+        { reading: "つま", kr: "츠마", word: "妻", wordReading: "つま", meaning: "아내" },
+      ],
+      examples: [{ word: "妻", reading: "つま", meaning: "아내" }],
+    },
+    {
+      kanji: "主",
+      meaning: "주인",
+      sound: "주",
+      onyomi: [
+        { reading: "シュ", kr: "슈", word: "主人", wordReading: "しゅじん", meaning: "주인, 남편" },
+        { reading: "ス", kr: "스", word: "坊主", wordReading: "ぼうず", meaning: "스님, 중" },
+      ],
+      kunyomi: [
+        { reading: "ぬし", kr: "누시", word: "家主", wordReading: "やぬし", meaning: "집주인" },
+        { reading: "おも", kr: "오모", word: "主に", wordReading: "おもに", meaning: "주로" },
+      ],
+      examples: [{ word: "主人", reading: "しゅじん", meaning: "주인, 남편" }],
+    },
+    {
+      kanji: "奥",
+      meaning: "속",
+      sound: "오",
+      onyomi: [
+        { reading: "オウ", kr: "오우", word: "深奥", wordReading: "しんおう", meaning: "심오" },
+      ],
+      kunyomi: [
+        { reading: "おく", kr: "오쿠", word: "奥さん", wordReading: "おくさん", meaning: "(남의) 부인, 아내" },
+      ],
+      examples: [{ word: "奥さん", reading: "おくさん", meaning: "(남의) 부인, 아내" }],
+    },
+    {
+      kanji: "私",
+      meaning: "나",
+      sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "私", wordReading: "わたし", meaning: "나, 저" },
+      ],
+      kunyomi: [
+        { reading: "わたし", kr: "와타시", word: "私", wordReading: "わたし", meaning: "나, 저" },
+        { reading: "わたくし", kr: "와타쿠시", word: "私", wordReading: "わたくし", meaning: "저(공손한 표현)" },
+      ],
+      examples: [{ word: "私", reading: "わたし", meaning: "나, 저" }],
+    },
+    {
+      kanji: "王",
+      meaning: "임금",
+      sound: "왕",
+      onyomi: [
+        { reading: "オウ", kr: "오우", word: "王様", wordReading: "おうさま", meaning: "임금님" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "王様", reading: "おうさま", meaning: "임금님" }],
+    },
+    {
+      kanji: "様",
+      meaning: "모양",
+      sound: "양",
+      onyomi: [
+        { reading: "ヨウ", kr: "요우", word: "様相", wordReading: "ようそう", meaning: "양상" },
+      ],
+      kunyomi: [
+        { reading: "さま", kr: "사마", word: "〜様", wordReading: "さま", meaning: "~님 (존칭)" },
+      ],
+      examples: [{ word: "〜様", reading: "さま", meaning: "~님 (존칭)" }],
+    },
+    {
+      kanji: "才",
+      meaning: "재주",
+      sound: "재",
+      onyomi: [
+        { reading: "サイ", kr: "사이", word: "天才", wordReading: "てんさい", meaning: "천재" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "二十才", reading: "はたち", meaning: "스무 살" }],
+    },
+    {
+      kanji: "赤",
+      meaning: "붉을",
+      sound: "적",
+      onyomi: [
+        { reading: "セキ", kr: "세키", word: "赤道", wordReading: "せきどう", meaning: "적도" },
+        { reading: "シャク", kr: "샤쿠", word: "赤銅", wordReading: "しゃくどう", meaning: "적동(구리 합금)" },
+      ],
+      kunyomi: [
+        { reading: "あか", kr: "아카", word: "赤い", wordReading: "あかい", meaning: "빨갛다" },
+      ],
+      examples: [{ word: "赤い", reading: "あかい", meaning: "빨갛다" }],
+    },
+    {
+      kanji: "青",
+      meaning: "푸를",
+      sound: "청",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "青年", wordReading: "せいねん", meaning: "청년" },
+        { reading: "ショウ", kr: "쇼우", word: "緑青", wordReading: "ろくしょう", meaning: "녹청(구리의 녹)" },
+      ],
+      kunyomi: [
+        { reading: "あお", kr: "아오", word: "青い", wordReading: "あおい", meaning: "파랗다" },
+      ],
+      examples: [{ word: "青い", reading: "あおい", meaning: "파랗다" }],
+    },
+    {
+      kanji: "黒",
+      meaning: "검을",
+      sound: "흑",
+      onyomi: [
+        { reading: "コク", kr: "코쿠", word: "暗黒", wordReading: "あんこく", meaning: "암흑" },
+      ],
+      kunyomi: [
+        { reading: "くろ", kr: "쿠로", word: "黒い", wordReading: "くろい", meaning: "검다" },
+      ],
+      examples: [{ word: "黒い", reading: "くろい", meaning: "검다" }],
+    },
+    {
+      kanji: "色",
+      meaning: "색",
+      sound: "색",
+      onyomi: [
+        { reading: "ショク", kr: "쇼쿠", word: "特色", wordReading: "とくしょく", meaning: "특색" },
+        { reading: "シキ", kr: "시키", word: "景色", wordReading: "けしき", meaning: "경치" },
+      ],
+      kunyomi: [
+        { reading: "いろ", kr: "이로", word: "色", wordReading: "いろ", meaning: "색, 색깔" },
+      ],
+      examples: [{ word: "色", reading: "いろ", meaning: "색, 색깔" }],
+    },
+    {
+      kanji: "銀",
+      meaning: "은",
+      sound: "은",
+      onyomi: [
+        { reading: "ギン", kr: "긴", word: "銀行", wordReading: "ぎんこう", meaning: "은행" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "銀行", reading: "ぎんこう", meaning: "은행" }],
+    },
+    {
+      kanji: "黄",
+      meaning: "누를",
+      sound: "황",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "黄河", wordReading: "こうが", meaning: "황하(강 이름)" },
+        { reading: "オウ", kr: "오우", word: "黄金", wordReading: "おうごん", meaning: "황금" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "黄色", wordReading: "きいろ", meaning: "노란색" },
+      ],
+      examples: [{ word: "黄色", reading: "きいろ", meaning: "노란색" }],
+    },
+    {
+      kanji: "緑",
+      meaning: "푸를",
+      sound: "록",
+      onyomi: [
+        { reading: "リョク", kr: "료쿠", word: "新緑", wordReading: "しんりょく", meaning: "신록(새싹의 푸르름)" },
+        { reading: "ロク", kr: "로쿠", word: "緑青", wordReading: "ろくしょう", meaning: "녹청(구리의 녹)" },
+      ],
+      kunyomi: [
+        { reading: "みどり", kr: "미도리", word: "緑", wordReading: "みどり", meaning: "초록색, 녹색" },
+      ],
+      examples: [{ word: "緑", reading: "みどり", meaning: "초록색, 녹색" }],
+    },
+    {
+      kanji: "丸",
+      meaning: "둥글",
+      sound: "환",
+      onyomi: [
+        { reading: "ガン", kr: "간", word: "丸薬", wordReading: "がんやく", meaning: "환약(둥근 알약)" },
+      ],
+      kunyomi: [
+        { reading: "まる", kr: "마루", word: "丸い", wordReading: "まるい", meaning: "둥글다" },
+      ],
+      examples: [{ word: "丸い", reading: "まるい", meaning: "둥글다" }],
+    },
+    {
+      kanji: "玉",
+      meaning: "구슬",
+      sound: "옥",
+      onyomi: [
+        { reading: "ギョク", kr: "교쿠", word: "玉座", wordReading: "ぎょくざ", meaning: "옥좌" },
+      ],
+      kunyomi: [
+        { reading: "たま", kr: "타마", word: "玉", wordReading: "たま", meaning: "구슬, 공" },
+      ],
+      examples: [{ word: "玉", reading: "たま", meaning: "구슬, 공" }],
+    },
+    {
+      kanji: "春",
+      meaning: "봄",
+      sound: "춘",
+      onyomi: [
+        { reading: "シュン", kr: "슌", word: "青春", wordReading: "せいしゅん", meaning: "청춘" },
+      ],
+      kunyomi: [
+        { reading: "はる", kr: "하루", word: "春", wordReading: "はる", meaning: "봄" },
+      ],
+      examples: [{ word: "春", reading: "はる", meaning: "봄" }],
+    },
+    {
+      kanji: "夏",
+      meaning: "여름",
+      sound: "하",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "夏季", wordReading: "かき", meaning: "하계, 여름철" },
+        { reading: "ゲ", kr: "게", word: "夏至", wordReading: "げし", meaning: "하지" },
+      ],
+      kunyomi: [
+        { reading: "なつ", kr: "나츠", word: "夏", wordReading: "なつ", meaning: "여름" },
+      ],
+      examples: [{ word: "夏", reading: "なつ", meaning: "여름" }],
+    },
+    {
+      kanji: "秋",
+      meaning: "가을",
+      sound: "추",
+      onyomi: [
+        { reading: "シュウ", kr: "슈우", word: "秋分", wordReading: "しゅうぶん", meaning: "추분" },
+      ],
+      kunyomi: [
+        { reading: "あき", kr: "아키", word: "秋", wordReading: "あき", meaning: "가을" },
+      ],
+      examples: [{ word: "秋", reading: "あき", meaning: "가을" }],
+    },
+    {
+      kanji: "冬",
+      meaning: "겨울",
+      sound: "동",
+      onyomi: [
+        { reading: "トウ", kr: "토우", word: "立冬", wordReading: "りっとう", meaning: "입동" },
+      ],
+      kunyomi: [
+        { reading: "ふゆ", kr: "후유", word: "冬", wordReading: "ふゆ", meaning: "겨울" },
+      ],
+      examples: [{ word: "冬", reading: "ふゆ", meaning: "겨울" }],
+    },
+    {
+      kanji: "空",
+      meaning: "빌",
+      sound: "공",
+      onyomi: [
+        { reading: "クウ", kr: "쿠우", word: "空気", wordReading: "くうき", meaning: "공기" },
+      ],
+      kunyomi: [
+        { reading: "そら", kr: "소라", word: "空", wordReading: "そら", meaning: "하늘" },
+        { reading: "あ", kr: "아", word: "空く", wordReading: "あく", meaning: "비다" },
+        { reading: "から", kr: "카라", word: "空", wordReading: "から", meaning: "빈, 공허함" },
+      ],
+      examples: [{ word: "空", reading: "そら", meaning: "하늘" }],
+    },
+    {
+      kanji: "風",
+      meaning: "바람",
+      sound: "풍",
+      onyomi: [
+        { reading: "フウ", kr: "후우", word: "台風", wordReading: "たいふう", meaning: "태풍" },
+        { reading: "フ", kr: "후", word: "風情", wordReading: "ふぜい", meaning: "운치, 정취" },
+      ],
+      kunyomi: [
+        { reading: "かぜ", kr: "카제", word: "風", wordReading: "かぜ", meaning: "바람" },
+      ],
+      examples: [{ word: "風", reading: "かぜ", meaning: "바람" }],
+    },
+    {
+      kanji: "台",
+      meaning: "대",
+      sound: "대",
+      onyomi: [
+        { reading: "ダイ", kr: "다이", word: "台所", wordReading: "だいどころ", meaning: "부엌" },
+        { reading: "タイ", kr: "타이", word: "台風", wordReading: "たいふう", meaning: "태풍" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "台風", reading: "たいふう", meaning: "태풍" }],
+    },
+    {
+      kanji: "雲",
+      meaning: "구름",
+      sound: "운",
+      onyomi: [
+        { reading: "ウン", kr: "운", word: "雲海", wordReading: "うんかい", meaning: "운해" },
+      ],
+      kunyomi: [
+        { reading: "くも", kr: "쿠모", word: "雲", wordReading: "くも", meaning: "구름" },
+      ],
+      examples: [{ word: "雲", reading: "くも", meaning: "구름" }],
+    },
+    {
+      kanji: "雪",
+      meaning: "눈",
+      sound: "설",
+      onyomi: [
+        { reading: "セツ", kr: "세츠", word: "除雪", wordReading: "じょせつ", meaning: "제설" },
+      ],
+      kunyomi: [
+        { reading: "ゆき", kr: "유키", word: "雪", wordReading: "ゆき", meaning: "눈(내리는)" },
+      ],
+      examples: [{ word: "雪", reading: "ゆき", meaning: "눈(내리는)" }],
+    },
+    {
+      kanji: "晴",
+      meaning: "맑을",
+      sound: "청",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "快晴", wordReading: "かいせい", meaning: "쾌청" },
+      ],
+      kunyomi: [
+        { reading: "は", kr: "하", word: "晴れ", wordReading: "はれ", meaning: "맑음, 갬" },
+      ],
+      examples: [{ word: "晴れ", reading: "はれ", meaning: "맑음, 갬" }],
+    },
+    {
+      kanji: "星",
+      meaning: "별",
+      sound: "성",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "星座", wordReading: "せいざ", meaning: "별자리" },
+        { reading: "ショウ", kr: "쇼우", word: "明星", wordReading: "みょうじょう", meaning: "샛별, 금성" },
+      ],
+      kunyomi: [
+        { reading: "ほし", kr: "호시", word: "星", wordReading: "ほし", meaning: "별" },
+      ],
+      examples: [{ word: "星", reading: "ほし", meaning: "별" }],
+    },
+    {
+      kanji: "光",
+      meaning: "빛",
+      sound: "광",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "光線", wordReading: "こうせん", meaning: "광선" },
+      ],
+      kunyomi: [
+        { reading: "ひかり", kr: "히카리", word: "光", wordReading: "ひかり", meaning: "빛" },
+        { reading: "ひか", kr: "히카", word: "光", wordReading: "ひかり", meaning: "빛" },
+      ],
+      examples: [{ word: "光", reading: "ひかり", meaning: "빛" }],
+    },
+    {
+      kanji: "地",
+      meaning: "땅",
+      sound: "지",
+      onyomi: [
+        { reading: "チ", kr: "치", word: "地図", wordReading: "ちず", meaning: "지도" },
+        { reading: "ジ", kr: "지", word: "地面", wordReading: "じめん", meaning: "지면(땅바닥)" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "地図", reading: "ちず", meaning: "지도" }],
+    },
+    {
+      kanji: "谷",
+      meaning: "골",
+      sound: "곡",
+      onyomi: [
+        { reading: "コク", kr: "코쿠", word: "幽谷", wordReading: "ゆうこく", meaning: "깊은 골짜기" },
+      ],
+      kunyomi: [
+        { reading: "たに", kr: "타니", word: "谷", wordReading: "たに", meaning: "골짜기, 계곡" },
+      ],
+      examples: [{ word: "谷", reading: "たに", meaning: "골짜기, 계곡" }],
+    },
+    {
+      kanji: "自",
+      meaning: "스스로",
+      sound: "자",
+      onyomi: [
+        { reading: "ジ", kr: "지", word: "自分", wordReading: "じぶん", meaning: "자기 자신" },
+        { reading: "シ", kr: "시", word: "自然", wordReading: "しぜん", meaning: "자연" },
+      ],
+      kunyomi: [
+        { reading: "みずか", kr: "미즈카", word: "自ら", wordReading: "みずから", meaning: "스스로" },
+      ],
+      examples: [{ word: "自分", reading: "じぶん", meaning: "자기 자신" }],
+    },
+    {
+      kanji: "然",
+      meaning: "그러할",
+      sound: "연",
+      onyomi: [
+        { reading: "ゼン", kr: "젠", word: "自然", wordReading: "しぜん", meaning: "자연" },
+        { reading: "ネン", kr: "넨", word: "天然", wordReading: "てんねん", meaning: "천연" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "自然", reading: "しぜん", meaning: "자연" }],
+    },
+    {
+      kanji: "草",
+      meaning: "풀",
+      sound: "초",
+      onyomi: [
+        { reading: "ソウ", kr: "소우", word: "草原", wordReading: "そうげん", meaning: "초원" },
+      ],
+      kunyomi: [
+        { reading: "くさ", kr: "쿠사", word: "草", wordReading: "くさ", meaning: "풀" },
+      ],
+      examples: [{ word: "草", reading: "くさ", meaning: "풀" }],
+    },
+    {
+      kanji: "原",
+      meaning: "근원",
+      sound: "원",
+      onyomi: [
+        { reading: "ゲン", kr: "겐", word: "原因", wordReading: "げんいん", meaning: "원인" },
+      ],
+      kunyomi: [
+        { reading: "はら", kr: "하라", word: "野原", wordReading: "のはら", meaning: "들판" },
+      ],
+      examples: [{ word: "野原", reading: "のはら", meaning: "들판" }],
+    },
+    {
+      kanji: "海",
+      meaning: "바다",
+      sound: "해",
+      onyomi: [
+        { reading: "カイ", kr: "카이", word: "海岸", wordReading: "かいがん", meaning: "해안" },
+      ],
+      kunyomi: [
+        { reading: "うみ", kr: "우미", word: "海", wordReading: "うみ", meaning: "바다" },
+      ],
+      examples: [{ word: "海", reading: "うみ", meaning: "바다" }],
+    },
+    {
+      kanji: "湖",
+      meaning: "호수",
+      sound: "호",
+      onyomi: [
+        { reading: "コ", kr: "코", word: "湖水", wordReading: "こすい", meaning: "호수" },
+      ],
+      kunyomi: [
+        { reading: "みずうみ", kr: "미즈우미", word: "湖", wordReading: "みずうみ", meaning: "호수" },
+      ],
+      examples: [{ word: "湖", reading: "みずうみ", meaning: "호수" }],
+    },
+    {
+      kanji: "池",
+      meaning: "못",
+      sound: "지",
+      onyomi: [
+        { reading: "チ", kr: "치", word: "貯水池", wordReading: "ちょすいち", meaning: "저수지" },
+      ],
+      kunyomi: [
+        { reading: "いけ", kr: "이케", word: "池", wordReading: "いけ", meaning: "연못" },
+      ],
+      examples: [{ word: "池", reading: "いけ", meaning: "연못" }],
+    },
+    {
+      kanji: "里",
+      meaning: "마을",
+      sound: "리",
+      onyomi: [
+        { reading: "リ", kr: "리", word: "一里", wordReading: "いちり", meaning: "1리(거리 단위)" },
+      ],
+      kunyomi: [
+        { reading: "さと", kr: "사토", word: "里", wordReading: "さと", meaning: "마을, 시골" },
+      ],
+      examples: [{ word: "里", reading: "さと", meaning: "마을, 시골" }],
+    },
+    {
+      kanji: "野",
+      meaning: "들",
+      sound: "야",
+      onyomi: [
+        { reading: "ヤ", kr: "야", word: "野菜", wordReading: "やさい", meaning: "채소, 야채" },
+      ],
+      kunyomi: [
+        { reading: "の", kr: "노", word: "野原", wordReading: "のはら", meaning: "들판" },
+      ],
+      examples: [{ word: "野菜", reading: "やさい", meaning: "채소, 야채" }],
+    },
+    {
+      kanji: "虫",
+      meaning: "벌레",
+      sound: "충",
+      onyomi: [
+        { reading: "チュウ", kr: "츄우", word: "害虫", wordReading: "がいちゅう", meaning: "해충" },
+      ],
+      kunyomi: [
+        { reading: "むし", kr: "무시", word: "虫", wordReading: "むし", meaning: "벌레, 곤충" },
+      ],
+      examples: [{ word: "虫", reading: "むし", meaning: "벌레, 곤충" }],
+    },
+    {
+      kanji: "羽",
+      meaning: "날개",
+      sound: "우",
+      onyomi: [
+        { reading: "ウ", kr: "우", word: "羽毛", wordReading: "うもう", meaning: "우모, 깃털" },
+      ],
+      kunyomi: [
+        { reading: "はね", kr: "하네", word: "羽", wordReading: "はね", meaning: "날개" },
+        { reading: "は", kr: "하", word: "羽", wordReading: "はね", meaning: "날개" },
+      ],
+      examples: [{ word: "羽", reading: "はね", meaning: "날개" }],
+    },
+    {
+      kanji: "馬",
+      meaning: "말",
+      sound: "마",
+      onyomi: [
+        { reading: "バ", kr: "바", word: "競馬", wordReading: "けいば", meaning: "경마" },
+      ],
+      kunyomi: [
+        { reading: "うま", kr: "우마", word: "馬", wordReading: "うま", meaning: "말(동물)" },
+        { reading: "ま", kr: "마", word: "馬", wordReading: "うま", meaning: "말(동물)" },
+      ],
+      examples: [{ word: "馬", reading: "うま", meaning: "말(동물)" }],
+    },
+    {
+      kanji: "鳴",
+      meaning: "울",
+      sound: "명",
+      onyomi: [
+        { reading: "メイ", kr: "메이", word: "悲鳴", wordReading: "ひめい", meaning: "비명" },
+      ],
+      kunyomi: [
+        { reading: "な", kr: "나", word: "鳴く", wordReading: "なく", meaning: "(동물이) 울다" },
+      ],
+      examples: [{ word: "鳴く", reading: "なく", meaning: "(동물이) 울다" }],
+    },
+    {
+      kanji: "毛",
+      meaning: "털",
+      sound: "모",
+      onyomi: [
+        { reading: "モウ", kr: "모우", word: "毛布", wordReading: "もうふ", meaning: "담요" },
+      ],
+      kunyomi: [
+        { reading: "け", kr: "케", word: "毛", wordReading: "け", meaning: "털" },
+      ],
+      examples: [{ word: "毛", reading: "け", meaning: "털" }],
+    },
+    {
+      kanji: "糸",
+      meaning: "실",
+      sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "製糸", wordReading: "せいし", meaning: "제사(실을 만듦)" },
+      ],
+      kunyomi: [
+        { reading: "いと", kr: "이토", word: "糸", wordReading: "いと", meaning: "실" },
+      ],
+      examples: [{ word: "糸", reading: "いと", meaning: "실" }],
+    },
+    {
+      kanji: "衣",
+      meaning: "옷",
+      sound: "의",
+      onyomi: [
+        { reading: "イ", kr: "이", word: "衣服", wordReading: "いふく", meaning: "의복" },
+      ],
+      kunyomi: [
+        { reading: "ころも", kr: "코로모", word: "衣", wordReading: "ころも", meaning: "옷, 의복(고어)" },
+      ],
+      examples: [{ word: "衣服", reading: "いふく", meaning: "의복" }],
+    },
+    {
+      kanji: "服",
+      meaning: "옷",
+      sound: "복",
+      onyomi: [
+        { reading: "フク", kr: "후쿠", word: "服", wordReading: "ふく", meaning: "옷" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "服", reading: "ふく", meaning: "옷" }],
+    },
+    {
+      kanji: "洋",
+      meaning: "큰바다",
+      sound: "양",
+      onyomi: [
+        { reading: "ヨウ", kr: "요우", word: "洋服", wordReading: "ようふく", meaning: "양복, 서양식 옷" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "洋服", reading: "ようふく", meaning: "양복, 서양식 옷" }],
+    },
+    {
+      kanji: "料",
+      meaning: "재료",
+      sound: "료",
+      onyomi: [
+        { reading: "リョウ", kr: "료우", word: "料理", wordReading: "りょうり", meaning: "요리" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "料理", reading: "りょうり", meaning: "요리" }],
+    },
+    {
+      kanji: "理",
+      meaning: "다스릴",
+      sound: "리",
+      onyomi: [
+        { reading: "リ", kr: "리", word: "料理", wordReading: "りょうり", meaning: "요리" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "料理", reading: "りょうり", meaning: "요리" }],
+    },
+    {
+      kanji: "飯",
+      meaning: "밥",
+      sound: "반",
+      onyomi: [
+        { reading: "ハン", kr: "한", word: "ご飯", wordReading: "ごはん", meaning: "밥" },
+      ],
+      kunyomi: [
+        { reading: "めし", kr: "메시", word: "飯", wordReading: "めし", meaning: "밥(격식 없는 말)" },
+      ],
+      examples: [{ word: "ご飯", reading: "ごはん", meaning: "밥" }],
+    },
+    {
+      kanji: "麦",
+      meaning: "보리",
+      sound: "맥",
+      onyomi: [
+        { reading: "バク", kr: "바쿠", word: "麦芽", wordReading: "ばくが", meaning: "맥아" },
+      ],
+      kunyomi: [
+        { reading: "むぎ", kr: "무기", word: "麦", wordReading: "むぎ", meaning: "보리, 밀" },
+      ],
+      examples: [{ word: "麦", reading: "むぎ", meaning: "보리, 밀" }],
+    },
+    {
+      kanji: "油",
+      meaning: "기름",
+      sound: "유",
+      onyomi: [
+        { reading: "ユ", kr: "유", word: "油断", wordReading: "ゆだん", meaning: "방심" },
+      ],
+      kunyomi: [
+        { reading: "あぶら", kr: "아부라", word: "油", wordReading: "あぶら", meaning: "기름, 식용유" },
+      ],
+      examples: [{ word: "油", reading: "あぶら", meaning: "기름, 식용유" }],
+    },
+    {
+      kanji: "酒",
+      meaning: "술",
+      sound: "주",
+      onyomi: [
+        { reading: "シュ", kr: "슈", word: "日本酒", wordReading: "にほんしゅ", meaning: "일본술" },
+      ],
+      kunyomi: [
+        { reading: "さけ", kr: "사케", word: "お酒", wordReading: "おさけ", meaning: "술" },
+        { reading: "さか", kr: "사카", word: "酒場", wordReading: "さかば", meaning: "술집" },
+      ],
+      examples: [{ word: "お酒", reading: "おさけ", meaning: "술" }],
+    },
+    {
+      kanji: "味",
+      meaning: "맛",
+      sound: "미",
+      onyomi: [
+        { reading: "ミ", kr: "미", word: "意味", wordReading: "いみ", meaning: "의미" },
+      ],
+      kunyomi: [
+        { reading: "あじ", kr: "아지", word: "味", wordReading: "あじ", meaning: "맛" },
+      ],
+      examples: [{ word: "味", reading: "あじ", meaning: "맛" }],
+    },
+    {
+      kanji: "住",
+      meaning: "살",
+      sound: "주",
+      onyomi: [
+        { reading: "ジュウ", kr: "쥬우", word: "住宅", wordReading: "じゅうたく", meaning: "주택" },
+      ],
+      kunyomi: [
+        { reading: "す", kr: "스", word: "住む", wordReading: "すむ", meaning: "살다, 거주하다" },
+      ],
+      examples: [{ word: "住む", reading: "すむ", meaning: "살다, 거주하다" }],
+    },
+    {
+      kanji: "所",
+      meaning: "곳",
+      sound: "소",
+      onyomi: [
+        { reading: "ショ", kr: "쇼", word: "住所", wordReading: "じゅうしょ", meaning: "주소" },
+      ],
+      kunyomi: [
+        { reading: "ところ", kr: "토코로", word: "所", wordReading: "ところ", meaning: "장소, 곳" },
+      ],
+      examples: [{ word: "住所", reading: "じゅうしょ", meaning: "주소" }],
+    },
+    {
+      kanji: "都",
+      meaning: "도읍",
+      sound: "도",
+      onyomi: [
+        { reading: "ト", kr: "토", word: "都会", wordReading: "とかい", meaning: "도시" },
+        { reading: "ツ", kr: "츠", word: "都度", wordReading: "つど", meaning: "그때그때, 매번" },
+      ],
+      kunyomi: [
+        { reading: "みやこ", kr: "미야코", word: "都", wordReading: "みやこ", meaning: "수도, 서울(고어)" },
+      ],
+      examples: [{ word: "都会", reading: "とかい", meaning: "도시" }],
+    },
+    {
+      kanji: "道",
+      meaning: "길",
+      sound: "도",
+      onyomi: [
+        { reading: "ドウ", kr: "도우", word: "道路", wordReading: "どうろ", meaning: "도로" },
+      ],
+      kunyomi: [
+        { reading: "みち", kr: "미치", word: "道", wordReading: "みち", meaning: "길" },
+      ],
+      examples: [{ word: "道", reading: "みち", meaning: "길" }],
+    },
+    {
+      kanji: "府",
+      meaning: "마을",
+      sound: "부",
+      onyomi: [
+        { reading: "フ", kr: "후", word: "大阪府", wordReading: "おおさかふ", meaning: "오사카부" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "大阪府", reading: "おおさかふ", meaning: "오사카부" }],
+    },
+    {
+      kanji: "県",
+      meaning: "고을",
+      sound: "현",
+      onyomi: [
+        { reading: "ケン", kr: "켄", word: "県", wordReading: "けん", meaning: "현 (행정구역)" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "県", reading: "けん", meaning: "현 (행정구역)" }],
+    },
+    {
+      kanji: "京",
+      meaning: "서울",
+      sound: "경",
+      onyomi: [
+        { reading: "キョウ", kr: "쿄우", word: "東京", wordReading: "とうきょう", meaning: "도쿄" },
+        { reading: "ケイ", kr: "케이", word: "京阪", wordReading: "けいはん", meaning: "교토와 오사카" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "東京", reading: "とうきょう", meaning: "도쿄" }],
+    },
+    {
+      kanji: "市",
+      meaning: "시장",
+      sound: "시",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "市", wordReading: "し", meaning: "시 (행정구역)" },
+      ],
+      kunyomi: [
+        { reading: "いち", kr: "이치", word: "市場", wordReading: "いちば", meaning: "시장" },
+      ],
+      examples: [{ word: "市", reading: "し", meaning: "시 (행정구역)" }],
+    },
+    {
+      kanji: "区",
+      meaning: "구역",
+      sound: "구",
+      onyomi: [
+        { reading: "ク", kr: "쿠", word: "区", wordReading: "く", meaning: "구 (행정구역)" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "区", reading: "く", meaning: "구 (행정구역)" }],
+    },
+    {
+      kanji: "村",
+      meaning: "마을",
+      sound: "촌",
+      onyomi: [
+        { reading: "ソン", kr: "손", word: "農村", wordReading: "のうそん", meaning: "농촌" },
+      ],
+      kunyomi: [
+        { reading: "むら", kr: "무라", word: "村", wordReading: "むら", meaning: "마을, 촌" },
+      ],
+      examples: [{ word: "村", reading: "むら", meaning: "마을, 촌" }],
+    },
+    {
+      kanji: "番",
+      meaning: "차례",
+      sound: "번",
+      onyomi: [
+        { reading: "バン", kr: "반", word: "番号", wordReading: "ばんごう", meaning: "번호" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "番号", reading: "ばんごう", meaning: "번호" }],
+    },
+    {
+      kanji: "号",
+      meaning: "부를",
+      sound: "호",
+      onyomi: [
+        { reading: "ゴウ", kr: "고우", word: "番号", wordReading: "ばんごう", meaning: "번호" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "番号", reading: "ばんごう", meaning: "번호" }],
+    },
+    {
+      kanji: "紙",
+      meaning: "종이",
+      sound: "지",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "用紙", wordReading: "ようし", meaning: "용지" },
+      ],
+      kunyomi: [
+        { reading: "かみ", kr: "카미", word: "紙", wordReading: "かみ", meaning: "종이" },
+      ],
+      examples: [{ word: "紙", reading: "かみ", meaning: "종이" }],
+    },
+    {
+      kanji: "店",
+      meaning: "가게",
+      sound: "점",
+      onyomi: [
+        { reading: "テン", kr: "텐", word: "開店", wordReading: "かいてん", meaning: "개점" },
+      ],
+      kunyomi: [
+        { reading: "みせ", kr: "미세", word: "店", wordReading: "みせ", meaning: "가게" },
+      ],
+      examples: [{ word: "店", reading: "みせ", meaning: "가게" }],
+    },
+    {
+      kanji: "客",
+      meaning: "손",
+      sound: "객",
+      onyomi: [
+        { reading: "キャク", kr: "캬쿠", word: "お客さん", wordReading: "おきゃくさん", meaning: "손님" },
+        { reading: "カク", kr: "카쿠", word: "旅客", wordReading: "りょかく", meaning: "여객" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "お客さん", reading: "おきゃくさん", meaning: "손님" }],
+    },
+    {
+      kanji: "売",
+      meaning: "팔",
+      sound: "매",
+      onyomi: [
+        { reading: "バイ", kr: "바이", word: "売買", wordReading: "ばいばい", meaning: "매매" },
+      ],
+      kunyomi: [
+        { reading: "う", kr: "우", word: "売る", wordReading: "うる", meaning: "팔다" },
+      ],
+      examples: [{ word: "売る", reading: "うる", meaning: "팔다" }],
+    },
+    {
+      kanji: "品",
+      meaning: "물건",
+      sound: "품",
+      onyomi: [
+        { reading: "ヒン", kr: "힌", word: "商品", wordReading: "しょうひん", meaning: "상품" },
+      ],
+      kunyomi: [
+        { reading: "しな", kr: "시나", word: "品物", wordReading: "しなもの", meaning: "물건, 상품" },
+      ],
+      examples: [{ word: "品物", reading: "しなもの", meaning: "물건, 상품" }],
+    },
+    {
+      kanji: "薬",
+      meaning: "약",
+      sound: "약",
+      onyomi: [
+        { reading: "ヤク", kr: "야쿠", word: "薬局", wordReading: "やっきょく", meaning: "약국" },
+      ],
+      kunyomi: [
+        { reading: "くすり", kr: "쿠스리", word: "薬", wordReading: "くすり", meaning: "약" },
+      ],
+      examples: [{ word: "薬", reading: "くすり", meaning: "약" }],
+    },
+    {
+      kanji: "待",
+      meaning: "기다릴",
+      sound: "대",
+      onyomi: [
+        { reading: "タイ", kr: "타이", word: "期待", wordReading: "きたい", meaning: "기대" },
+      ],
+      kunyomi: [
+        { reading: "ま", kr: "마", word: "待つ", wordReading: "まつ", meaning: "기다리다" },
+      ],
+      examples: [{ word: "待つ", reading: "まつ", meaning: "기다리다" }],
+    },
+    {
+      kanji: "合",
+      meaning: "합할",
+      sound: "합",
+      onyomi: [
+        { reading: "ゴウ", kr: "고우", word: "合計", wordReading: "ごうけい", meaning: "합계" },
+      ],
+      kunyomi: [
+        { reading: "あ", kr: "아", word: "合う", wordReading: "あう", meaning: "맞다, 어울리다" },
+      ],
+      examples: [{ word: "合う", reading: "あう", meaning: "맞다, 어울리다" }],
+    },
+    {
+      kanji: "計",
+      meaning: "셀",
+      sound: "계",
+      onyomi: [
+        { reading: "ケイ", kr: "케이", word: "会計", wordReading: "かいけい", meaning: "계산, 회계" },
+      ],
+      kunyomi: [
+        { reading: "はか", kr: "하카", word: "計る", wordReading: "はかる", meaning: "재다, 측정하다" },
+      ],
+      examples: [{ word: "会計", reading: "かいけい", meaning: "계산, 회계" }],
+    },
+    {
+      kanji: "辺",
+      meaning: "가",
+      sound: "변",
+      onyomi: [
+        { reading: "ヘン", kr: "헨", word: "この辺", wordReading: "このへん", meaning: "이 근처" },
+      ],
+      kunyomi: [
+        { reading: "あた", kr: "아타", word: "辺り", wordReading: "あたり", meaning: "근처, 주변" },
+      ],
+      examples: [{ word: "この辺", reading: "このへん", meaning: "이 근처" }],
+    },
+    {
+      kanji: "交",
+      meaning: "사귈",
+      sound: "교",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "交通", wordReading: "こうつう", meaning: "교통" },
+      ],
+      kunyomi: [
+        { reading: "まじ", kr: "마지", word: "交わる", wordReading: "まじわる", meaning: "교차하다, 사귀다" },
+        { reading: "か", kr: "카", word: "交わす", wordReading: "かわす", meaning: "주고받다" },
+      ],
+      examples: [{ word: "交通", reading: "こうつう", meaning: "교통" }],
+    },
+    {
+      kanji: "通",
+      meaning: "통할",
+      sound: "통",
+      onyomi: [
+        { reading: "ツウ", kr: "츠우", word: "交通", wordReading: "こうつう", meaning: "교통" },
+        { reading: "ツ", kr: "츠", word: "交通", wordReading: "こうつう", meaning: "교통" },
+      ],
+      kunyomi: [
+        { reading: "とお", kr: "토오", word: "通る", wordReading: "とおる", meaning: "지나가다" },
+        { reading: "かよ", kr: "카요", word: "通う", wordReading: "かよう", meaning: "다니다" },
+      ],
+      examples: [{ word: "交通", reading: "こうつう", meaning: "교통" }],
+    },
+    {
+      kanji: "荷",
+      meaning: "짐",
+      sound: "하",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "荷重", wordReading: "かじゅう", meaning: "하중" },
+      ],
+      kunyomi: [
+        { reading: "に", kr: "니", word: "荷物", wordReading: "にもつ", meaning: "짐, 화물" },
+      ],
+      examples: [{ word: "荷物", reading: "にもつ", meaning: "짐, 화물" }],
+    },
+    {
+      kanji: "送",
+      meaning: "보낼",
+      sound: "송",
+      onyomi: [
+        { reading: "ソウ", kr: "소우", word: "送金", wordReading: "そうきん", meaning: "송금" },
+      ],
+      kunyomi: [
+        { reading: "おく", kr: "오쿠", word: "送る", wordReading: "おくる", meaning: "보내다" },
+      ],
+      examples: [{ word: "送る", reading: "おくる", meaning: "보내다" }],
+    },
+    {
+      kanji: "宅",
+      meaning: "집",
+      sound: "택",
+      onyomi: [
+        { reading: "タク", kr: "타쿠", word: "お宅", wordReading: "おたく", meaning: "댁, 귀댁" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "お宅", reading: "おたく", meaning: "댁, 귀댁" }],
+    },
+    {
+      kanji: "止",
+      meaning: "그칠",
+      sound: "지",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "禁止", wordReading: "きんし", meaning: "금지" },
+      ],
+      kunyomi: [
+        { reading: "と", kr: "토", word: "止まる", wordReading: "とまる", meaning: "멈추다, 멈춰서다" },
+      ],
+      examples: [{ word: "止まる", reading: "とまる", meaning: "멈추다, 멈춰서다" }],
+    },
+    {
+      kanji: "急",
+      meaning: "급할",
+      sound: "급",
+      onyomi: [
+        { reading: "キュウ", kr: "큐우", word: "急行", wordReading: "きゅうこう", meaning: "급행" },
+      ],
+      kunyomi: [
+        { reading: "いそ", kr: "이소", word: "急ぐ", wordReading: "いそぐ", meaning: "서두르다" },
+      ],
+      examples: [{ word: "急ぐ", reading: "いそぐ", meaning: "서두르다" }],
+    },
+    {
+      kanji: "特",
+      meaning: "특별할",
+      sound: "특",
+      onyomi: [
+        { reading: "トク", kr: "토쿠", word: "特別", wordReading: "とくべつ", meaning: "특별" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "特別", reading: "とくべつ", meaning: "특별" }],
+    },
+    {
+      kanji: "鉄",
+      meaning: "쇠",
+      sound: "철",
+      onyomi: [
+        { reading: "テツ", kr: "테츠", word: "地下鉄", wordReading: "ちかてつ", meaning: "지하철" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "地下鉄", reading: "ちかてつ", meaning: "지하철" }],
+    },
+    {
+      kanji: "船",
+      meaning: "배",
+      sound: "선",
+      onyomi: [
+        { reading: "セン", kr: "센", word: "船員", wordReading: "せんいん", meaning: "선원" },
+      ],
+      kunyomi: [
+        { reading: "ふね", kr: "후네", word: "船", wordReading: "ふね", meaning: "배, 선박" },
+        { reading: "ふな", kr: "후나", word: "船便", wordReading: "ふなびん", meaning: "배편" },
+      ],
+      examples: [{ word: "船", reading: "ふね", meaning: "배, 선박" }],
+    },
+    {
+      kanji: "部",
+      meaning: "거느릴",
+      sound: "부",
+      onyomi: [
+        { reading: "ブ", kr: "부", word: "部分", wordReading: "ぶぶん", meaning: "부분" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "部屋", reading: "へや", meaning: "방" }],
+    },
+    {
+      kanji: "屋",
+      meaning: "집",
+      sound: "옥",
+      onyomi: [
+        { reading: "オク", kr: "오쿠", word: "屋上", wordReading: "おくじょう", meaning: "옥상" },
+      ],
+      kunyomi: [
+        { reading: "や", kr: "야", word: "部屋", wordReading: "へや", meaning: "방" },
+      ],
+      examples: [{ word: "部屋", reading: "へや", meaning: "방" }],
+    },
+    {
+      kanji: "教",
+      meaning: "가르칠",
+      sound: "교",
+      onyomi: [
+        { reading: "キョウ", kr: "쿄우", word: "教育", wordReading: "きょういく", meaning: "교육" },
+      ],
+      kunyomi: [
+        { reading: "おし", kr: "오시", word: "教える", wordReading: "おしえる", meaning: "가르치다" },
+        { reading: "おそ", kr: "오소", word: "教わる", wordReading: "おそわる", meaning: "배우다, 가르침을 받다" },
+      ],
+      examples: [{ word: "教える", reading: "おしえる", meaning: "가르치다" }],
+    },
+    {
+      kanji: "室",
+      meaning: "집",
+      sound: "실",
+      onyomi: [
+        { reading: "シツ", kr: "시츠", word: "教室", wordReading: "きょうしつ", meaning: "교실" },
+      ],
+      kunyomi: [
+        { reading: "むろ", kr: "무로", word: "氷室", wordReading: "ひむろ", meaning: "얼음 창고" },
+      ],
+      examples: [{ word: "教室", reading: "きょうしつ", meaning: "교실" }],
+    },
+    {
+      kanji: "会",
+      meaning: "모일",
+      sound: "회",
+      onyomi: [
+        { reading: "カイ", kr: "카이", word: "会社", wordReading: "かいしゃ", meaning: "회사" },
+        { reading: "エ", kr: "에", word: "会釈", wordReading: "えしゃく", meaning: "가벼운 인사, 목례" },
+      ],
+      kunyomi: [
+        { reading: "あ", kr: "아", word: "会う", wordReading: "あう", meaning: "만나다" },
+      ],
+      examples: [{ word: "会社", reading: "かいしゃ", meaning: "회사" }],
+    },
+    {
+      kanji: "社",
+      meaning: "모일",
+      sound: "사",
+      onyomi: [
+        { reading: "シャ", kr: "샤", word: "会社", wordReading: "かいしゃ", meaning: "회사" },
+      ],
+      kunyomi: [
+        { reading: "やしろ", kr: "야시로", word: "社", wordReading: "やしろ", meaning: "신사(神社의 옛말)" },
+      ],
+      examples: [{ word: "会社", reading: "かいしゃ", meaning: "회사" }],
+    },
+    {
+      kanji: "駅",
+      meaning: "역",
+      sound: "역",
+      onyomi: [
+        { reading: "エキ", kr: "에키", word: "駅", wordReading: "えき", meaning: "역(기차역)" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "駅", reading: "えき", meaning: "역(기차역)" }],
+    },
+    {
+      kanji: "工",
+      meaning: "장인",
+      sound: "공",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "工場", wordReading: "こうじょう", meaning: "공장" },
+        { reading: "ク", kr: "쿠", word: "工夫", wordReading: "くふう", meaning: "궁리, 고안" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "工場", reading: "こうじょう", meaning: "공장" }],
+    },
+    {
+      kanji: "場",
+      meaning: "마당",
+      sound: "장",
+      onyomi: [
+        { reading: "ジョウ", kr: "죠우", word: "工場", wordReading: "こうじょう", meaning: "공장" },
+      ],
+      kunyomi: [
+        { reading: "ば", kr: "바", word: "場所", wordReading: "ばしょ", meaning: "장소" },
+      ],
+      examples: [{ word: "工場", reading: "こうじょう", meaning: "공장" }],
+    },
+    {
+      kanji: "病",
+      meaning: "병",
+      sound: "병",
+      onyomi: [
+        { reading: "ビョウ", kr: "뵤우", word: "病院", wordReading: "びょういん", meaning: "병원" },
+        { reading: "ヘイ", kr: "헤이", word: "疾病", wordReading: "しっぺい", meaning: "질병" },
+      ],
+      kunyomi: [
+        { reading: "やまい", kr: "야마이", word: "病", wordReading: "やまい", meaning: "병" },
+        { reading: "や", kr: "야", word: "病む", wordReading: "やむ", meaning: "병들다, 앓다" },
+      ],
+      examples: [{ word: "病院", reading: "びょういん", meaning: "병원" }],
+    },
+    {
+      kanji: "院",
+      meaning: "집",
+      sound: "원",
+      onyomi: [
+        { reading: "イン", kr: "인", word: "病院", wordReading: "びょういん", meaning: "병원" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "病院", reading: "びょういん", meaning: "병원" }],
+    },
+    {
+      kanji: "公",
+      meaning: "공평할",
+      sound: "공",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "公園", wordReading: "こうえん", meaning: "공원" },
+      ],
+      kunyomi: [
+        { reading: "おおやけ", kr: "오오야케", word: "公", wordReading: "おおやけ", meaning: "공공, 공적임" },
+      ],
+      examples: [{ word: "公園", reading: "こうえん", meaning: "공원" }],
+    },
+    {
+      kanji: "園",
+      meaning: "동산",
+      sound: "원",
+      onyomi: [
+        { reading: "エン", kr: "엔", word: "公園", wordReading: "こうえん", meaning: "공원" },
+      ],
+      kunyomi: [
+        { reading: "その", kr: "소노", word: "花園", wordReading: "はなぞの", meaning: "화원, 꽃동산" },
+      ],
+      examples: [{ word: "公園", reading: "こうえん", meaning: "공원" }],
+    },
+    {
+      kanji: "図",
+      meaning: "그림",
+      sound: "도",
+      onyomi: [
+        { reading: "ズ", kr: "즈", word: "地図", wordReading: "ちず", meaning: "지도" },
+        { reading: "ト", kr: "토", word: "図書館", wordReading: "としょかん", meaning: "도서관" },
+      ],
+      kunyomi: [
+        { reading: "はか", kr: "하카", word: "図る", wordReading: "はかる", meaning: "도모하다, 꾀하다" },
+      ],
+      examples: [{ word: "図書館", reading: "としょかん", meaning: "도서관" }],
+    },
+    {
+      kanji: "館",
+      meaning: "집",
+      sound: "관",
+      onyomi: [
+        { reading: "カン", kr: "칸", word: "図書館", wordReading: "としょかん", meaning: "도서관" },
+      ],
+      kunyomi: [
+        { reading: "やかた", kr: "야카타", word: "館", wordReading: "やかた", meaning: "저택, 관(옛말)" },
+      ],
+      examples: [{ word: "図書館", reading: "としょかん", meaning: "도서관" }],
+    },
+    {
+      kanji: "映",
+      meaning: "비칠",
+      sound: "영",
+      onyomi: [
+        { reading: "エイ", kr: "에이", word: "映画", wordReading: "えいが", meaning: "영화" },
+      ],
+      kunyomi: [
+        { reading: "うつ", kr: "우츠", word: "映る", wordReading: "うつる", meaning: "비치다" },
+        { reading: "は", kr: "하", word: "映える", wordReading: "はえる", meaning: "빛나다, 돋보이다" },
+      ],
+      examples: [{ word: "映画", reading: "えいが", meaning: "영화" }],
+    },
+    {
+      kanji: "画",
+      meaning: "그림",
+      sound: "화",
+      onyomi: [
+        { reading: "ガ", kr: "가", word: "映画", wordReading: "えいが", meaning: "영화" },
+        { reading: "カク", kr: "카쿠", word: "計画", wordReading: "けいかく", meaning: "계획" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "映画", reading: "えいが", meaning: "영화" }],
+    },
+    {
+      kanji: "勉",
+      meaning: "힘쓸",
+      sound: "면",
+      onyomi: [
+        { reading: "ベン", kr: "벤", word: "勉強", wordReading: "べんきょう", meaning: "공부" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "勉強", reading: "べんきょう", meaning: "공부" }],
+    },
+    {
+      kanji: "強",
+      meaning: "강할",
+      sound: "강",
+      onyomi: [
+        { reading: "キョウ", kr: "쿄우", word: "勉強", wordReading: "べんきょう", meaning: "공부" },
+        { reading: "ゴウ", kr: "고우", word: "強引", wordReading: "ごういん", meaning: "억지로, 강제로" },
+      ],
+      kunyomi: [
+        { reading: "つよ", kr: "츠요", word: "強い", wordReading: "つよい", meaning: "강하다" },
+        { reading: "し", kr: "시", word: "強いる", wordReading: "しいる", meaning: "강요하다" },
+      ],
+      examples: [{ word: "勉強", reading: "べんきょう", meaning: "공부" }],
+    },
+    {
+      kanji: "宿",
+      meaning: "잠잘",
+      sound: "숙",
+      onyomi: [
+        { reading: "シュク", kr: "슈쿠", word: "宿題", wordReading: "しゅくだい", meaning: "숙제" },
+      ],
+      kunyomi: [
+        { reading: "やど", kr: "야도", word: "宿", wordReading: "やど", meaning: "숙소" },
+      ],
+      examples: [{ word: "宿題", reading: "しゅくだい", meaning: "숙제" }],
+    },
+    {
+      kanji: "題",
+      meaning: "제목",
+      sound: "제",
+      onyomi: [
+        { reading: "ダイ", kr: "다이", word: "宿題", wordReading: "しゅくだい", meaning: "숙제" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "宿題", reading: "しゅくだい", meaning: "숙제" }],
+    },
+    {
+      kanji: "質",
+      meaning: "바탕",
+      sound: "질",
+      onyomi: [
+        { reading: "シツ", kr: "시츠", word: "質問", wordReading: "しつもん", meaning: "질문" },
+        { reading: "シチ", kr: "시치", word: "質屋", wordReading: "しちや", meaning: "전당포" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "質問", reading: "しつもん", meaning: "질문" }],
+    },
+    {
+      kanji: "問",
+      meaning: "물을",
+      sound: "문",
+      onyomi: [
+        { reading: "モン", kr: "몬", word: "質問", wordReading: "しつもん", meaning: "질문" },
+      ],
+      kunyomi: [
+        { reading: "と", kr: "토", word: "問う", wordReading: "とう", meaning: "묻다" },
+      ],
+      examples: [{ word: "質問", reading: "しつもん", meaning: "질문" }],
+    },
+    {
+      kanji: "試",
+      meaning: "시험",
+      sound: "시",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "試験", wordReading: "しけん", meaning: "시험" },
+      ],
+      kunyomi: [
+        { reading: "こころ", kr: "코코로", word: "試みる", wordReading: "こころみる", meaning: "시도하다" },
+        { reading: "ため", kr: "타메", word: "試す", wordReading: "ためす", meaning: "시험해보다" },
+      ],
+      examples: [{ word: "試験", reading: "しけん", meaning: "시험" }],
+    },
+    {
+      kanji: "験",
+      meaning: "시험",
+      sound: "험",
+      onyomi: [
+        { reading: "ケン", kr: "켄", word: "試験", wordReading: "しけん", meaning: "시험" },
+        { reading: "ゲン", kr: "겐", word: "霊験", wordReading: "れいげん", meaning: "영험" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "試験", reading: "しけん", meaning: "시험" }],
+    },
+    {
+      kanji: "答",
+      meaning: "대답",
+      sound: "답",
+      onyomi: [
+        { reading: "トウ", kr: "토우", word: "応答", wordReading: "おうとう", meaning: "응답" },
+      ],
+      kunyomi: [
+        { reading: "こた", kr: "코타", word: "答え", wordReading: "こたえ", meaning: "답, 대답" },
+      ],
+      examples: [{ word: "答え", reading: "こたえ", meaning: "답, 대답" }],
+    },
+    {
+      kanji: "考",
+      meaning: "생각할",
+      sound: "고",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "参考", wordReading: "さんこう", meaning: "참고" },
+      ],
+      kunyomi: [
+        { reading: "かんが", kr: "칸가", word: "考える", wordReading: "かんがえる", meaning: "생각하다" },
+      ],
+      examples: [{ word: "考える", reading: "かんがえる", meaning: "생각하다" }],
+    },
+    {
+      kanji: "字",
+      meaning: "글자",
+      sound: "자",
+      onyomi: [
+        { reading: "ジ", kr: "지", word: "漢字", wordReading: "かんじ", meaning: "한자" },
+      ],
+      kunyomi: [
+        { reading: "あざ", kr: "아자", word: "字", wordReading: "あざ", meaning: "마을, 자(행정구역 단위)" },
+      ],
+      examples: [{ word: "漢字", reading: "かんじ", meaning: "한자" }],
+    },
+    {
+      kanji: "文",
+      meaning: "글",
+      sound: "문",
+      onyomi: [
+        { reading: "ブン", kr: "분", word: "文化", wordReading: "ぶんか", meaning: "문화" },
+        { reading: "モン", kr: "몬", word: "文句", wordReading: "もんく", meaning: "불평, 잔소리" },
+      ],
+      kunyomi: [
+        { reading: "ふみ", kr: "후미", word: "文", wordReading: "ふみ", meaning: "편지(고어)" },
+      ],
+      examples: [{ word: "文化", reading: "ぶんか", meaning: "문화" }],
+    },
+    {
+      kanji: "漢",
+      meaning: "한나라",
+      sound: "한",
+      onyomi: [
+        { reading: "カン", kr: "칸", word: "漢字", wordReading: "かんじ", meaning: "한자" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "漢字", reading: "かんじ", meaning: "한자" }],
+    },
+    {
+      kanji: "数",
+      meaning: "셀",
+      sound: "수",
+      onyomi: [
+        { reading: "スウ", kr: "스우", word: "数学", wordReading: "すうがく", meaning: "수학" },
+        { reading: "ス", kr: "스", word: "数学", wordReading: "すうがく", meaning: "수학" },
+      ],
+      kunyomi: [
+        { reading: "かず", kr: "카즈", word: "数", wordReading: "かず", meaning: "수, 숫자" },
+        { reading: "かぞ", kr: "카조", word: "数える", wordReading: "かぞえる", meaning: "세다" },
+      ],
+      examples: [{ word: "数学", reading: "すうがく", meaning: "수학" }],
+    },
+    {
+      kanji: "英",
+      meaning: "꽃부리",
+      sound: "영",
+      onyomi: [
+        { reading: "エイ", kr: "에이", word: "英語", wordReading: "えいご", meaning: "영어" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "英語", reading: "えいご", meaning: "영어" }],
+    },
+    {
+      kanji: "化",
+      meaning: "될",
+      sound: "화",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "文化", wordReading: "ぶんか", meaning: "문화" },
+        { reading: "ケ", kr: "케", word: "化粧", wordReading: "けしょう", meaning: "화장" },
+      ],
+      kunyomi: [
+        { reading: "ば", kr: "바", word: "化ける", wordReading: "ばける", meaning: "둔갑하다" },
+      ],
+      examples: [{ word: "文化", reading: "ぶんか", meaning: "문화" }],
+    },
+    {
+      kanji: "育",
+      meaning: "기를",
+      sound: "육",
+      onyomi: [
+        { reading: "イク", kr: "이쿠", word: "教育", wordReading: "きょういく", meaning: "교육" },
+      ],
+      kunyomi: [
+        { reading: "そだ", kr: "소다", word: "育つ", wordReading: "そだつ", meaning: "자라다" },
+      ],
+      examples: [{ word: "教育", reading: "きょういく", meaning: "교육" }],
+    },
+    {
+      kanji: "研",
+      meaning: "갈",
+      sound: "연",
+      onyomi: [
+        { reading: "ケン", kr: "켄", word: "研究", wordReading: "けんきゅう", meaning: "연구" },
+      ],
+      kunyomi: [
+        { reading: "と", kr: "토", word: "研ぐ", wordReading: "とぐ", meaning: "갈다, 연마하다" },
+      ],
+      examples: [{ word: "研究", reading: "けんきゅう", meaning: "연구" }],
+    },
+    {
+      kanji: "究",
+      meaning: "궁구할",
+      sound: "구",
+      onyomi: [
+        { reading: "キュウ", kr: "큐우", word: "研究", wordReading: "けんきゅう", meaning: "연구" },
+      ],
+      kunyomi: [
+        { reading: "きわ", kr: "키와", word: "究める", wordReading: "きわめる", meaning: "깊이 연구하다, 규명하다" },
+      ],
+      examples: [{ word: "研究", reading: "けんきゅう", meaning: "연구" }],
+    },
+    {
+      kanji: "医",
+      meaning: "의원",
+      sound: "의",
+      onyomi: [
+        { reading: "イ", kr: "이", word: "医者", wordReading: "いしゃ", meaning: "의사" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "医者", reading: "いしゃ", meaning: "의사" }],
+    },
+    {
+      kanji: "科",
+      meaning: "과목",
+      sound: "과",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "科学", wordReading: "かがく", meaning: "과학" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "科学", reading: "かがく", meaning: "과학" }],
+    },
+    {
+      kanji: "政",
+      meaning: "정사",
+      sound: "정",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "政治", wordReading: "せいじ", meaning: "정치" },
+        { reading: "ショウ", kr: "쇼우", word: "摂政", wordReading: "せっしょう", meaning: "섭정" },
+      ],
+      kunyomi: [
+        { reading: "まつりごと", kr: "마츠리고토", word: "政", wordReading: "まつりごと", meaning: "정치(고어)" },
+      ],
+      examples: [{ word: "政治", reading: "せいじ", meaning: "정치" }],
+    },
+    {
+      kanji: "治",
+      meaning: "다스릴",
+      sound: "치",
+      onyomi: [
+        { reading: "ジ", kr: "지", word: "政治", wordReading: "せいじ", meaning: "정치" },
+        { reading: "チ", kr: "치", word: "治療", wordReading: "ちりょう", meaning: "치료" },
+      ],
+      kunyomi: [
+        { reading: "おさ", kr: "오사", word: "治める", wordReading: "おさめる", meaning: "다스리다" },
+        { reading: "なお", kr: "나오", word: "治る", wordReading: "なおる", meaning: "낫다, 치료되다" },
+      ],
+      examples: [{ word: "政治", reading: "せいじ", meaning: "정치" }],
+    },
+    {
+      kanji: "経",
+      meaning: "지날",
+      sound: "경",
+      onyomi: [
+        { reading: "ケイ", kr: "케이", word: "経済", wordReading: "けいざい", meaning: "경제" },
+        { reading: "キョウ", kr: "쿄우", word: "お経", wordReading: "おきょう", meaning: "불경" },
+      ],
+      kunyomi: [
+        { reading: "へ", kr: "헤", word: "経る", wordReading: "へる", meaning: "(시간이) 지나다, 경과하다" },
+      ],
+      examples: [{ word: "経済", reading: "けいざい", meaning: "경제" }],
+    },
+    {
+      kanji: "済",
+      meaning: "건널",
+      sound: "제",
+      onyomi: [
+        { reading: "サイ", kr: "사이", word: "経済", wordReading: "けいざい", meaning: "경제" },
+      ],
+      kunyomi: [
+        { reading: "す", kr: "스", word: "済む", wordReading: "すむ", meaning: "끝나다, 해결되다" },
+      ],
+      examples: [{ word: "経済", reading: "けいざい", meaning: "경제" }],
+    },
+    {
+      kanji: "歴",
+      meaning: "지날",
+      sound: "력",
+      onyomi: [
+        { reading: "レキ", kr: "레키", word: "歴史", wordReading: "れきし", meaning: "역사" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "歴史", reading: "れきし", meaning: "역사" }],
+    },
+    {
+      kanji: "史",
+      meaning: "역사",
+      sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "歴史", wordReading: "れきし", meaning: "역사" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "歴史", reading: "れきし", meaning: "역사" }],
+    },
+    {
+      kanji: "運",
+      meaning: "옮길",
+      sound: "운",
+      onyomi: [
+        { reading: "ウン", kr: "운", word: "運動", wordReading: "うんどう", meaning: "운동" },
+      ],
+      kunyomi: [
+        { reading: "はこ", kr: "하코", word: "運ぶ", wordReading: "はこぶ", meaning: "옮기다, 운반하다" },
+      ],
+      examples: [{ word: "運動", reading: "うんどう", meaning: "운동" }],
+    },
+    {
+      kanji: "動",
+      meaning: "움직일",
+      sound: "동",
+      onyomi: [
+        { reading: "ドウ", kr: "도우", word: "運動", wordReading: "うんどう", meaning: "운동" },
+      ],
+      kunyomi: [
+        { reading: "うご", kr: "우고", word: "動く", wordReading: "うごく", meaning: "움직이다" },
+      ],
+      examples: [{ word: "運動", reading: "うんどう", meaning: "운동" }],
+    },
+    {
+      kanji: "泳",
+      meaning: "헤엄칠",
+      sound: "영",
+      onyomi: [
+        { reading: "エイ", kr: "에이", word: "水泳", wordReading: "すいえい", meaning: "수영" },
+      ],
+      kunyomi: [
+        { reading: "およ", kr: "오요", word: "泳ぐ", wordReading: "およぐ", meaning: "수영하다" },
+      ],
+      examples: [{ word: "泳ぐ", reading: "およぐ", meaning: "수영하다" }],
+    },
+    {
+      kanji: "旅",
+      meaning: "나그네",
+      sound: "려",
+      onyomi: [
+        { reading: "リョ", kr: "료", word: "旅行", wordReading: "りょこう", meaning: "여행" },
+      ],
+      kunyomi: [
+        { reading: "たび", kr: "타비", word: "旅", wordReading: "たび", meaning: "여행" },
+      ],
+      examples: [{ word: "旅行", reading: "りょこう", meaning: "여행" }],
+    },
+    {
+      kanji: "世",
+      meaning: "인간(대)",
+      sound: "세",
+      onyomi: [
+        { reading: "セ", kr: "세", word: "世界", wordReading: "せかい", meaning: "세계" },
+        { reading: "セイ", kr: "세이", word: "世紀", wordReading: "せいき", meaning: "세기" },
+      ],
+      kunyomi: [
+        { reading: "よ", kr: "요", word: "世の中", wordReading: "よのなか", meaning: "세상" },
+      ],
+      examples: [{ word: "世界", reading: "せかい", meaning: "세계" }],
+    },
+    {
+      kanji: "界",
+      meaning: "지경",
+      sound: "계",
+      onyomi: [
+        { reading: "カイ", kr: "카이", word: "世界", wordReading: "せかい", meaning: "세계" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "世界", reading: "せかい", meaning: "세계" }],
+    },
+    {
+      kanji: "練",
+      meaning: "익힐",
+      sound: "련",
+      onyomi: [
+        { reading: "レン", kr: "렌", word: "練習", wordReading: "れんしゅう", meaning: "연습" },
+      ],
+      kunyomi: [
+        { reading: "ね", kr: "네", word: "練る", wordReading: "ねる", meaning: "(반죽 등을) 이기다, 다듬다" },
+      ],
+      examples: [{ word: "練習", reading: "れんしゅう", meaning: "연습" }],
+    },
+    {
+      kanji: "習",
+      meaning: "익힐",
+      sound: "습",
+      onyomi: [
+        { reading: "シュウ", kr: "슈우", word: "練習", wordReading: "れんしゅう", meaning: "연습" },
+      ],
+      kunyomi: [
+        { reading: "なら", kr: "나라", word: "習う", wordReading: "ならう", meaning: "배우다" },
+      ],
+      examples: [{ word: "練習", reading: "れんしゅう", meaning: "연습" }],
+    },
+    {
+      kanji: "写",
+      meaning: "베낄",
+      sound: "사",
+      onyomi: [
+        { reading: "シャ", kr: "샤", word: "写真", wordReading: "しゃしん", meaning: "사진" },
+      ],
+      kunyomi: [
+        { reading: "うつ", kr: "우츠", word: "写す", wordReading: "うつす", meaning: "베끼다, 찍다" },
+      ],
+      examples: [{ word: "写真", reading: "しゃしん", meaning: "사진" }],
+    },
+    {
+      kanji: "真",
+      meaning: "참",
+      sound: "진",
+      onyomi: [
+        { reading: "シン", kr: "신", word: "写真", wordReading: "しゃしん", meaning: "사진" },
+      ],
+      kunyomi: [
+        { reading: "ま", kr: "마", word: "真っ赤", wordReading: "まっか", meaning: "새빨감" },
+      ],
+      examples: [{ word: "写真", reading: "しゃしん", meaning: "사진" }],
+    },
+    {
+      kanji: "楽",
+      meaning: "즐길(노래)",
+      sound: "락(악)",
+      onyomi: [
+        { reading: "ガク", kr: "가쿠", word: "音楽", wordReading: "おんがく", meaning: "음악" },
+        { reading: "ラク", kr: "라쿠", word: "楽", wordReading: "らく", meaning: "편안함" },
+      ],
+      kunyomi: [
+        { reading: "たの", kr: "타노", word: "楽しい", wordReading: "たのしい", meaning: "즐겁다" },
+      ],
+      examples: [{ word: "音楽", reading: "おんがく", meaning: "음악" }],
+    },
+    {
+      kanji: "声",
+      meaning: "소리",
+      sound: "성",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "音声", wordReading: "おんせい", meaning: "음성" },
+        { reading: "ショウ", kr: "쇼우", word: "声聞", wordReading: "しょうもん", meaning: "성문(불교 용어)" },
+      ],
+      kunyomi: [
+        { reading: "こえ", kr: "코에", word: "声", wordReading: "こえ", meaning: "목소리" },
+      ],
+      examples: [{ word: "声", reading: "こえ", meaning: "목소리" }],
+    },
+    {
+      kanji: "歌",
+      meaning: "노래",
+      sound: "가",
+      onyomi: [
+        { reading: "カ", kr: "카", word: "歌手", wordReading: "かしゅ", meaning: "가수" },
+      ],
+      kunyomi: [
+        { reading: "うた", kr: "우타", word: "歌", wordReading: "うた", meaning: "노래" },
+      ],
+      examples: [{ word: "歌", reading: "うた", meaning: "노래" }],
+    },
+    {
+      kanji: "集",
+      meaning: "모을",
+      sound: "집",
+      onyomi: [
+        { reading: "シュウ", kr: "슈우", word: "集合", wordReading: "しゅうごう", meaning: "집합" },
+      ],
+      kunyomi: [
+        { reading: "あつ", kr: "아츠", word: "集める", wordReading: "あつめる", meaning: "모으다" },
+      ],
+      examples: [{ word: "集める", reading: "あつめる", meaning: "모으다" }],
+    },
+    {
+      kanji: "作",
+      meaning: "지을",
+      sound: "작",
+      onyomi: [
+        { reading: "サク", kr: "사쿠", word: "作品", wordReading: "さくひん", meaning: "작품" },
+        { reading: "サ", kr: "사", word: "作法", wordReading: "さほう", meaning: "예의범절, 작법" },
+      ],
+      kunyomi: [
+        { reading: "つく", kr: "츠쿠", word: "作る", wordReading: "つくる", meaning: "만들다" },
+      ],
+      examples: [{ word: "作る", reading: "つくる", meaning: "만들다" }],
+    },
+    {
+      kanji: "使",
+      meaning: "부릴",
+      sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "使用", wordReading: "しよう", meaning: "사용" },
+      ],
+      kunyomi: [
+        { reading: "つか", kr: "츠카", word: "使う", wordReading: "つかう", meaning: "사용하다" },
+      ],
+      examples: [{ word: "使う", reading: "つかう", meaning: "사용하다" }],
+    },
+    {
+      kanji: "思",
+      meaning: "생각할",
+      sound: "사",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "意思", wordReading: "いし", meaning: "의사, 생각" },
+      ],
+      kunyomi: [
+        { reading: "おも", kr: "오모", word: "思う", wordReading: "おもう", meaning: "생각하다" },
+      ],
+      examples: [{ word: "思う", reading: "おもう", meaning: "생각하다" }],
+    },
+    {
+      kanji: "持",
+      meaning: "가질",
+      sound: "지",
+      onyomi: [
+        { reading: "ジ", kr: "지", word: "支持", wordReading: "しじ", meaning: "지지" },
+      ],
+      kunyomi: [
+        { reading: "も", kr: "모", word: "持つ", wordReading: "もつ", meaning: "가지다, 들다" },
+      ],
+      examples: [{ word: "持つ", reading: "もつ", meaning: "가지다, 들다" }],
+    },
+    {
+      kanji: "当",
+      meaning: "마땅할",
+      sound: "당",
+      onyomi: [
+        { reading: "トウ", kr: "토우", word: "当然", wordReading: "とうぜん", meaning: "당연" },
+      ],
+      kunyomi: [
+        { reading: "あ", kr: "아", word: "当たる", wordReading: "あたる", meaning: "맞다, 명중하다" },
+      ],
+      examples: [{ word: "当たる", reading: "あたる", meaning: "맞다, 명중하다" }],
+    },
+    {
+      kanji: "知",
+      meaning: "알",
+      sound: "지",
+      onyomi: [
+        { reading: "チ", kr: "치", word: "知識", wordReading: "ちしき", meaning: "지식" },
+      ],
+      kunyomi: [
+        { reading: "し", kr: "시", word: "知る", wordReading: "しる", meaning: "알다" },
+      ],
+      examples: [{ word: "知る", reading: "しる", meaning: "알다" }],
+    },
+    {
+      kanji: "働",
+      meaning: "일할",
+      sound: "동",
+      onyomi: [
+        { reading: "ドウ", kr: "도우", word: "労働", wordReading: "ろうどう", meaning: "노동" },
+      ],
+      kunyomi: [
+        { reading: "はたら", kr: "하타라", word: "働く", wordReading: "はたらく", meaning: "일하다" },
+      ],
+      examples: [{ word: "働く", reading: "はたらく", meaning: "일하다" }],
+    },
+    {
+      kanji: "始",
+      meaning: "비로소",
+      sound: "시",
+      onyomi: [
+        { reading: "シ", kr: "시", word: "開始", wordReading: "かいし", meaning: "개시" },
+      ],
+      kunyomi: [
+        { reading: "はじ", kr: "하지", word: "始まる", wordReading: "はじまる", meaning: "시작되다" },
+      ],
+      examples: [{ word: "始まる", reading: "はじまる", meaning: "시작되다" }],
+    },
+    {
+      kanji: "終",
+      meaning: "끝날",
+      sound: "종",
+      onyomi: [
+        { reading: "シュウ", kr: "슈우", word: "終了", wordReading: "しゅうりょう", meaning: "종료" },
+      ],
+      kunyomi: [
+        { reading: "お", kr: "오", word: "終わる", wordReading: "おわる", meaning: "끝나다" },
+      ],
+      examples: [{ word: "終わる", reading: "おわる", meaning: "끝나다" }],
+    },
+    {
+      kanji: "乗",
+      meaning: "탈",
+      sound: "승",
+      onyomi: [
+        { reading: "ジョウ", kr: "죠우", word: "乗車", wordReading: "じょうしゃ", meaning: "승차" },
+      ],
+      kunyomi: [
+        { reading: "の", kr: "노", word: "乗る", wordReading: "のる", meaning: "타다" },
+      ],
+      examples: [{ word: "乗る", reading: "のる", meaning: "타다" }],
+    },
+    {
+      kanji: "降",
+      meaning: "내릴",
+      sound: "강",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "降水", wordReading: "こうすい", meaning: "강수" },
+      ],
+      kunyomi: [
+        { reading: "お", kr: "오", word: "降りる", wordReading: "おりる", meaning: "내리다" },
+        { reading: "ふ", kr: "후", word: "降る", wordReading: "ふる", meaning: "(비/눈이) 내리다" },
+      ],
+      examples: [{ word: "降りる", reading: "おりる", meaning: "내리다" }],
+    },
+    {
+      kanji: "開",
+      meaning: "열",
+      sound: "개",
+      onyomi: [
+        { reading: "カイ", kr: "카이", word: "公開", wordReading: "こうかい", meaning: "공개" },
+      ],
+      kunyomi: [
+        { reading: "あ", kr: "아", word: "開ける", wordReading: "あける", meaning: "열다" },
+        { reading: "ひら", kr: "히라", word: "開く", wordReading: "ひらく", meaning: "열리다" },
+      ],
+      examples: [{ word: "開ける", reading: "あける", meaning: "열다" }],
+    },
+    {
+      kanji: "閉",
+      meaning: "닫을",
+      sound: "폐",
+      onyomi: [
+        { reading: "ヘイ", kr: "헤이", word: "閉店", wordReading: "へいてん", meaning: "폐점" },
+      ],
+      kunyomi: [
+        { reading: "し", kr: "시", word: "閉める", wordReading: "しめる", meaning: "닫다" },
+        { reading: "と", kr: "토", word: "閉じる", wordReading: "とじる", meaning: "닫다" },
+      ],
+      examples: [{ word: "閉める", reading: "しめる", meaning: "닫다" }],
+    },
+    {
+      kanji: "発",
+      meaning: "필",
+      sound: "발",
+      onyomi: [
+        { reading: "ハツ", kr: "하츠", word: "発見", wordReading: "はっけん", meaning: "발견" },
+        { reading: "ホツ", kr: "호츠", word: "発起", wordReading: "ほっき", meaning: "발기, 시작함" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "出発", reading: "しゅっぱつ", meaning: "출발" }],
+    },
+    {
+      kanji: "着",
+      meaning: "붙을",
+      sound: "착",
+      onyomi: [
+        { reading: "チャク", kr: "챠쿠", word: "到着", wordReading: "とうちゃく", meaning: "도착" },
+        { reading: "ジャク", kr: "쟈쿠", word: "執着", wordReading: "しゅうじゃく", meaning: "집착" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "着る", wordReading: "きる", meaning: "입다" },
+        { reading: "つ", kr: "츠", word: "着く", wordReading: "つく", meaning: "도착하다" },
+      ],
+      examples: [{ word: "着く", reading: "つく", meaning: "도착하다" }],
+    },
+    {
+      kanji: "走",
+      meaning: "달릴",
+      sound: "주",
+      onyomi: [
+        { reading: "ソウ", kr: "소우", word: "競走", wordReading: "きょうそう", meaning: "경주" },
+      ],
+      kunyomi: [
+        { reading: "はし", kr: "하시", word: "走る", wordReading: "はしる", meaning: "달리다" },
+      ],
+      examples: [{ word: "走る", reading: "はしる", meaning: "달리다" }],
+    },
+    {
+      kanji: "歩",
+      meaning: "걸음",
+      sound: "보",
+      onyomi: [
+        { reading: "ホ", kr: "호", word: "歩道", wordReading: "ほどう", meaning: "보도" },
+        { reading: "ブ", kr: "부", word: "歩合", wordReading: "ぶあい", meaning: "비율, 보합" },
+      ],
+      kunyomi: [
+        { reading: "ある", kr: "아루", word: "歩く", wordReading: "あるく", meaning: "걷다" },
+        { reading: "あゆ", kr: "아유", word: "歩む", wordReading: "あゆむ", meaning: "걷다, 나아가다" },
+      ],
+      examples: [{ word: "歩く", reading: "あるく", meaning: "걷다" }],
+    },
+    {
+      kanji: "近",
+      meaning: "가까울",
+      sound: "근",
+      onyomi: [
+        { reading: "キン", kr: "킨", word: "近所", wordReading: "きんじょ", meaning: "근처, 이웃" },
+      ],
+      kunyomi: [
+        { reading: "ちか", kr: "치카", word: "近い", wordReading: "ちかい", meaning: "가깝다" },
+      ],
+      examples: [{ word: "近い", reading: "ちかい", meaning: "가깝다" }],
+    },
+    {
+      kanji: "遠",
+      meaning: "멀",
+      sound: "원",
+      onyomi: [
+        { reading: "エン", kr: "엔", word: "永遠", wordReading: "えいえん", meaning: "영원" },
+        { reading: "オン", kr: "온", word: "久遠", wordReading: "くおん", meaning: "구원, 영원(불교 용어)" },
+      ],
+      kunyomi: [
+        { reading: "とお", kr: "토오", word: "遠い", wordReading: "とおい", meaning: "멀다" },
+      ],
+      examples: [{ word: "遠い", reading: "とおい", meaning: "멀다" }],
+    },
+    {
+      kanji: "重",
+      meaning: "무거울",
+      sound: "중",
+      onyomi: [
+        { reading: "ジュウ", kr: "쥬우", word: "重要", wordReading: "じゅうよう", meaning: "중요" },
+        { reading: "チョウ", kr: "쵸우", word: "貴重", wordReading: "きちょう", meaning: "귀중" },
+      ],
+      kunyomi: [
+        { reading: "おも", kr: "오모", word: "重い", wordReading: "おもい", meaning: "무겁다" },
+        { reading: "かさ", kr: "카사", word: "重なる", wordReading: "かさなる", meaning: "겹치다" },
+      ],
+      examples: [{ word: "重い", reading: "おもい", meaning: "무겁다" }],
+    },
+    {
+      kanji: "軽",
+      meaning: "가벼울",
+      sound: "경",
+      onyomi: [
+        { reading: "ケイ", kr: "케이", word: "軽率", wordReading: "けいそつ", meaning: "경솔" },
+      ],
+      kunyomi: [
+        { reading: "かる", kr: "카루", word: "軽い", wordReading: "かるい", meaning: "가볍다" },
+      ],
+      examples: [{ word: "軽い", reading: "かるい", meaning: "가볍다" }],
+    },
+    {
+      kanji: "早",
+      meaning: "일찍",
+      sound: "조",
+      onyomi: [
+        { reading: "ソウ", kr: "소우", word: "早々", wordReading: "そうそう", meaning: "서둘러, 급히" },
+        { reading: "サッ", kr: "삿", word: "早速", wordReading: "さっそく", meaning: "즉시, 당장" },
+      ],
+      kunyomi: [
+        { reading: "はや", kr: "하야", word: "早い", wordReading: "はやい", meaning: "(시간이) 이르다" },
+      ],
+      examples: [{ word: "早い", reading: "はやい", meaning: "(시간이) 이르다" }],
+    },
+    {
+      kanji: "速",
+      meaning: "빠를",
+      sound: "속",
+      onyomi: [
+        { reading: "ソク", kr: "소쿠", word: "速度", wordReading: "そくど", meaning: "속도" },
+      ],
+      kunyomi: [
+        { reading: "はや", kr: "하야", word: "速い", wordReading: "はやい", meaning: "(속도가) 빠르다" },
+      ],
+      examples: [{ word: "速い", reading: "はやい", meaning: "(속도가) 빠르다" }],
+    },
+    {
+      kanji: "遅",
+      meaning: "늦을",
+      sound: "지",
+      onyomi: [
+        { reading: "チ", kr: "치", word: "遅刻", wordReading: "ちこく", meaning: "지각" },
+      ],
+      kunyomi: [
+        { reading: "おそ", kr: "오소", word: "遅い", wordReading: "おそい", meaning: "느리다, 늦다" },
+        { reading: "おく", kr: "오쿠", word: "遅れる", wordReading: "おくれる", meaning: "늦다" },
+      ],
+      examples: [{ word: "遅い", reading: "おそい", meaning: "느리다, 늦다" }],
+    },
+    {
+      kanji: "広",
+      meaning: "넓을",
+      sound: "광",
+      onyomi: [
+        { reading: "コウ", kr: "코우", word: "広告", wordReading: "こうこく", meaning: "광고" },
+      ],
+      kunyomi: [
+        { reading: "ひろ", kr: "히로", word: "広い", wordReading: "ひろい", meaning: "넓다" },
+      ],
+      examples: [{ word: "広い", reading: "ひろい", meaning: "넓다" }],
+    },
+    {
+      kanji: "細",
+      meaning: "가늘",
+      sound: "세",
+      onyomi: [
+        { reading: "サイ", kr: "사이", word: "詳細", wordReading: "しょうさい", meaning: "상세" },
+      ],
+      kunyomi: [
+        { reading: "ほそ", kr: "호소", word: "細い", wordReading: "ほそい", meaning: "가늘다" },
+        { reading: "こま", kr: "코마", word: "細かい", wordReading: "こまかい", meaning: "자세하다, 잘다" },
+      ],
+      examples: [{ word: "細い", reading: "ほそい", meaning: "가늘다" }],
+    },
+    {
+      kanji: "太",
+      meaning: "클(굵을)",
+      sound: "태",
+      onyomi: [
+        { reading: "タイ", kr: "타이", word: "太陽", wordReading: "たいよう", meaning: "태양" },
+        { reading: "タ", kr: "타", word: "丸太", wordReading: "まるた", meaning: "통나무" },
+      ],
+      kunyomi: [
+        { reading: "ふと", kr: "후토", word: "太い", wordReading: "ふとい", meaning: "굵다" },
+      ],
+      examples: [{ word: "太い", reading: "ふとい", meaning: "굵다" }],
+    },
+    {
+      kanji: "暑",
+      meaning: "더울",
+      sound: "서",
+      onyomi: [
+        { reading: "ショ", kr: "쇼", word: "暑中", wordReading: "しょちゅう", meaning: "삼복더위 기간" },
+      ],
+      kunyomi: [
+        { reading: "あつ", kr: "아츠", word: "暑い", wordReading: "あつい", meaning: "(날씨가) 덥다" },
+      ],
+      examples: [{ word: "暑い", reading: "あつい", meaning: "(날씨가) 덥다" }],
+    },
+    {
+      kanji: "寒",
+      meaning: "찰",
+      sound: "한",
+      onyomi: [
+        { reading: "カン", kr: "칸", word: "寒気", wordReading: "かんき", meaning: "추위, 한기" },
+      ],
+      kunyomi: [
+        { reading: "さむ", kr: "사무", word: "寒い", wordReading: "さむい", meaning: "춥다" },
+      ],
+      examples: [{ word: "寒い", reading: "さむい", meaning: "춥다" }],
+    },
+    {
+      kanji: "低",
+      meaning: "낮을",
+      sound: "저",
+      onyomi: [
+        { reading: "テイ", kr: "테이", word: "低下", wordReading: "ていか", meaning: "저하" },
+      ],
+      kunyomi: [
+        { reading: "ひく", kr: "히쿠", word: "低い", wordReading: "ひくい", meaning: "낮다" },
+      ],
+      examples: [{ word: "低い", reading: "ひくい", meaning: "낮다" }],
+    },
+    {
+      kanji: "短",
+      meaning: "짧을",
+      sound: "단",
+      onyomi: [
+        { reading: "タン", kr: "탄", word: "短所", wordReading: "たんしょ", meaning: "단점" },
+      ],
+      kunyomi: [
+        { reading: "みじか", kr: "미지카", word: "短い", wordReading: "みじかい", meaning: "짧다" },
+      ],
+      examples: [{ word: "短い", reading: "みじかい", meaning: "짧다" }],
+    },
+    {
+      kanji: "弱",
+      meaning: "약할",
+      sound: "약",
+      onyomi: [
+        { reading: "ジャク", kr: "쟈쿠", word: "弱点", wordReading: "じゃくてん", meaning: "약점" },
+      ],
+      kunyomi: [
+        { reading: "よわ", kr: "요와", word: "弱い", wordReading: "よわい", meaning: "약하다" },
+      ],
+      examples: [{ word: "弱い", reading: "よわい", meaning: "약하다" }],
+    },
+    {
+      kanji: "若",
+      meaning: "젊을",
+      sound: "약",
+      onyomi: [
+        { reading: "ジャク", kr: "쟈쿠", word: "老若", wordReading: "ろうじゃく", meaning: "노소(늙은이와 젊은이)" },
+        { reading: "ニャク", kr: "냐쿠", word: "老若男女", wordReading: "ろうにゃくなんにょ", meaning: "남녀노소" },
+      ],
+      kunyomi: [
+        { reading: "わか", kr: "와카", word: "若い", wordReading: "わかい", meaning: "젊다" },
+      ],
+      examples: [{ word: "若い", reading: "わかい", meaning: "젊다" }],
+    },
+    {
+      kanji: "静",
+      meaning: "고요할",
+      sound: "정",
+      onyomi: [
+        { reading: "セイ", kr: "세이", word: "静止", wordReading: "せいし", meaning: "정지" },
+        { reading: "ジョウ", kr: "죠우", word: "静脈", wordReading: "じょうみゃく", meaning: "정맥" },
+      ],
+      kunyomi: [
+        { reading: "しず", kr: "시즈", word: "静か", wordReading: "しずか", meaning: "조용함" },
+      ],
+      examples: [{ word: "静か", reading: "しずか", meaning: "조용함" }],
+    },
+    {
+      kanji: "有",
+      meaning: "있을",
+      sound: "유",
+      onyomi: [
+        { reading: "ユウ", kr: "유우", word: "有名", wordReading: "ゆうめい", meaning: "유명함" },
+        { reading: "ウ", kr: "우", word: "有名", wordReading: "ゆうめい", meaning: "유명함" },
+      ],
+      kunyomi: [
+        { reading: "あ", kr: "아", word: "有る", wordReading: "ある", meaning: "있다" },
+      ],
+      examples: [{ word: "有名", reading: "ゆうめい", meaning: "유명함" }],
+    },
+    {
+      kanji: "心",
+      meaning: "마음",
+      sound: "심",
+      onyomi: [
+        { reading: "シン", kr: "신", word: "中心", wordReading: "ちゅうしん", meaning: "중심" },
+      ],
+      kunyomi: [
+        { reading: "こころ", kr: "코코로", word: "心", wordReading: "こころ", meaning: "마음" },
+      ],
+      examples: [{ word: "心", reading: "こころ", meaning: "마음" }],
+    },
+    {
+      kanji: "同",
+      meaning: "같을",
+      sound: "동",
+      onyomi: [
+        { reading: "ドウ", kr: "도우", word: "同時", wordReading: "どうじ", meaning: "동시" },
+      ],
+      kunyomi: [
+        { reading: "おな", kr: "오나", word: "同じ", wordReading: "おなじ", meaning: "같음" },
+      ],
+      examples: [{ word: "同じ", reading: "おなじ", meaning: "같음" }],
+    },
+    {
+      kanji: "便",
+      meaning: "편할",
+      sound: "편",
+      onyomi: [
+        { reading: "ベン", kr: "벤", word: "便利", wordReading: "べんり", meaning: "편리함" },
+        { reading: "ビン", kr: "빈", word: "郵便", wordReading: "ゆうびん", meaning: "우편" },
+      ],
+      kunyomi: [
+        { reading: "たよ", kr: "타요", word: "便り", wordReading: "たより", meaning: "소식, 편지" },
+      ],
+      examples: [{ word: "便利", reading: "べんり", meaning: "편리함" }],
+    },
+    {
+      kanji: "利",
+      meaning: "이로울",
+      sound: "리",
+      onyomi: [
+        { reading: "リ", kr: "리", word: "便利", wordReading: "べんり", meaning: "편리함" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "利く", wordReading: "きく", meaning: "듣다, 효과가 있다" },
+      ],
+      examples: [{ word: "便利", reading: "べんり", meaning: "편리함" }],
+    },
+    {
+      kanji: "親",
+      meaning: "친할",
+      sound: "친",
+      onyomi: [
+        { reading: "シン", kr: "신", word: "親切", wordReading: "しんせつ", meaning: "친절함" },
+      ],
+      kunyomi: [
+        { reading: "おや", kr: "오야", word: "親", wordReading: "おや", meaning: "부모" },
+        { reading: "した", kr: "시타", word: "親しい", wordReading: "したしい", meaning: "친하다" },
+      ],
+      examples: [{ word: "親切", reading: "しんせつ", meaning: "친절함" }],
+    },
+    {
+      kanji: "切",
+      meaning: "끊을",
+      sound: "절",
+      onyomi: [
+        { reading: "セツ", kr: "세츠", word: "親切", wordReading: "しんせつ", meaning: "친절함" },
+        { reading: "サイ", kr: "사이", word: "一切", wordReading: "いっさい", meaning: "일체, 전부" },
+      ],
+      kunyomi: [
+        { reading: "き", kr: "키", word: "切る", wordReading: "きる", meaning: "자르다" },
+      ],
+      examples: [{ word: "親切", reading: "しんせつ", meaning: "친절함" }],
+    },
+    {
+      kanji: "不",
+      meaning: "아닐",
+      sound: "불",
+      onyomi: [
+        { reading: "フ", kr: "후", word: "不便", wordReading: "ふべん", meaning: "불편함" },
+        { reading: "ブ", kr: "부", word: "不器用", wordReading: "ぶきよう", meaning: "서투름, 어색함" },
+      ],
+      kunyomi: [],
+      examples: [{ word: "不便", reading: "ふべん", meaning: "불편함" }],
+    },
+  ],
   N3: [],
   N2: [],
   N1: [],
